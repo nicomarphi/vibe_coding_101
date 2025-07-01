@@ -1,26 +1,660 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Custom Font Declarations */
+@font-face {
+  font-family: 'Magical Night';
+  src: url('/magical_night-webfont.woff2') format('woff2'),
+    url('/magical_night-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: 'Inter Tight';
+  src: url('/InterTight-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  src: url('/InterTight-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Inter Tight', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Custom colors */
+  --color-forest: var(--forest);
+  --color-forest-foreground: var(--forest-foreground);
+  --color-tomato: var(--tomato);
+  --color-tomato-foreground: var(--tomato-foreground);
+  --color-ocean: var(--ocean);
+  --color-ocean-foreground: var(--ocean-foreground);
+
+  /* Existing colors */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.75rem;
+
+  /* Brand colors - Using a consistent palette */
+  --primary-blue: oklch(0.45 0.15 250);
+  --primary-green: oklch(0.55 0.15 155);
+  --primary-orange: oklch(0.65 0.25 50);
+  --primary-purple: oklch(0.55 0.15 300);
+  --primary-pink: oklch(0.65 0.15 350);
+  --primary-teal: oklch(0.55 0.15 200);
+
+  /* Legacy color mappings */
+  --forest: var(--primary-green);
+  --forest-foreground: oklch(0.98 0 0);
+  --tomato: var(--primary-orange);
+  --tomato-foreground: oklch(0.98 0 0);
+  --ocean: var(--primary-blue);
+  --ocean-foreground: oklch(0.98 0 0);
+
+  /* Light mode colors */
+  --background: oklch(0.975 0 0);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: var(--forest);
+  --primary-foreground: var(--forest-foreground);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.15 0 0);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: var(--tomato);
+  --accent-foreground: var(--tomato-foreground);
+  --destructive: var(--tomato);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.9 0 0);
+  --ring: var(--forest);
+  --chart-1: var(--forest);
+  --chart-2: var(--tomato);
+  --chart-3: var(--ocean);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: var(--forest);
+  --sidebar-primary-foreground: var(--forest-foreground);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: var(--forest);
+}
+
+.dark {
+  /* Custom colors - darker variants */
+  --forest: oklch(0.55 0.15 155);
+  --forest-foreground: oklch(0.98 0 0);
+  --tomato: oklch(0.65 0.25 25);
+  --tomato-foreground: oklch(0.98 0 0);
+  --ocean: oklch(0.55 0.15 250);
+  --ocean-foreground: oklch(0.98 0 0);
+
+  /* Dark mode colors */
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.15 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.15 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: var(--forest);
+  --primary-foreground: var(--forest-foreground);
+  --secondary: oklch(0.2 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.2 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: var(--tomato);
+  --accent-foreground: var(--tomato-foreground);
+  --destructive: var(--tomato);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--forest);
+  --chart-1: var(--forest);
+  --chart-2: var(--tomato);
+  --chart-3: var(--ocean);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.15 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: var(--forest);
+  --sidebar-primary-foreground: var(--forest-foreground);
+  --sidebar-accent: oklch(0.2 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--forest);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    letter-spacing: -0.02em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-normal;
+    letter-spacing: -0.04em;
+  }
+
+  /* Responsive Typography Scale */
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-8xl tracking-normal font-light;
+    font-family: 'Magical Night', 'Inter Tight', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.035em;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl tracking-normal font-light;
+    letter-spacing: -0.04em;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl md:text-3xl tracking-normal font-normal;
+    letter-spacing: -0.03em;
+  }
+
+  h4 {
+    @apply text-lg sm:text-xl md:text-2xl font-normal;
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    @apply text-sm sm:text-base md:text-lg leading-relaxed font-normal;
+    letter-spacing: -0.02em;
+  }
+
+  /* Responsive Button Styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-colors;
+    text-transform: uppercase;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base font-medium text-black bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors;
+    text-transform: uppercase;
+  }
+
+  .btn-blue {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base font-medium text-white bg-[#CC6B49] rounded-full hover:bg-[#B85450] transition-colors;
+    text-transform: uppercase;
+  }
+
+  .btn-green {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base font-medium text-white bg-green-600 rounded-full hover:bg-green-700 transition-colors;
+    text-transform: uppercase;
+  }
+
+  .btn-orange {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base font-medium text-white bg-orange-600 rounded-full hover:bg-orange-700 transition-colors;
+    text-transform: uppercase;
+  }
+
+  .btn-purple {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base font-medium text-white bg-purple-600 rounded-full hover:bg-purple-700 transition-colors;
+    text-transform: uppercase;
+  }
+
+  .btn-pink {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base font-medium text-white bg-pink-600 rounded-full hover:bg-pink-700 transition-colors;
+    text-transform: uppercase;
+  }
+
+  .btn-teal {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base font-medium text-white bg-teal-600 rounded-full hover:bg-teal-700 transition-colors;
+    text-transform: uppercase;
+  }
+
+  /* Mobile-specific utilities */
+  @media (max-width: 640px) {
+
+    /* Reduce section padding on mobile */
+    .section-padding {
+      @apply px-4 py-8;
+    }
+
+    /* Smaller cards on mobile */
+    .card-mobile-compact {
+      @apply p-4;
+    }
+  }
+
+  /* Card enhancements for gradient background */
+  .card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Navigation enhancement */
+  nav .bg-white\/90 {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 3D flip effect */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Animated Morphing Gradient - Pink, Red, Cobalt Blue, Lilac */
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-morph {
+
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: translate(-2%, 3%) rotate(90deg) scale(1.05);
+  }
+
+  50% {
+    border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%;
+    transform: translate(2%, -2%) rotate(180deg) scale(0.98);
+  }
+
+  75% {
+    border-radius: 40% 60% 30% 70% / 70% 30% 60% 40%;
+    transform: translate(-1%, -1%) rotate(270deg) scale(1.02);
+  }
+}
+
+.gradient-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center bottom, #D4A574 0%, #E8B4B8 10%, #B8C5A6 20%, #F4C2A1 30%, #E5D4CE 40%, #EED9D0 50%, #F5F0E8 70%, #FFFFFF 90%);
+  background-size: 400% 400%;
+  animation: gradient-shift 45s ease infinite;
+}
+
+/* Remove the static spray paint overlay */
+.gradient-mesh::after {
+  display: none;
+}
+
+/* Homepage - Morphing gradient blobs */
+.gradient-mesh-home {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center bottom, #D4A574 0%, #E8B4B8 10%, #B8C5A6 20%, #F4C2A1 30%, #E5D4CE 40%, #EED9D0 50%, #F5F0E8 70%, #FFFFFF 90%);
+  background-size: 400% 400%;
+  animation: gradient-shift 45s ease infinite;
+}
+
+/* Morphing blob layer */
+.gradient-mesh-home::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background:
+    radial-gradient(circle at 50% 70%, #B85450 0%, transparent 40%),
+    radial-gradient(circle at 30% 60%, #D4A574 0%, transparent 35%),
+    radial-gradient(circle at 70% 60%, #B8C5A6 0%, transparent 35%),
+    radial-gradient(circle at 40% 80%, #E8B4B8 0%, transparent 38%),
+    radial-gradient(circle at 60% 80%, #CC6B49 0%, transparent 42%);
+  filter: blur(70px) contrast(1.5) saturate(1.3);
+  animation: gradient-morph 60s ease-in-out infinite;
+  will-change: transform, border-radius;
+  transform-origin: center center;
+}
+
+/* Remove secondary mesh layer for performance */
+.gradient-mesh-home::after {
+  display: none;
+}
+
+/* Page-specific gradients with new colors */
+.gradient-mesh-setup::before,
+.gradient-mesh-projects::before,
+.gradient-mesh-prompts::before,
+.gradient-mesh-debug::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  filter: blur(70px) contrast(1.4) saturate(1.2);
+  animation: gradient-morph 70s ease-in-out infinite;
+  will-change: transform, border-radius;
+  transform-origin: center center;
+}
+
+/* Setup page - Light blue focus in middle */
+.gradient-mesh-setup::before {
+  background:
+    radial-gradient(circle at 50% 60%, #00BFFF 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, #1E90FF 0%, transparent 45%);
+}
+
+/* Projects page - Sky blue focus in middle */
+.gradient-mesh-projects::before {
+  background:
+    radial-gradient(circle at 50% 65%, #0080FF 0%, transparent 40%),
+    radial-gradient(circle at 50% 85%, #4169E1 0%, transparent 45%);
+}
+
+/* Prompts page - Deep blue focus in middle bottom */
+.gradient-mesh-prompts::before {
+  background:
+    radial-gradient(circle at 50% 70%, #0040FF 0%, transparent 35%),
+    radial-gradient(circle at 50% 90%, #1E90FF 0%, transparent 40%);
+}
+
+/* Debug page - Mixed blues in middle */
+.gradient-mesh-debug::before {
+  background:
+    radial-gradient(circle at 50% 60%, #4169E1 0%, transparent 35%),
+    radial-gradient(circle at 50% 80%, #0040FF 0%, transparent 40%);
+}
+
+/* Remove all spray paint dots for performance */
+.gradient-mesh-setup::after,
+.gradient-mesh-projects::after,
+.gradient-mesh-prompts::after,
+.gradient-mesh-debug::after {
+  display: none;
+}
+
+/* Default gradient - Same as home */
+.gradient-mesh::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background:
+    radial-gradient(circle at 50% 70%, #B85450 0%, transparent 40%),
+    radial-gradient(circle at 30% 60%, #D4A574 0%, transparent 35%),
+    radial-gradient(circle at 70% 60%, #B8C5A6 0%, transparent 35%),
+    radial-gradient(circle at 40% 80%, #E8B4B8 0%, transparent 38%),
+    radial-gradient(circle at 60% 80%, #CC6B49 0%, transparent 42%);
+  filter: blur(70px) contrast(1.5) saturate(1.3);
+  animation: gradient-morph 60s ease-in-out infinite;
+  will-change: transform, border-radius;
+  transform-origin: center center;
+}
+
+.gradient-mesh::after {
+  display: none;
+}
+
+/* Grain overlay - Simplified */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image:
+    repeating-conic-gradient(#000 0% 25%, transparent 0% 50%, #000 0% 75%, transparent 0% 100%);
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+}
+
+/* Performance optimization for mobile */
+@media (max-width: 640px) {
+
+  /* Simplify animations on mobile for better performance */
+  .gradient-mesh::before,
+  .gradient-mesh-home::before,
+  .gradient-mesh-setup::before,
+  .gradient-mesh-projects::before,
+  .gradient-mesh-prompts::before,
+  .gradient-mesh-debug::before {
+    animation: gradient-morph 30s ease-in-out infinite;
+    filter: blur(60px);
+  }
+
+  /* Simplify gradient on mobile */
+  .gradient-mesh,
+  .gradient-mesh-home {
+    background: radial-gradient(ellipse at center bottom, #D4A574 0%, #E8B4B8 20%, #B8C5A6 35%, #FFFFFF 75%);
+    background-size: 200% 200%;
+  }
+
+  /* Keep grain on mobile with reduced opacity */
+  .grain-overlay {
+    opacity: 0.015;
+  }
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+
+  .gradient-mesh::before,
+  .gradient-mesh-home::before,
+  .gradient-mesh-setup::before,
+  .gradient-mesh-projects::before,
+  .gradient-mesh-prompts::before,
+  .gradient-mesh-debug::before {
+    animation: none;
+  }
+
+  .gradient-mesh,
+  .gradient-mesh-home {
+    animation: none;
+  }
+}
+
+/* Ensure content is above the gradient */
+.relative {
+  position: relative;
+  z-index: 1;
+}
+
+/* Frosted glass effect for selected cards */
+.frosted-glass-blue {
+  background: linear-gradient(to bottom right, rgba(0, 64, 255, 0.08), rgba(0, 64, 255, 0.12)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 64, 255, 0.2);
+}
+
+.frosted-glass-green {
+  background: linear-gradient(to bottom right, rgba(221, 160, 221, 0.08), rgba(221, 160, 221, 0.12)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(221, 160, 221, 0.2);
+}
+
+.frosted-glass-purple {
+  background: linear-gradient(to bottom right, rgba(255, 20, 147, 0.08), rgba(255, 20, 147, 0.12)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 20, 147, 0.2);
+}
+
+.frosted-glass-orange {
+  background: linear-gradient(to bottom right, rgba(220, 20, 60, 0.08), rgba(220, 20, 60, 0.12)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(220, 20, 60, 0.2);
+}
+
+.frosted-glass-pink {
+  background: linear-gradient(to bottom right, rgba(255, 105, 180, 0.08), rgba(255, 105, 180, 0.12)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+.frosted-glass-teal {
+  background: linear-gradient(to bottom right, rgba(125, 211, 252, 0.06), rgba(0, 64, 255, 0.08)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 64, 255, 0.15);
+}
+
+/* Text colors for frosted glass cards */
+.frosted-glass-blue .text-white,
+.frosted-glass-green .text-white,
+.frosted-glass-purple .text-white,
+.frosted-glass-orange .text-white,
+.frosted-glass-pink .text-white,
+.frosted-glass-teal .text-white {
+  color: rgb(17 24 39) !important;
+  /* gray-900 */
+}
+
+.frosted-glass-blue .text-white\/90,
+.frosted-glass-green .text-white\/90,
+.frosted-glass-purple .text-white\/90,
+.frosted-glass-orange .text-white\/90,
+.frosted-glass-pink .text-white\/90,
+.frosted-glass-teal .text-white\/90,
+.frosted-glass-blue .text-white\/80,
+.frosted-glass-green .text-white\/80,
+.frosted-glass-purple .text-white\/80,
+.frosted-glass-orange .text-white\/80,
+.frosted-glass-pink .text-white\/80,
+.frosted-glass-teal .text-white\/80,
+.frosted-glass-blue .text-white\/70,
+.frosted-glass-green .text-white\/70,
+.frosted-glass-purple .text-white\/70,
+.frosted-glass-orange .text-white\/70,
+.frosted-glass-pink .text-white\/70,
+.frosted-glass-teal .text-white\/70 {
+  color: rgb(107 114 128) !important;
+  /* gray-500 */
+}
+
+/* Checkbox styles for frosted glass */
+.frosted-glass-blue .bg-black,
+.frosted-glass-green .bg-black,
+.frosted-glass-purple .bg-black,
+.frosted-glass-orange .bg-black,
+.frosted-glass-pink .bg-black,
+.frosted-glass-teal .bg-black {
+  background-color: rgb(17 24 39) !important;
+  /* gray-900 */
+}
+
+.frosted-glass-blue .border-black,
+.frosted-glass-green .border-black,
+.frosted-glass-purple .border-black,
+.frosted-glass-orange .border-black,
+.frosted-glass-pink .border-black,
+.frosted-glass-teal .border-black {
+  border-color: rgb(17 24 39) !important;
+  /* gray-900 */
+}
+
+/* Ensure white checkmarks on selected state */
+.bg-black .text-white {
+  color: white !important;
+}
+
+/* Prompt box styles for frosted glass */
+.frosted-glass-blue .bg-black\/5,
+.frosted-glass-green .bg-black\/5,
+.frosted-glass-purple .bg-black\/5,
+.frosted-glass-orange .bg-black\/5,
+.frosted-glass-pink .bg-black\/5,
+.frosted-glass-teal .bg-black\/5 {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.frosted-glass-blue .border-white\/10,
+.frosted-glass-green .border-white\/10,
+.frosted-glass-purple .border-white\/10,
+.frosted-glass-orange .border-white\/10,
+.frosted-glass-pink .border-white\/10,
+.frosted-glass-teal .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
 }
