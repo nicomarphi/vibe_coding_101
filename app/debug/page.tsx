@@ -85,7 +85,7 @@ export default function DebugPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 px-4 sm:px-6 md:px-8">
+      <section className="pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -93,7 +93,7 @@ export default function DebugPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <h1 className="mb-4" style={{ letterSpacing: '-0.04em' }}>
+            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
               Bugs and Fixes
             </h1>
             <p className="text-lg sm:text-xl text-black max-w-2xl mb-4">
@@ -107,7 +107,7 @@ export default function DebugPage() {
       </section>
 
       {/* Flip Cards Grid */}
-      <section className="py-8 sm:py-12 px-4 sm:px-6 md:px-8">
+      <section className="py-4 sm:py-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="columns-1 md:columns-2 lg:columns-3 gap-2 space-y-2">
             {debugCards.map((card, index) => (

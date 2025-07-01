@@ -41,49 +41,56 @@ export default function StartSmallProject() {
     }
   };
 
-  const prompts = [
-    {
-      title: "Give Cursor context",
-      prompt: `I'm building a beginner front-end page using Next.js.
+  const prompts: Array<{
+    title: string;
+    prompt: string;
+    tip: string;
+    note?: string;
+  }> = [
+      {
+        title: "Give Cursor context",
+        prompt: `I'm building a beginner front-end page using Next.js.
 It should include Tailwind CSS for styling and Framer Motion for animation.
 The layout should be centered, with a custom font, a large headline, and a button.
 Keep the design clean, modern, and responsive.`,
-      tip: "Always start by describing what you're trying to make."
-    },
-    {
-      title: "Set up Tailwind and Framer Motion",
-      prompt: `Set up Tailwind CSS and Framer Motion in this project.
+        tip: "Always start by describing what you're trying to make."
+      },
+      {
+        title: "Set up Tailwind and Framer Motion",
+        prompt: `Set up Tailwind CSS and Framer Motion in this project.
 Configure Tailwind and PostCSS, update globals.css with base styles, and ensure Framer Motion is ready to use in components.`,
-      tip: "Install both at once to keep things tidy."
-    },
-    {
-      title: "Create a base layout",
-      prompt: `Create a layout component that wraps all pages using a <main> tag.
+        tip: "Install both at once to keep things tidy."
+      },
+      {
+        title: "Create a base layout",
+        prompt: `Create a layout component that wraps all pages using a <main> tag.
 Center all content both vertically and horizontally in the viewport.
 Add padding and a soft background gradient that fades from light gray to white.`,
-      tip: "This becomes the foundation for the rest of your page."
-    },
-    {
-      title: "Upload and apply a custom font",
-      prompt: `Upload a custom font (WOFF preferred) and apply it globally using Tailwind.
-Set a clean, modern sans-serif fallback font stack in the Tailwind config.`,
-      tip: "You can use a WOFF, TTF, or link a Google Font."
-    },
-    {
-      title: "Add a headline",
-      prompt: `On the homepage, add a centered headline that says: "Hello, beautiful world!"
+        tip: "This becomes the foundation for the rest of your page."
+      },
+      {
+        title: "Upload and apply a custom font",
+        prompt: `I've uploaded a font file to the public folder. Now apply this custom font globally using Tailwind CSS.
+Set up the @font-face in globals.css and configure it in the Tailwind config.
+Add a clean, modern sans-serif fallback font stack.`,
+        tip: "First, manually drag your font file (WOFF or TTF) into the public folder, then use this prompt.",
+        note: "Manual step: Download a font file (.woff or .ttf) and drag it into your project's 'public' folder before using this prompt"
+      },
+      {
+        title: "Add a headline",
+        prompt: `On the homepage, add a centered headline that says: "Hello, beautiful world!"
 Make it bold, responsive, and add a small text shadow for contrast.`,
-      tip: "Big, clear type makes a strong first impression."
-    },
-    {
-      title: "Add a button with animation",
-      prompt: `Below the headline, add a large button with rounded corners and a gradient background.
+        tip: "Big, clear type makes a strong first impression."
+      },
+      {
+        title: "Add a button with animation",
+        prompt: `Below the headline, add a large button with rounded corners and a gradient background.
 Style it using Tailwind. Use Framer Motion to scale slightly on hover and bounce on click.
 The button should say: "[[insert your own button text here]]"
 This button doesn't need to perform any action yet—just make sure the styling and animation work.`,
-      tip: "Use Tailwind for the styling, and Framer Motion for animation."
-    }
-  ];
+        tip: "Use Tailwind for the styling, and Framer Motion for animation."
+      }
+    ];
 
   return (
     <div className="min-h-screen">
@@ -92,7 +99,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 px-4 sm:px-6 md:px-8">
+      <section className="pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -100,21 +107,24 @@ This button doesn't need to perform any action yet—just make sure the styling 
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <h1 className="mb-4" style={{ letterSpacing: '-0.04em' }}>
+            <Badge className="mb-4" variant="secondary">
               Start Small
+            </Badge>
+            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
+              Build a simple front-end page
             </h1>
             <p className="text-lg sm:text-xl text-black mb-4">
-              A simple, clean front-end build using Cursor
+              Build a simple, responsive front-end layout using Cursor
             </p>
             <p className="text-sm sm:text-base text-black mb-8">
-              This project walks you through prompting Cursor to build a clean, responsive page using Tailwind and Framer Motion. You'll also upload a custom font, create a centered layout, add a headline, and include an animated button. You won't write code—just prompt clearly.
+              In this project, you'll prompt Cursor to build a clean layout using Tailwind and Framer Motion. You'll also upload a custom font, add a headline, and style an animated button. No coding needed—just clear, step-by-step prompts.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* What You'll Learn Section */}
-      <section className="py-4 sm:py-6 px-4 sm:px-6 md:px-8">
+      <section className="py-2 sm:py-3 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -126,11 +136,11 @@ This button doesn't need to perform any action yet—just make sure the styling 
               <ul className="space-y-2 sm:space-y-3">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-forest flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-black">Giving Cursor useful context at the start of a build</span>
+                  <span className="text-sm sm:text-base text-black">Giving Cursor clear context before a build</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-forest flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-black">Prompting Cursor to set up a tech stack</span>
+                  <span className="text-sm sm:text-base text-black">Setting up Tailwind and Framer Motion</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-forest flex-shrink-0" />
@@ -138,7 +148,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-forest flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-black">Asking Cursor to structure layouts and apply animation</span>
+                  <span className="text-sm sm:text-base text-black">Prompting for layout structure and animation</span>
                 </li>
               </ul>
             </Card>
@@ -152,7 +162,6 @@ This button doesn't need to perform any action yet—just make sure the styling 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
             {prompts.map((prompt, index) => {
               const isCompleted = completedSteps.includes(index);
-              const colors = ['frosted-glass-blue', 'frosted-glass-green', 'frosted-glass-purple', 'frosted-glass-orange', 'frosted-glass-pink', 'frosted-glass-teal'];
 
               return (
                 <motion.div
@@ -162,7 +171,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                   className="h-full"
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? colors[index] : 'bg-white'
+                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-blue' : 'bg-white'
                     }`}
                     onClick={() => toggleStep(index)}
                   >
@@ -179,6 +188,13 @@ This button doesn't need to perform any action yet—just make sure the styling 
                           {prompt.tip}
                         </p>
                       </div>
+
+                      {/* Special note for manual steps */}
+                      {prompt.note && (
+                        <div className={`mb-4 sm:mb-6 p-3 rounded-lg ${isCompleted ? 'bg-white/20 text-white' : 'bg-orange-100 text-orange-900'}`}>
+                          <p className="text-xs sm:text-sm font-medium">{prompt.note}</p>
+                        </div>
+                      )}
 
                       {/* Prompt */}
                       <div className="flex-grow">

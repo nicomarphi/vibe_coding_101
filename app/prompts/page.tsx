@@ -49,8 +49,14 @@ export default function PromptsPage() {
         },
         {
             title: "When Do You Need a Backend?",
-            description: "Frontend-only projects work great for static sites, portfolios, and landing pages. You'll need a backend when you want to: save user data, handle logins, process payments, send emails, or connect to a database. Start simple with frontend-only projects, then explore backends when you need those features.",
-            example: "Frontend only: Portfolio site, landing page, blog with static content. Need backend: User accounts, e-commerce, social features, dynamic content."
+            description: "Frontend-only projects work great for static sites and simple portfolio sites (if they don't have a CMS). You'll need a backend when you want to: save user data, handle logins, process payments, send emails, connect to a database, or manage content through a CMS. Start simple with frontend-only projects, then explore backends when you need those features.",
+            example: "Frontend only: Simple portfolio sites, landing pages, static blogs. Need backend: User accounts, e-commerce, social features, dynamic content, CMS-powered sites."
+        },
+        {
+            title: "Watch & Learn",
+            description: "Sometimes seeing is believing. Watch a quick demo of vibe coding in action to see how natural language prompts turn into real code.",
+            isVideo: true,
+            videoSrc: "/videos/video-vibe.mp4"
         }
     ];
 
@@ -364,7 +370,7 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
             <Navigation />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-12 px-8">
+            <section className="pt-32 pb-6 px-8">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -372,7 +378,7 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
                         transition={{ duration: 0.5 }}
                         className="max-w-4xl"
                     >
-                        <h1 className="mb-4" style={{ letterSpacing: '-0.04em' }}>
+                        <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
                             Vibe Coding Tips
                         </h1>
                         <p className="text-xl text-black max-w-2xl">
@@ -383,7 +389,7 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
             </section>
 
             {/* General Tips Section */}
-            <section className="py-12 px-8">
+            <section className="py-6 px-8">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -398,16 +404,32 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: index * 0.05 }}
+                                    className={tip.isVideo ? "lg:col-span-2" : ""}
                                 >
-                                    <Card className="p-6 h-full border-0 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-all">
-                                        <h3 className="text-3xl font-light mb-4">{tip.title}</h3>
-                                        <p className="text-black text-sm mb-3">{tip.description}</p>
-                                        {tip.example && (
-                                            <p className="text-xs text-black italic">
-                                                {tip.example}
-                                            </p>
-                                        )}
-                                    </Card>
+                                    {tip.isVideo ? (
+                                        <Card className="h-full border-0 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-all overflow-hidden relative">
+                                            <video
+                                                className="absolute inset-0 w-full h-full object-cover"
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                            >
+                                                <source src={tip.videoSrc} type="video/mp4" />
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </Card>
+                                    ) : (
+                                        <Card className="p-6 h-full border-0 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-all">
+                                            <h3 className="text-3xl font-light mb-4">{tip.title}</h3>
+                                            <p className="text-black text-sm mb-3">{tip.description}</p>
+                                            {tip.example && (
+                                                <p className="text-xs text-black italic">
+                                                    {tip.example}
+                                                </p>
+                                            )}
+                                        </Card>
+                                    )}
                                 </motion.div>
                             ))}
                         </div>

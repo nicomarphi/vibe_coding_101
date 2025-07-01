@@ -45,17 +45,17 @@ export default function AmbitiousProject() {
     {
       title: "Set up your layout and grid",
       prompt: `Create a new page component with a responsive image grid layout. At the top, add a heading that says "My Visual Journey" (I'll replace this with my own title later). Below that, build a grid with six image placeholders. The grid should be 1 column on mobile, 2 on tablet, and 3 on desktop. Each item should have a 16:9 aspect ratio, a light border, subtle rounding, and a small hover shadow.`,
-      tip: "Start with the structure, then add images!"
+      tip: "Start with the structure, then add images"
     },
     {
       title: "Add static images",
       prompt: `Replace the placeholders with six static images stored in the public folder. Use image paths like /images/image1.jpg through /images/image6.jpg (I'll update these with my own filenames later). Make sure the images fill the grid items and maintain aspect ratio.`,
-      tip: "You can use any images - photos, illustrations, or GIFs!"
+      tip: "You can use any images - photos, illustrations, or GIFs"
     },
     {
       title: "Make it responsive",
       prompt: `Refine the layout to be fully responsive using Tailwind. On small screens, the grid should be full-width with padding. On larger screens, limit the max width of the container. Adjust spacing and alignment so the layout looks good across all breakpoints.`,
-      tip: "Test on different screen sizes to see the magic!"
+      tip: "Test on different screen sizes to see the magic"
     },
     {
       title: "Add animation",
@@ -65,12 +65,12 @@ export default function AmbitiousProject() {
     {
       title: "Add a custom font",
       prompt: `Apply a custom font to the whole site. You can use a Google Font (like "Space Grotesk") or upload your own WOFF/TTF file. Make it easy to swap the font name later. Set a clean fallback stack with system fonts.`,
-      tip: "A unique font can transform the entire feel!"
+      tip: "A unique font can transform the entire feel"
     },
     {
       title: "Refine layout styling",
       prompt: `Use Tailwind to improve spacing and layout. Add or adjust padding, margins, and background color. Feel free to experiment with different background colors or section spacing as long as the layout stays simple and readable.`,
-      tip: "This is where you make it truly yours!"
+      tip: "This is where you make it truly yours"
     }
   ];
 
@@ -81,7 +81,7 @@ export default function AmbitiousProject() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-12 px-8">
+      <section className="pt-32 pb-6 px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -90,10 +90,10 @@ export default function AmbitiousProject() {
             className="max-w-4xl"
           >
             <Badge className="mb-4" variant="secondary">
-              Feeling Ambitious?
+              Beginner 2.0
             </Badge>
-            <h1 className="mb-4" style={{ letterSpacing: '-0.04em' }}>
-              Build a Responsive Portfolio Grid
+            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
+              Create a responsive portfolio grid
             </h1>
             <p className="text-black mb-8">
               This project walks you through building a clean, responsive image grid using Cursor. You'll add your own images, adjust the layout, apply custom fonts and animations, and refine the overall styling. Great if you want to go a little deeper.
@@ -103,7 +103,7 @@ export default function AmbitiousProject() {
       </section>
 
       {/* What You'll Practice Section */}
-      <section className="py-6 px-8">
+      <section className="py-3 px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -149,7 +149,6 @@ export default function AmbitiousProject() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
             {prompts.map((prompt, index) => {
               const isCompleted = completedSteps.includes(index);
-              const colors = ['frosted-glass-blue', 'frosted-glass-green', 'frosted-glass-purple', 'frosted-glass-orange', 'frosted-glass-pink', 'frosted-glass-teal'];
 
               return (
                 <motion.div
@@ -159,7 +158,7 @@ export default function AmbitiousProject() {
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                   className="h-full"
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? colors[index] : 'bg-white'
+                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-blue' : 'bg-white'
                     }`}
                     onClick={() => toggleStep(index)}
                   >

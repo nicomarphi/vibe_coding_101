@@ -33,76 +33,80 @@ export default function SetupPage() {
     }
   };
 
-  const steps = [
-    {
-      title: "Install Cursor",
-      description: "The AI-powered code editor",
-      content: [
-        <span key="0">Go to <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">cursor.sh</a></span>,
-        "Click the big Download button",
-        "Open your Downloads folder and double-click the installer",
-        "Drag Cursor into your Applications folder",
-        <span key="4" className="font-semibold bg-yellow-100 px-1 rounded">If you're using Cursor through work, download it via Okta instead</span>
-      ]
-    },
-    {
-      title: "Create a New Project",
-      description: "Your workspace for Vibe Coding 101",
-      content: [
-        "Open Cursor from your Applications",
-        "Press Cmd + Shift + P to open the command palette",
-        "Type \"new\" and select Cursor: New Project",
-        "Choose Next.js from the list",
-        "Make sure TypeScript is selected",
-        "Name the folder vibe_101",
-        "Save it somewhere easy to find (like Users > your name)",
-        "Click Create and wait for it to finish setting up"
-      ]
-    },
-    {
-      title: "Enable Agent Mode",
-      description: "So Cursor can run full prompts",
-      content: [
-        "Press Cmd + L to open the Chat panel",
-        "Look at the top of the panel",
-        "Click the model dropdown (it might say GPT-4)",
-        "Choose the latest Claude model available",
-        "Find the Agent toggle in the top right"
-      ]
-    },
-    {
-      title: "Turn on Format on Save",
-      description: "Cleaner code, automatically",
-      content: [
-        "Press Cmd + , (comma) to open Settings",
-        "Or go to Cursor → Settings from the top menu",
-        "In the search bar, type \"format on save\"",
-        "Find the checkbox and check it",
-        "Close the Settings tab"
-      ]
-    },
-    {
-      title: "Know Your Shortcuts",
-      description: "You'll use these often:",
-      content: [
-        "Cmd + K — Edit code with natural language (after selecting code)",
-        "Cmd + L — Open the AI chat panel",
-        "Tab — Accept Cursor's code suggestions"
-      ]
-    },
-    {
-      title: "Get Prompting",
-      description: "You're not writing code line-by-line. You're giving clear instructions, and Cursor is generating the code for you.",
-      content: [
-        "Copy prompts from this site",
-        "Paste them into Cursor's chat (Cmd + L)",
-        "Cursor will create the files and write the code",
-        "Your job is to guide, not code",
-        "You don't need to read or understand everything it writes",
-        "Focus on setup, structure, and clearly describing what you want"
-      ]
-    }
-  ];
+  const steps: Array<{
+    title: string;
+    description: string;
+    content: (string | React.ReactElement)[];
+    note?: string;
+  }> = [
+      {
+        title: "Install Cursor",
+        description: "The AI-powered code editor",
+        content: [
+          <span key="0">Go to <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">cursor.sh</a></span>,
+          "Click the big Download button",
+          "Open your Downloads folder and double-click the installer",
+          "Drag Cursor into your Applications folder"
+        ],
+        note: "Shopifolk? Get set up on the link above"
+      },
+      {
+        title: "Start a New Project Using Composer",
+        description: "Let Cursor build your folder and files for you",
+        content: [
+          "Open Cursor",
+          "Press Cmd + K to open the Composer",
+          "Paste this prompt:",
+          <span key="3" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">"Create a folder called 'vibe_101'. Inside, add an index.html file, a CSS folder, and a JS folder."</span>,
+          "Cursor will generate the project structure and files",
+          "Once it's created, you're ready to start prompting"
+        ]
+      },
+      {
+        title: "Enable Agent Mode",
+        description: "So Cursor can run full prompts",
+        content: [
+          "Press Cmd + L to open the Chat panel",
+          "At the top of the panel, open the model dropdown (it might say GPT-4)",
+          "Choose the latest Claude model (Claude 3.5 Sonnet or Claude 3 Opus)",
+          "Find the Agent toggle in the top right and turn it on (it should light up)"
+        ]
+      },
+      {
+        title: "Turn On Format on Save",
+        description: "Cleaner code, automatically",
+        content: [
+          "Press Cmd + , (comma) to open Settings",
+          "In the search bar, type \"format on save\"",
+          "Check the box when you find it",
+          "Close the Settings tab"
+        ]
+      },
+      {
+        title: "Know Your Shortcuts",
+        description: "These will save you time as you build:",
+        content: [
+          "Cmd + K — Open Composer for natural language prompting",
+          "Cmd + L — Open the AI chat panel",
+          "Cmd + P — Open files",
+          "Cmd + Shift + F — Search across files",
+          "Tab — Accept Cursor's code suggestions"
+        ]
+      },
+      {
+        title: "View Your Site Locally in the Browser",
+        description: "Check your work in a browser",
+        content: [
+          "Press Cmd + Space, type \"Terminal\", and hit Enter",
+          "Navigate to your project folder:",
+          <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">cd vibe_101</span>,
+          "Start the dev server:",
+          <span key="4" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">npm run dev</span>,
+          "Open your browser and go to http://localhost:3000",
+          <span key="6" className="text-sm italic">Tip: If the page is blank or throws an error, Cursor might still be finishing something. Refresh after a few seconds or check the Debug section for help.</span>
+        ]
+      }
+    ];
 
   // Trigger celebration when all steps are completed
   useEffect(() => {
@@ -146,7 +150,7 @@ export default function SetupPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 px-4 sm:px-6 md:px-8">
+      <section className="pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -154,23 +158,33 @@ export default function SetupPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <h1 className="mb-4" style={{ letterSpacing: '-0.04em' }}>
+            {/* Shopify Employee Link */}
+            <div className="mb-6">
+              <Link
+                href="/setup/shopify"
+                className="inline-flex items-center gap-2 text-sm text-black hover:underline"
+              >
+                <span className="text-black">Shopifolk?</span>
+                <span className="text-black">→</span>
+              </Link>
+            </div>
+
+            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
               Set Up Cursor
             </h1>
             <p className="text-lg sm:text-xl text-black">
-              Let's get your system ready for vibe coding with Cursor
+              Let's get your system ready for vibe coding with Cursor. This will only take a few minutes.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Steps Section */}
-      <section className="py-8 sm:py-12 px-4 sm:px-6 md:px-8">
+      <section className="py-4 sm:py-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
             {steps.map((step, index) => {
               const isCompleted = completedSteps.includes(index);
-              const colors = ['frosted-glass-blue', 'frosted-glass-green', 'frosted-glass-purple', 'frosted-glass-orange', 'frosted-glass-pink', 'frosted-glass-teal'];
 
               return (
                 <motion.div
@@ -180,7 +194,7 @@ export default function SetupPage() {
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                   className="h-full"
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? colors[index] : 'bg-white'
+                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-blue' : 'bg-white'
                     }`}
                     onClick={() => toggleStep(index)}
                   >
@@ -203,12 +217,19 @@ export default function SetupPage() {
                         {step.content.map((item, i) => (
                           <li key={i} className="flex items-start">
                             <span className="mr-2">•</span>
-                            <span className={`${isCompleted ? '[&_a]:text-white [&_a]:underline [&_.font-semibold]:bg-transparent [&_.font-semibold]:text-white [&_.font-semibold]:px-0' : '[&_.font-semibold]:text-black'}`}>
+                            <span className={`${isCompleted ? '[&_a]:text-white [&_a]:underline [&_.font-semibold]:bg-transparent [&_.font-semibold]:text-white [&_.font-semibold]:px-0 [&_.font-mono]:bg-white/20 [&_.font-mono]:text-white [&_.font-mono]:border-white/30' : '[&_.font-semibold]:text-black [&_.font-mono]:bg-gray-100 [&_.font-mono]:text-black [&_.font-mono]:border-gray-300'} [&_.font-mono]:block [&_.font-mono]:w-full [&_.font-mono]:mt-2 [&_.font-mono]:mb-2 [&_.font-mono]:border [&_.font-mono]:rounded`}>
                               {item}
                             </span>
                           </li>
                         ))}
                       </ul>
+
+                      {/* Note section if present */}
+                      {step.note && (
+                        <div className={`mt-4 p-3 rounded-lg ${isCompleted ? 'bg-white/20 text-white' : 'bg-orange-500 text-white'}`}>
+                          <p className="text-sm font-medium">{step.note}</p>
+                        </div>
+                      )}
 
                       {/* Checkbox evenly positioned in bottom right corner */}
                       <div className="absolute bottom-4 right-4 sm:bottom-5 sm:right-5">

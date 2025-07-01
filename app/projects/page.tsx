@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 px-4 sm:px-6 md:px-8">
+      <section className="pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -23,7 +23,7 @@ export default function ProjectsPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <h1 className="mb-4" style={{ letterSpacing: '-0.04em' }}>
+            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
               Let's Vibe
             </h1>
             <p className="text-black max-w-2xl">
@@ -34,9 +34,9 @@ export default function ProjectsPage() {
       </section>
 
       {/* Project Cards */}
-      <section className="py-8 sm:py-12 px-4 sm:px-6 md:px-8">
+      <section className="py-4 sm:py-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-2 sm:gap-3">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
             {/* Start Small Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -50,12 +50,12 @@ export default function ProjectsPage() {
                   <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-6 sm:mb-8">
                       <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-forest/20 text-forest">
-                        Beginner Project
+                        Start Small
                       </Badge>
                     </div>
 
                     <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl">
-                      Start Small
+                      Build a simple front-end page
                     </h2>
 
                     <p className="text-black mb-auto text-sm sm:text-base">
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
-                      <span>30 minutes</span>
+                      <span>30 minutes minimum</span>
                       <span className="hidden sm:inline">•</span>
                       <span>6 steps</span>
                     </div>
@@ -85,12 +85,12 @@ export default function ProjectsPage() {
                   <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-6 sm:mb-8">
                       <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-ocean/20 text-ocean">
-                        Beginner 2.0 Project
+                        Beginner 2.0
                       </Badge>
                     </div>
 
                     <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl">
-                      Feeling a little more ambitious?
+                      Create a responsive portfolio grid
                     </h2>
 
                     <p className="text-black mb-auto text-sm sm:text-base">
@@ -98,7 +98,42 @@ export default function ProjectsPage() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
-                      <span>45 minutes</span>
+                      <span>45 minutes minimum</span>
+                      <span className="hidden sm:inline">•</span>
+                      <span>6 steps</span>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            </motion.div>
+
+            {/* AI Fortune Teller Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Link href="/projects/fal-ai">
+                <Card className="p-6 sm:p-8 h-full border-0 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-all cursor-pointer group">
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-6 sm:mb-8">
+                      <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-purple-600/20 text-purple-600">
+                        Level Up
+                      </Badge>
+                    </div>
+
+                    <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl">
+                      AI Fortune Teller
+                    </h2>
+
+                    <p className="text-black mb-auto text-sm sm:text-base">
+                      Create a mystical AI-powered fortune teller with glowing animations and magical UI. Connect to Fal.ai to generate personalized fortunes while learning API integration through themed prompts.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
+                      <span>45 minutes minimum</span>
                       <span className="hidden sm:inline">•</span>
                       <span>6 steps</span>
                     </div>
@@ -112,7 +147,7 @@ export default function ProjectsPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
             className="mt-12 sm:mt-16 text-center max-w-2xl mx-auto"
           >
             <h3 className="mb-4">Not sure which to start with?</h3>

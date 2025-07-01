@@ -266,20 +266,36 @@ export default function Home() {
             {/* Row 1: 2 prominent blocks */}
             {/* Left block - Title */}
             <motion.div
-              className="col-span-1 md:col-span-6 rounded-3xl bg-black text-white p-6 md:p-4 lg:p-6 flex flex-col justify-between relative overflow-hidden min-h-[350px] md:min-h-0 order-1 md:order-none"
+              className="col-span-1 md:col-span-6 rounded-3xl bg-black text-white p-6 md:p-4 lg:p-6 flex flex-col justify-between relative overflow-hidden min-h-[350px] md:min-h-0 order-1 md:order-none group transition-all duration-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <div className="flex justify-between items-start">
-                <h1 className="text-7xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.8]" style={{ letterSpacing: '-0.035em' }}>
+              {/* Fluid fire effect on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
+                {/* Base warm glow */}
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-800/40 via-red-700/20 to-transparent" />
+
+                {/* Large glowing orbs */}
+                <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-orange-600 rounded-full blur-[60px] animate-ember-glow opacity-40" />
+                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-red-600 rounded-full blur-[50px] animate-ember-glow-slow opacity-35" />
+                <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-56 h-56 bg-yellow-600 rounded-full blur-[45px] animate-ember-glow-slower opacity-30" />
+
+                {/* Inner heat glow */}
+                <div className="absolute inset-0" style={{
+                  background: 'radial-gradient(ellipse at center bottom, rgba(251, 146, 60, 0.25) 0%, rgba(220, 38, 38, 0.15) 50%, transparent 80%)'
+                }} />
+              </div>
+
+              <div className="flex justify-between items-start relative z-10">
+                <h1 className="text-7xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.8] transition-all duration-500 group-hover:text-shadow-fire" style={{ letterSpacing: '-0.035em' }}>
                   Vibe
                 </h1>
-                <h2 className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl font-light uppercase" style={{ letterSpacing: '-0.02em' }}>
+                <h2 className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl font-light uppercase transition-all duration-500 group-hover:text-shadow-fire-small" style={{ letterSpacing: '-0.02em' }}>
                   101
                 </h2>
               </div>
-              <h1 className="text-7xl sm:text-8xl md:text-[6rem] lg:text-[8rem] xl:text-[10.5rem] font-light leading-[0.8]" style={{ letterSpacing: '-0.02em' }}>
+              <h1 className="text-7xl sm:text-8xl md:text-[6rem] lg:text-[8rem] xl:text-[10.5rem] font-light leading-[0.8] relative z-10 transition-all duration-500 group-hover:text-shadow-fire" style={{ letterSpacing: '-0.02em' }}>
                 Coding
               </h1>
             </motion.div>
@@ -291,7 +307,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              {/* Video: vibecoder.mp4 */}
+              {/* Video: video-vibe.mp4 */}
               <video
                 className="absolute inset-0 w-full h-full object-cover"
                 autoPlay
@@ -299,7 +315,7 @@ export default function Home() {
                 muted
                 playsInline
               >
-                <source src="/videos/vibecoder.mp4" type="video/mp4" />
+                <source src="/videos/video-vibe.mp4" type="video/mp4" />
               </video>
             </motion.div>
 
@@ -479,12 +495,21 @@ export default function Home() {
 
             {/* Prompt showcase - Beige Ivory */}
             <motion.div
-              className="col-span-1 md:col-span-4 rounded-3xl bg-gradient-to-r from-[#F5F0E8] to-[#EED9D0] text-black p-3 md:p-4 lg:p-6 flex flex-col relative overflow-hidden min-h-[250px] md:min-h-0 order-5 md:order-none"
+              className="col-span-1 md:col-span-4 rounded-3xl bg-[#F5F0E8] text-black p-3 md:p-4 lg:p-6 flex flex-col relative overflow-hidden min-h-[250px] md:min-h-0 order-5 md:order-none"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <div className="flex items-center justify-between mb-2">
+              {/* Grain texture overlay */}
+              <div className="absolute inset-0 opacity-[0.08] mix-blend-multiply pointer-events-none">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E")',
+                  backgroundRepeat: 'repeat',
+                  backgroundSize: '128px 128px'
+                }} />
+              </div>
+
+              <div className="flex items-center justify-between mb-2 relative">
                 <h3 className="text-xs md:text-sm font-light uppercase">Ready-to-Use Prompt</h3>
                 <div className="flex items-center gap-2">
                   <button
@@ -499,8 +524,8 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              <h4 className="text-sm md:text-base lg:text-lg font-light mb-3">{randomPrompt.title}</h4>
-              <div className="flex-1">
+              <h4 className="text-sm md:text-base lg:text-lg font-light mb-3 relative">{randomPrompt.title}</h4>
+              <div className="flex-1 relative">
                 <div className="bg-black/5 border border-black/10 rounded-lg p-3 md:p-4 relative h-full">
                   <p className="text-[10px] md:text-xs font-mono text-black pr-8 overflow-y-auto max-h-24">
                     {randomPrompt.prompt}
