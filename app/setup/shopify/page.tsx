@@ -20,7 +20,7 @@ export default function ShopifySetupPage() {
     const handlePasswordSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // You can change this password to whatever you want
-        if (password === "telshoppyisavibe") {
+        if (password === "shoppyisavibe") {
             setIsAuthenticated(true);
             setShowError(false);
         } else {
@@ -68,13 +68,26 @@ export default function ShopifySetupPage() {
                 note: "Do NOT download Cursor from cursor.sh - always use Okta for Shopify devices"
             },
             {
-                title: "Set Up Your Personal Workspace",
-                description: "Create a space for vibe coding",
+                title: "Start Your First Project",
+                description: "Create a new project in Cursor",
                 content: [
-                    "Create a new folder called 'personal-projects' in your home directory",
-                    "Open this folder in Cursor",
-                    "Create subfolders for different projects (e.g., 'vibe-coding', 'learning')",
-                    "Keep your vibe coding projects organized in this folder"
+                    "Click 'Open project' in the Cursor welcome screen (folder icon)",
+                    "Navigate to your home directory and create a 'personal-projects' folder",
+                    "Inside that, create a subfolder for your project (e.g., 'my-first-vibe')",
+                    "Select the folder and click 'Open'",
+                    "Create your first file by clicking the + icon in the file explorer"
+                ],
+                note: "Pro tip: Keep personal projects separate from Shopify work"
+            },
+            {
+                title: "Organize Multiple Projects",
+                description: "Keep your vibe coding organized",
+                content: [
+                    "Use your 'personal-projects' folder for all personal work",
+                    "Create descriptive project names (e.g., 'todo-app', 'portfolio-site')",
+                    "Use File → Open Recent to quickly switch between projects",
+                    "Consider using version control (Git) for important projects",
+                    "Keep learning projects separate from production code"
                 ]
             },
             {
