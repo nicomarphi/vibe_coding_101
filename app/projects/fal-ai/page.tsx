@@ -42,14 +42,52 @@ export default function FalAiProject() {
 
     const prompts = [
         {
+            title: "Prerequisites check",
+            prompt: `What you need before starting:
+• Cursor is open and ready
+• You're in the chat panel (Cmd+L)
+• A mystical font in mind (optional - we'll help you add one)
+
+You'll also need:
+• A Fal.ai account (free) - we'll guide you through this in Step 6
+
+Ready to build something magical? Let's go!`,
+            tip: "Making sure you're set up for success",
+            note: "This is just a checklist - no need to copy this prompt!"
+        },
+        {
             title: "Give Cursor context",
-            prompt: `I'm creating an AI fortune teller app in Next.js that uses the Fal.ai API to generate mystical fortunes. Use Tailwind CSS for styling with a dark, mystical theme (purples, deep blues, gold accents). Include a centered layout, a glowing button to request a fortune, and an elegant card to display the AI's prediction. I'll provide the API key manually.`,
+            prompt: `Create a new Next.js project called "ai-fortune-teller" with TypeScript and Tailwind CSS. I'm creating an AI fortune teller app that uses the Fal.ai API to generate mystical fortunes. Use Tailwind CSS for styling with a dark, mystical theme. Include a centered layout, a glowing button to request a fortune, and an elegant card to display the AI's prediction. I'll provide the API key manually.`,
             tip: "Set the mystical mood from the start"
         },
         {
             title: "Set up Tailwind and Framer Motion",
             prompt: `Install and configure Tailwind CSS and Framer Motion in this project. Set up tailwind.config.js and postcss.config.js, and update globals.css with base styles. Make sure Framer Motion is ready to use in components.`,
             tip: "Combine tools into one setup prompt"
+        },
+        {
+            title: "Build the mystical interface",
+            prompt: `Create the basic fortune teller interface: a dark background with mystical gradients, a centered container with a title "AI Oracle", an input field for questions, and a glowing button that says "Divine My Fortune". Add an empty card area where the fortune will appear. Style everything with your mystical theme.`,
+            tip: "Create the UI before connecting the magic"
+        },
+        {
+            title: "Add a mystical font",
+            prompt: `Apply a mystical font to enhance the fortune teller theme. Use a Google Font like "Cinzel" for an ancient feel, or "Playfair Display" for elegance. Apply it to the title and fortune text. Set appropriate fallback fonts.`,
+            tip: "The right font makes it feel authentic",
+            note: `Want to use your own font file instead?
+1. Download a mystical font (.woff, .woff2, or .ttf) 
+2. In Cursor's file explorer (left sidebar), find the "public" folder
+3. Drag your font file directly into the "public" folder
+4. Note your font filename (e.g., "MysticalFont.woff")
+5. Then copy the prompt above and mention your font filename
+
+Google Fonts suggestions: Cinzel, Playfair Display, Crimson Text, or Almendra`
+        },
+        {
+            title: "Get your Fal.ai API key",
+            prompt: `Visit fal.ai and sign up for a free account. Once logged in, go to your dashboard and find the API Keys section. Create a new API key and copy it—you'll need it for the next step.`,
+            tip: "Your gateway to AI magic",
+            note: "Fal.ai offers free tier access perfect for this project. Keep your API key safe!"
         },
         {
             title: "Add the .env file and API key",
@@ -59,7 +97,7 @@ export default function FalAiProject() {
         },
         {
             title: "Connect to the mystical AI",
-            prompt: `Create a fetch request to the Fal.ai API using my key stored in FAL_API_KEY. Send a prompt asking for a mystical fortune reading. When the fortune arrives, display it in an elegant card with a fade-in animation, styled like an ancient scroll or crystal ball revelation.`,
+            prompt: `Create a function that sends the user's question to Fal.ai's text generation API. Use the FAL_API_KEY from environment variables. Format the prompt to ask for a mystical fortune reading based on the user's question. When the fortune arrives, display it in the card area with a fade-in animation using Framer Motion. Handle the button click to trigger the fortune request.`,
             tip: "Make the API connection feel magical"
         },
         {
@@ -68,8 +106,8 @@ export default function FalAiProject() {
             tip: "Keep the mystical vibe even during loading"
         },
         {
-            title: "Polish the mystical interface",
-            prompt: `Center everything on a dark starry background. Add a mystical title like "AI Oracle" with glowing text effects. Include an input field for users to ask their question, styled like an ancient text scroll. The fortune button should glow and pulse. Add particle effects or floating stars for extra magic.`,
+            title: "Add magical finishing touches",
+            prompt: `Enhance the mystical atmosphere: add glowing text effects to the title, make the button pulse with energy, style the input field like an ancient scroll. Add particle effects, floating stars, or mystical symbols in the background. Consider adding subtle animations like a shimmering border on the fortune card or ethereal mist effects.`,
             tip: "Make it feel like real magic"
         }
     ];
@@ -93,7 +131,7 @@ export default function FalAiProject() {
                             Level Up
                         </Badge>
                         <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-                            Build an AI Fortune Teller App
+                            Build an AI fortune teller app
                         </h1>
                         <p className="text-lg sm:text-xl text-black mb-4">
                             Create a mystical app powered by AI
@@ -182,33 +220,67 @@ export default function FalAiProject() {
                                                 </div>
                                             )}
 
-                                            {/* Prompt */}
+                                            {/* Prompt or Checklist */}
                                             <div className="flex-grow">
-                                                <div className={`rounded-lg p-3 sm:p-4 border relative ${isCompleted
-                                                    ? 'bg-white/20 border-white/30'
-                                                    : 'bg-gray-50 border-gray-200'
-                                                    }`}>
-                                                    <p className={`text-xs sm:text-sm font-mono pr-8 sm:pr-10 whitespace-pre-line ${isCompleted ? 'text-white' : 'text-black'
+                                                {index === 0 ? (
+                                                    // Prerequisites checklist format
+                                                    <div className={`space-y-2 ${isCompleted ? 'text-white/90' : 'text-black'}`}>
+                                                        {prompt.prompt.split('\n').filter(line => line.trim()).map((line, i) => {
+                                                            if (line.startsWith('•')) {
+                                                                return (
+                                                                    <div key={i} className="flex items-start gap-2">
+                                                                        <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isCompleted ? 'text-white' : 'text-purple-600'}`} />
+                                                                        <span className="text-sm">{line.substring(1).trim()}</span>
+                                                                    </div>
+                                                                );
+                                                            }
+                                                            return <p key={i} className="text-sm font-medium mb-2">{line}</p>;
+                                                        })}
+                                                    </div>
+                                                ) : index === 5 ? (
+                                                    // API key manual steps
+                                                    <div className={`space-y-2 ${isCompleted ? 'text-white/90' : 'text-black'}`}>
+                                                        <div className="flex items-start gap-2">
+                                                            <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isCompleted ? 'text-white' : 'text-purple-600'}`} />
+                                                            <span className="text-sm">Visit fal.ai and sign up for a free account</span>
+                                                        </div>
+                                                        <div className="flex items-start gap-2">
+                                                            <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isCompleted ? 'text-white' : 'text-purple-600'}`} />
+                                                            <span className="text-sm">Once logged in, go to your dashboard and find the API Keys section</span>
+                                                        </div>
+                                                        <div className="flex items-start gap-2">
+                                                            <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isCompleted ? 'text-white' : 'text-purple-600'}`} />
+                                                            <span className="text-sm">Create a new API key and copy it—you'll need it for the next step</span>
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    // Regular prompt with copy button
+                                                    <div className={`rounded-lg p-3 sm:p-4 border relative ${isCompleted
+                                                        ? 'bg-white/20 border-white/30'
+                                                        : 'bg-gray-50 border-gray-200'
                                                         }`}>
-                                                        {prompt.prompt}
-                                                    </p>
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            copyToClipboard(prompt.prompt, index);
-                                                        }}
-                                                        className={`absolute top-2 right-2 sm:top-3 sm:right-3 p-1 rounded transition-colors ${isCompleted
-                                                            ? 'hover:bg-white/20'
-                                                            : 'hover:bg-gray-100'
-                                                            }`}
-                                                    >
-                                                        {copiedStep === index ? (
-                                                            <Check className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white' : 'text-green-600'}`} />
-                                                        ) : (
-                                                            <Copy className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white/70' : 'text-black'}`} />
-                                                        )}
-                                                    </button>
-                                                </div>
+                                                        <p className={`text-xs sm:text-sm font-mono pr-8 sm:pr-10 whitespace-pre-line ${isCompleted ? 'text-white' : 'text-black'
+                                                            }`}>
+                                                            {prompt.prompt}
+                                                        </p>
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                copyToClipboard(prompt.prompt, index);
+                                                            }}
+                                                            className={`absolute top-2 right-2 sm:top-3 sm:right-3 p-1 rounded transition-colors ${isCompleted
+                                                                ? 'hover:bg-white/20'
+                                                                : 'hover:bg-gray-100'
+                                                                }`}
+                                                        >
+                                                            {copiedStep === index ? (
+                                                                <Check className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white' : 'text-green-600'}`} />
+                                                            ) : (
+                                                                <Copy className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white/70' : 'text-black'}`} />
+                                                            )}
+                                                        </button>
+                                                    </div>
+                                                )}
                                             </div>
 
                                             {/* Checkbox evenly positioned in bottom right corner */}
@@ -246,6 +318,71 @@ export default function FalAiProject() {
                         </Card>
                     </motion.div>
 
+                    {/* Run Your Project Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4, duration: 0.5 }}
+                        className="mt-8 sm:mt-12"
+                    >
+                        <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-purple-50 to-pink-50">
+                            <div className="space-y-4">
+                                <h2 className="text-2xl sm:text-3xl font-light">View your fortune teller in the browser</h2>
+
+                                <div className="space-y-4">
+                                    <div className="mb-4 p-3 rounded-lg bg-purple-50 border border-purple-200">
+                                        <p className="text-xs sm:text-sm text-purple-900 font-medium">What's Terminal?</p>
+                                        <p className="text-xs sm:text-sm text-purple-800 mt-1">Think of Terminal as a text-based remote control for your computer. You type commands, press Enter, and your computer does things!</p>
+                                    </div>
+
+                                    <div>
+                                        <p className="text-sm sm:text-base text-black font-medium mb-1">Open your Terminal</p>
+                                        <p className="text-xs sm:text-sm text-black">Press Cmd + Space, type "Terminal", then press Enter.</p>
+                                    </div>
+
+                                    <div>
+                                        <p className="text-sm sm:text-base text-black font-medium mb-1">Navigate to your project folder</p>
+                                        <p className="text-xs sm:text-sm text-black mb-2">In the terminal, type:</p>
+                                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 relative">
+                                            <p className="text-xs sm:text-sm font-mono text-black">cd ai-fortune-teller</p>
+                                        </div>
+                                        <p className="text-xs sm:text-sm text-black mt-2">Then press Enter.</p>
+                                    </div>
+
+                                    <div>
+                                        <p className="text-sm sm:text-base text-black font-medium mb-1">Start the development server</p>
+                                        <p className="text-xs sm:text-sm text-black mb-2">Type:</p>
+                                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 relative">
+                                            <p className="text-xs sm:text-sm font-mono text-black">npm run dev</p>
+                                        </div>
+                                        <p className="text-xs sm:text-sm text-black mt-2">Then press Enter.</p>
+                                        <div className="mt-2 p-2 rounded bg-blue-50">
+                                            <p className="text-xs text-blue-800"><strong>What's happening?</strong> This starts a local web server on your computer - like a mini version of the internet just for you to preview your site!</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <p className="text-sm sm:text-base text-black font-medium mb-1">Open your site in a browser</p>
+                                        <p className="text-xs sm:text-sm text-black mb-2">Go to:</p>
+                                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 relative">
+                                            <p className="text-xs sm:text-sm font-mono text-black">http://localhost:3000</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="pt-4 border-t border-gray-200">
+                                    <p className="text-sm text-black font-medium mb-2">Common hiccups:</p>
+                                    <ul className="text-xs sm:text-sm text-black space-y-1 ml-4">
+                                        <li>• <strong>API not working?</strong> Check your .env.local file has FAL_API_KEY=your-actual-key</li>
+                                        <li>• <strong>Mystical fonts not showing?</strong> Save all files (Cmd+S) and refresh</li>
+                                        <li>• <strong>Nothing appears?</strong> Check if npm is still installing (look for activity in Terminal)</li>
+                                        <li>• <strong>Error messages?</strong> Head to the <Link href="/debug" className="text-blue-600 hover:text-blue-800 underline">Debug page</Link> for solutions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </Card>
+                    </motion.div>
+
                     {/* Completion Card */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -276,7 +413,7 @@ export default function FalAiProject() {
                                             <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                                         )}
                                     </div>
-                                    <span className="text-base sm:text-lg font-medium">I completed this project</span>
+                                    <span className="text-base sm:text-lg font-medium">I completed this practice project</span>
                                 </div>
 
                                 {projectComplete && (

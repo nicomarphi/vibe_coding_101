@@ -94,7 +94,7 @@ export default function DebugPage() {
             className="max-w-4xl"
           >
             <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-              Bugs and Fixes
+              Bugs and fixes
             </h1>
             <p className="text-lg sm:text-xl text-black max-w-2xl mb-4">
               Don't light your laptop on fire just yet. When things break (and they will), these tips will help you troubleshoot without spiraling.

@@ -24,10 +24,10 @@ export default function ProjectsPage() {
             className="max-w-4xl"
           >
             <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-              Let's Vibe
+              Let's vibe
             </h1>
             <p className="text-black max-w-2xl">
-              Choose your path based on your comfort level
+              Choose a project to get started
             </p>
           </motion.div>
         </div>
@@ -65,7 +65,7 @@ export default function ProjectsPage() {
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
                       <span>30 minutes minimum</span>
                       <span className="hidden sm:inline">•</span>
-                      <span>6 steps</span>
+                      <span>7 steps</span>
                     </div>
                   </div>
                 </Card>
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
                       <span>45 minutes minimum</span>
                       <span className="hidden sm:inline">•</span>
-                      <span>6 steps</span>
+                      <span>8 steps</span>
                     </div>
                   </div>
                 </Card>
@@ -125,7 +125,7 @@ export default function ProjectsPage() {
                     </div>
 
                     <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl">
-                      AI Fortune Teller
+                      AI fortune teller
                     </h2>
 
                     <p className="text-black mb-auto text-sm sm:text-base">
@@ -133,9 +133,9 @@ export default function ProjectsPage() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
-                      <span>45 minutes minimum</span>
+                      <span>60 minutes minimum</span>
                       <span className="hidden sm:inline">•</span>
-                      <span>6 steps</span>
+                      <span>10 steps</span>
                     </div>
                   </div>
                 </Card>
@@ -152,7 +152,7 @@ export default function ProjectsPage() {
           >
             <h3 className="mb-4">Not sure which to start with?</h3>
             <p className="text-black text-sm sm:text-base">
-              Looking for something different? <Link href="/prompts" className="underline">Browse prompts</Link> to create your own project or <Link href="/debug" className="underline">learn debugging tips</Link>.
+              Looking for something different? <Link href="/prompts" className="underline">Browse prompts</Link> to create your own practice project or <Link href="/debug" className="underline">learn debugging tips</Link>.
             </p>
           </motion.div>
         </div>

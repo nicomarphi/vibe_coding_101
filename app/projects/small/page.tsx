@@ -48,8 +48,19 @@ export default function StartSmallProject() {
     note?: string;
   }> = [
       {
+        title: "Prerequisites check",
+        prompt: `What you need before starting:
+• Cursor is open
+• You're in the chat panel (Cmd+L)
+• You have a font file ready (optional - download from Google Fonts or use a font you like)
+
+Ready? Let's build something beautiful!`,
+        tip: "Making sure you're set up for success",
+        note: "This is just a checklist - no need to copy this prompt!"
+      },
+      {
         title: "Give Cursor context",
-        prompt: `I'm building a beginner front-end page using Next.js.
+        prompt: `Create a new Next.js project called "my-first-page" with TypeScript and Tailwind CSS. I'm building a beginner front-end page using Next.js.
 It should include Tailwind CSS for styling and Framer Motion for animation.
 The layout should be centered, with a custom font, a large headline, and a button.
 Keep the design clean, modern, and responsive.`,
@@ -57,7 +68,7 @@ Keep the design clean, modern, and responsive.`,
       },
       {
         title: "Set up Tailwind and Framer Motion",
-        prompt: `Set up Tailwind CSS and Framer Motion in this project.
+        prompt: `Set up Tailwind CSS and Framer Motion in this practice project.
 Configure Tailwind and PostCSS, update globals.css with base styles, and ensure Framer Motion is ready to use in components.`,
         tip: "Install both at once to keep things tidy."
       },
@@ -69,12 +80,17 @@ Add padding and a soft background gradient that fades from light gray to white.`
         tip: "This becomes the foundation for the rest of your page."
       },
       {
-        title: "Upload and apply a custom font",
+        title: "Add your custom font",
         prompt: `I've uploaded a font file to the public folder. Now apply this custom font globally using Tailwind CSS.
 Set up the @font-face in globals.css and configure it in the Tailwind config.
 Add a clean, modern sans-serif fallback font stack.`,
-        tip: "First, manually drag your font file (WOFF or TTF) into the public folder, then use this prompt.",
-        note: "Manual step: Download a font file (.woff or .ttf) and drag it into your project's 'public' folder before using this prompt"
+        tip: "Custom fonts make your site unique",
+        note: `How to add your font:
+1. Download a font (.woff, .woff2, or .ttf) from Google Fonts or your favorite source
+2. In Cursor's file explorer (left sidebar), find the "public" folder
+3. Drag your font file directly into the "public" folder
+4. Note your font filename (e.g., "MyFont.woff")
+5. Then copy the prompt above to tell Cursor to use it`
       },
       {
         title: "Add a headline",
@@ -117,7 +133,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
               Build a simple, responsive front-end layout using Cursor
             </p>
             <p className="text-sm sm:text-base text-black mb-8">
-              In this project, you'll prompt Cursor to build a clean layout using Tailwind and Framer Motion. You'll also upload a custom font, add a headline, and style an animated button. No coding needed—just clear, step-by-step prompts.
+              In this practice project, you'll prompt Cursor to build a clean layout using Tailwind and Framer Motion. You'll also upload a custom font, add a headline, and style an animated button. No coding needed—just clear, step-by-step prompts.
             </p>
           </motion.div>
         </div>
@@ -196,33 +212,51 @@ This button doesn't need to perform any action yet—just make sure the styling 
                         </div>
                       )}
 
-                      {/* Prompt */}
+                      {/* Prompt or Checklist */}
                       <div className="flex-grow">
-                        <div className={`rounded-lg p-3 sm:p-4 border relative ${isCompleted
-                          ? 'bg-white/20 border-white/30'
-                          : 'bg-gray-50 border-gray-200'
-                          }`}>
-                          <p className={`text-xs sm:text-sm font-mono pr-8 sm:pr-10 whitespace-pre-line ${isCompleted ? 'text-white' : 'text-black'
+                        {index === 0 ? (
+                          // Prerequisites checklist format
+                          <div className={`space-y-2 ${isCompleted ? 'text-white/90' : 'text-black'}`}>
+                            {prompt.prompt.split('\n').filter(line => line.trim()).map((line, i) => {
+                              if (line.startsWith('•')) {
+                                return (
+                                  <div key={i} className="flex items-start gap-2">
+                                    <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isCompleted ? 'text-white' : 'text-forest'}`} />
+                                    <span className="text-sm">{line.substring(1).trim()}</span>
+                                  </div>
+                                );
+                              }
+                              return <p key={i} className="text-sm font-medium mb-2">{line}</p>;
+                            })}
+                          </div>
+                        ) : (
+                          // Regular prompt with copy button
+                          <div className={`rounded-lg p-3 sm:p-4 border relative ${isCompleted
+                            ? 'bg-white/20 border-white/30'
+                            : 'bg-gray-50 border-gray-200'
                             }`}>
-                            {prompt.prompt}
-                          </p>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              copyToClipboard(prompt.prompt, index);
-                            }}
-                            className={`absolute top-2 right-2 sm:top-3 sm:right-3 p-1 rounded transition-colors ${isCompleted
-                              ? 'hover:bg-white/20'
-                              : 'hover:bg-gray-100'
-                              }`}
-                          >
-                            {copiedStep === index ? (
-                              <Check className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white' : 'text-green-600'}`} />
-                            ) : (
-                              <Copy className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white/70' : 'text-black'}`} />
-                            )}
-                          </button>
-                        </div>
+                            <p className={`text-xs sm:text-sm font-mono pr-8 sm:pr-10 whitespace-pre-line ${isCompleted ? 'text-white' : 'text-black'
+                              }`}>
+                              {prompt.prompt}
+                            </p>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                copyToClipboard(prompt.prompt, index);
+                              }}
+                              className={`absolute top-2 right-2 sm:top-3 sm:right-3 p-1 rounded transition-colors ${isCompleted
+                                ? 'hover:bg-white/20'
+                                : 'hover:bg-gray-100'
+                                }`}
+                            >
+                              {copiedStep === index ? (
+                                <Check className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white' : 'text-green-600'}`} />
+                              ) : (
+                                <Copy className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white/70' : 'text-black'}`} />
+                              )}
+                            </button>
+                          </div>
+                        )}
                       </div>
 
                       {/* Checkbox evenly positioned in bottom right corner */}
@@ -254,9 +288,14 @@ This button doesn't need to perform any action yet—just make sure the styling 
           >
             <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-indigo-50 to-purple-50">
               <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-light">View Your Site Locally in the Browser</h2>
+                <h2 className="text-2xl sm:text-3xl font-light">View your site locally in the browser</h2>
 
                 <div className="space-y-4">
+                  <div className="mb-4 p-3 rounded-lg bg-purple-50 border border-purple-200">
+                    <p className="text-xs sm:text-sm text-purple-900 font-medium">What's Terminal?</p>
+                    <p className="text-xs sm:text-sm text-purple-800 mt-1">Think of Terminal as a text-based remote control for your computer. You type commands, press Enter, and your computer does things!</p>
+                  </div>
+
                   <div>
                     <p className="text-sm sm:text-base text-black font-medium mb-1">Open your Terminal</p>
                     <p className="text-xs sm:text-sm text-black">Press Cmd + Space, type "Terminal", then press Enter.</p>
@@ -266,7 +305,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
                     <p className="text-sm sm:text-base text-black font-medium mb-1">Navigate to your project folder</p>
                     <p className="text-xs sm:text-sm text-black mb-2">In the terminal, type:</p>
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 relative">
-                      <p className="text-xs sm:text-sm font-mono text-black">cd vibe_101</p>
+                      <p className="text-xs sm:text-sm font-mono text-black">cd my-first-page</p>
                     </div>
                     <p className="text-xs sm:text-sm text-black mt-2">Then press Enter.</p>
                   </div>
@@ -278,6 +317,9 @@ This button doesn't need to perform any action yet—just make sure the styling 
                       <p className="text-xs sm:text-sm font-mono text-black">npm run dev</p>
                     </div>
                     <p className="text-xs sm:text-sm text-black mt-2">Then press Enter.</p>
+                    <div className="mt-2 p-2 rounded bg-blue-50">
+                      <p className="text-xs text-blue-800"><strong>What's happening?</strong> This starts a local web server on your computer - like a mini version of the internet just for you to preview your site!</p>
+                    </div>
                   </div>
 
                   <div>
@@ -290,10 +332,13 @@ This button doesn't need to perform any action yet—just make sure the styling 
                 </div>
 
                 <div className="pt-4 border-t border-gray-200">
-                  <p className="text-sm text-black">
-                    <strong>If something looks off:</strong><br />
-                    Don't stress. Sometimes Cursor is still finishing up in the background. Give it a few seconds, refresh the page, or head to the <Link href="/debug" className="text-blue-600 hover:text-blue-800 underline">Debug page</Link> for tips.
-                  </p>
+                  <p className="text-sm text-black font-medium mb-2">Common hiccups:</p>
+                  <ul className="text-xs sm:text-sm text-black space-y-1 ml-4">
+                    <li>• <strong>Nothing appears?</strong> Check if npm is still installing (look for activity in Terminal)</li>
+                    <li>• <strong>Styles look broken?</strong> Save all files (Cmd+S) and refresh your browser</li>
+                    <li>• <strong>Changes don't show?</strong> Hard refresh your browser (Cmd+Shift+R)</li>
+                    <li>• <strong>Error messages?</strong> Head to the <Link href="/debug" className="text-blue-600 hover:text-blue-800 underline">Debug page</Link> for solutions</li>
+                  </ul>
                 </div>
               </div>
             </Card>
@@ -329,7 +374,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
                       <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     )}
                   </div>
-                  <span className="text-base sm:text-lg font-medium">I completed this project</span>
+                  <span className="text-base sm:text-lg font-medium">I completed this practice project</span>
                 </div>
 
                 {projectComplete && (
@@ -343,7 +388,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
                     </p>
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center">
                       <Link href="/projects/ambitious" className="btn-primary w-full sm:w-auto">
-                        Try Ambitious Project
+                        Try Ambitious Practice Project
                       </Link>
                       <Link href="/prompts" className="btn-secondary w-full sm:w-auto">
                         Browse Prompts

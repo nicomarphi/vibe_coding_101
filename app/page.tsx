@@ -64,7 +64,7 @@ export default function Home() {
 
   const prompts = [
     {
-      title: "Start Your First Project",
+      title: "Start Your First Practice Project",
       prompt: `Create a simple one-page website with:
 - A centered hero section with a large headline
 - A subheading paragraph
@@ -272,32 +272,45 @@ export default function Home() {
               transition={{ delay: 0.1 }}
             >
               {/* Fluid fire effect on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
-                {/* Base warm glow */}
-                <div className="absolute inset-0 bg-gradient-to-t from-orange-800/40 via-red-700/20 to-transparent" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
+                {/* Base warm glow with animation */}
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-800/50 via-red-700/30 to-transparent animate-pulse" />
 
-                {/* Large glowing orbs */}
-                <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-orange-600 rounded-full blur-[60px] animate-ember-glow opacity-40" />
-                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-red-600 rounded-full blur-[50px] animate-ember-glow-slow opacity-35" />
-                <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-56 h-56 bg-yellow-600 rounded-full blur-[45px] animate-ember-glow-slower opacity-30" />
+                {/* Large glowing orbs with enhanced movement */}
+                <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-orange-600 rounded-full blur-[60px] animate-ember-glow opacity-60 group-hover:scale-110 transition-transform duration-1000" />
+                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-red-600 rounded-full blur-[50px] animate-ember-glow-slow opacity-50 group-hover:scale-125 transition-transform duration-1500" />
+                <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-56 h-56 bg-yellow-600 rounded-full blur-[45px] animate-ember-glow-slower opacity-40 group-hover:scale-115 transition-transform duration-2000" />
 
-                {/* Inner heat glow */}
+                {/* Additional flickering flames */}
+                <div className="absolute bottom-10 left-10 w-40 h-40 bg-orange-500 rounded-full blur-[40px] animate-ember-float opacity-30" />
+                <div className="absolute bottom-5 right-10 w-48 h-48 bg-red-500 rounded-full blur-[35px] animate-spark-rise opacity-25" />
+
+                {/* Inner heat glow with gradient animation */}
                 <div className="absolute inset-0" style={{
-                  background: 'radial-gradient(ellipse at center bottom, rgba(251, 146, 60, 0.25) 0%, rgba(220, 38, 38, 0.15) 50%, transparent 80%)'
+                  background: 'radial-gradient(ellipse at center bottom, rgba(251, 146, 60, 0.35) 0%, rgba(220, 38, 38, 0.25) 50%, transparent 80%)',
+                  animation: 'gradient-shift 8s ease infinite'
                 }} />
               </div>
 
-              <div className="flex justify-between items-start relative z-10">
-                <h1 className="text-7xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.8] transition-all duration-500 group-hover:text-shadow-fire" style={{ letterSpacing: '-0.035em' }}>
+              {/* Original text that fades out on hover */}
+              <div className="flex justify-between items-start relative z-10 transition-all duration-500 group-hover:opacity-0">
+                <h1 className="text-7xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-none" style={{ letterSpacing: '-0.035em' }}>
                   Vibe
                 </h1>
-                <h2 className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl font-light uppercase transition-all duration-500 group-hover:text-shadow-fire-small" style={{ letterSpacing: '-0.02em' }}>
+                <h2 className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl font-light uppercase leading-none" style={{ letterSpacing: '-0.02em' }}>
                   101
                 </h2>
               </div>
-              <h1 className="text-7xl sm:text-8xl md:text-[6rem] lg:text-[8rem] xl:text-[10.5rem] font-light leading-[0.8] relative z-10 transition-all duration-500 group-hover:text-shadow-fire" style={{ letterSpacing: '-0.02em' }}>
+              <h1 className="text-7xl sm:text-8xl md:text-[6rem] lg:text-[8rem] xl:text-[10.5rem] font-light leading-[0.8] relative z-10 transition-all duration-500 group-hover:opacity-0" style={{ letterSpacing: '-0.02em' }}>
                 Coding
               </h1>
+
+              {/* New text that appears on hover */}
+              <div className="absolute inset-0 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-700 z-20 p-6 md:p-8">
+                <p className="text-[1.81rem] md:text-[1.73rem] lg:text-[2.06rem] font-light text-left leading-[1.15] text-white w-[75%] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-out" style={{ letterSpacing: '-0.02em' }}>
+                  For designers who want to get set up with Cursor and start making things
+                </p>
+              </div>
             </motion.div>
 
             {/* Right block - Animated Visual */}
@@ -368,7 +381,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#6B7F6A] to-[#8FA68E] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
                 <Link href="/projects" className="w-full h-full flex items-center justify-center p-3 md:p-4 lg:p-6 relative z-10">
-                  <span className="text-center text-lg sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">START A<br />PROJECT</span>
+                  <span className="text-center text-lg sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">START A<br />PRACTICE<br />PROJECT</span>
                 </Link>
               </motion.div>
             </div>
@@ -435,7 +448,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex-1 flex items-center">
-                    <p className="text-[1.34rem] md:text-[1.73rem] lg:text-[2.06rem] font-light leading-[1.15]">{randomDebugTip.bug}</p>
+                    <p className="text-[1.81rem] md:text-[1.73rem] lg:text-[2.06rem] font-light leading-[1.15]">{randomDebugTip.bug}</p>
                   </div>
                   <p className="text-xs sm:text-sm text-white/80">
                     Click to see solution →

@@ -20,7 +20,7 @@ export default function ShopifySetupPage() {
     const handlePasswordSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // You can change this password to whatever you want
-        if (password === "shoppyisavibe") {
+        if (password === "telshoppyisavibe") {
             setIsAuthenticated(true);
             setShowError(false);
         } else {
@@ -202,7 +202,7 @@ export default function ShopifySetupPage() {
                         </Link>
 
                         <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-                            Cursor Setup for Shopify
+                            Cursor setup for Shopify
                         </h1>
                         <p className="text-lg sm:text-xl text-black">
                             Follow these specific guidelines to use Cursor safely and in compliance with Shopify policies.

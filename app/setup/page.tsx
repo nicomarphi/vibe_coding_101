@@ -51,7 +51,7 @@ export default function SetupPage() {
         note: "Shopifolk? Get set up on the link above"
       },
       {
-        title: "Start a New Project Using Composer",
+        title: "Start a New Practice Project Using Composer",
         description: "Let Cursor build your folder and files for you",
         content: [
           "Open Cursor",
@@ -170,7 +170,7 @@ export default function SetupPage() {
             </div>
 
             <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-              Set Up Cursor
+              Set up Cursor
             </h1>
             <p className="text-lg sm:text-xl text-black">
               Let's get your system ready for vibe coding with Cursor. This will only take a few minutes.
@@ -271,7 +271,7 @@ export default function SetupPage() {
                   </p>
                 </div>
                 <Link href="/projects" className="btn-primary">
-                  Start Your First Project
+                  Start Your First Practice Project
                 </Link>
               </motion.div>
             </motion.div>

@@ -18,8 +18,8 @@ export default function PromptsPage() {
 
     const generalTips = [
         {
-            title: "Use ChatGPT as Your Product Manager",
-            description: "For complex projects, use ChatGPT (or any AI chat) to plan things out first. Ask it to help you break down your idea into features, create a project roadmap, or write user stories. It's like having a product manager to organize your thoughts before you start coding.",
+            title: "Use ChatGPT or Claude as Your Product Manager",
+            description: "For complex projects, use ChatGPT, Claude, or any AI chat to plan things out first. Ask it to help you break down your idea into features, create a project roadmap, or describe who will use your app and what they'll do. It's like having a product manager to organize your thoughts before you start coding.",
             example: "Try: 'I want to build a recipe sharing app. Can you help me plan out the key features and pages I'll need?'"
         },
         {
@@ -68,7 +68,7 @@ export default function PromptsPage() {
             prompts: [
                 {
                     id: "first-project",
-                    title: "Start Your First Project",
+                    title: "Start Your First Practice Project",
                     prompt: `Create a simple one-page website with:
 - A centered hero section with a large headline that says "[Your headline text]"
 - A subheading paragraph with "[Your description]"
@@ -379,7 +379,7 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
                         className="max-w-4xl"
                     >
                         <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-                            Vibe Coding Tips
+                            Vibe coding tips
                         </h1>
                         <p className="text-xl text-black max-w-2xl">
                             Level up your Cursor game with these tips, tricks, and ready-to-use prompts.
@@ -441,7 +441,7 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
                     >
-                        <h1 className="mb-8" style={{ letterSpacing: '-0.04em' }}>Copy & Paste Prompts</h1>
+                        <h1 className="mb-8" style={{ letterSpacing: '-0.04em' }}>Copy & paste prompts</h1>
                         <p className="text-black mb-12 max-w-3xl">
                             Battle-tested prompts to help you build faster. Copy, paste, and customize them for your project.
                         </p>
