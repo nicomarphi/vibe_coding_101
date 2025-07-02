@@ -52,8 +52,7 @@ You'll also need:
 • A Fal.ai account (free) - we'll guide you through this in Step 6
 
 Ready to build something magical? Let's go!`,
-            tip: "Making sure you're set up for success",
-            note: "This is just a checklist - no need to copy this prompt!"
+            tip: "Making sure you're set up for success"
         },
         {
             title: "Give Cursor context",

@@ -55,8 +55,7 @@ export default function StartSmallProject() {
 • You have a font file ready (optional - download from Google Fonts or use a font you like)
 
 Ready? Let's build something beautiful!`,
-        tip: "Making sure you're set up for success",
-        note: "This is just a checklist - no need to copy this prompt!"
+        tip: "Making sure you're set up for success"
       },
       {
         title: "Give Cursor context",
@@ -102,7 +101,7 @@ Make it bold, responsive, and add a small text shadow for contrast.`,
         title: "Add a button with animation",
         prompt: `Below the headline, add a large button with rounded corners and a gradient background.
 Style it using Tailwind. Use Framer Motion to scale slightly on hover and bounce on click.
-The button should say: "[[insert your own button text here]]"
+The button should say: "[insert your own button text here]"
 This button doesn't need to perform any action yet—just make sure the styling and animation work.`,
         tip: "Use Tailwind for the styling, and Framer Motion for animation."
       }

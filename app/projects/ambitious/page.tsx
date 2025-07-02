@@ -50,8 +50,7 @@ export default function AmbitiousProject() {
 • Images should be under 1MB each for best performance
 
 Have your images ready on your desktop or in a folder - we'll add them to your project after Cursor creates it!`,
-      tip: "Gather your visuals first",
-      note: "This is just a checklist - no need to copy this prompt!"
+      tip: "Gather your visuals first"
     },
     {
       title: "Set up your layout and grid",
@@ -62,11 +61,11 @@ Have your images ready on your desktop or in a folder - we'll add them to your p
       title: "Add your images to the project",
       prompt: `Time to add your images!
 
-1. In Cursor's file explorer (left sidebar), find the "public" folder
-2. Right-click on "public" and select "New Folder"
-3. Name it "images"
-4. Drag your 6 images from your desktop into this new "images" folder
-5. Rename them to: image1.jpg, image2.jpg, etc. (or .png, .gif - match your file types)`,
+In Cursor's file explorer (left sidebar), find the "public" folder
+Right-click on "public" and select "New Folder"
+Name it "images"
+Drag your 6 images from your desktop into this new "images" folder
+Rename them to: image1.jpg, image2.jpg, etc. (or .png, .gif - match your file types)`,
       tip: "Organize your images in the project",
       note: "Manual step: Do this directly in Cursor's file explorer - no need to copy this prompt!"
     },
