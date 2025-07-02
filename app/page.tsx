@@ -343,7 +343,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#FF6347] to-[#FF5733] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
                 <Link href="/setup" className="w-full h-full flex items-center justify-center p-3 md:p-4 lg:p-6 relative z-10">
-                  <span className="text-center text-base sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">GET SET UP<br />WITH CURSOR</span>
+                  <span className="text-center text-lg sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">GET SET UP<br />WITH CURSOR</span>
                 </Link>
               </motion.div>
 
@@ -368,7 +368,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#6B7F6A] to-[#8FA68E] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
                 <Link href="/projects" className="w-full h-full flex items-center justify-center p-3 md:p-4 lg:p-6 relative z-10">
-                  <span className="text-center text-base sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">START A<br />PROJECT</span>
+                  <span className="text-center text-lg sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">START A<br />PROJECT</span>
                 </Link>
               </motion.div>
             </div>

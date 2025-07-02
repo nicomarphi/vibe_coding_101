@@ -75,8 +75,7 @@ export default function ShopifySetupPage() {
                     "Open this folder in Cursor",
                     "Create subfolders for different projects (e.g., 'vibe-coding', 'learning')",
                     "Keep your vibe coding projects organized in this folder"
-                ],
-                note: "This tutorial focuses on personal vibe coding projects, not Shopify work"
+                ]
             },
             {
                 title: "Learn the AI Features",
@@ -86,17 +85,16 @@ export default function ShopifySetupPage() {
                     "Commands (Cmd+K) - Type /edit to change code, /explain to understand it",
                     "Natural language search (Cmd+Shift+O) - Search code using regular words",
                     "AI suggestions - Get smart code completions as you type"
-                ],
-                note: "You get 500 premium AI requests per month - use them wisely!"
+                ]
             },
             {
                 title: "Privacy & Data Rules",
                 description: "Keep Shopify data safe",
                 content: [
                     "Never share merchant, partner, or buyer data with Cursor",
-                    "Don't paste any Shopify code into Cursor prompts",
-                    "Only use Cursor for personal learning projects",
-                    "Use fake/sample data for all your vibe coding projects"
+                    "Be mindful of what Shopify code you share with Cursor's AI",
+                    "Cursor is approved for Shopify development work",
+                    "Use fake/sample data when working with sensitive information"
                 ]
             },
             {
@@ -260,7 +258,9 @@ export default function ShopifySetupPage() {
 
                                             {/* Note section if present */}
                                             {step.note && (
-                                                <div className={`mt-4 p-3 rounded-lg ${isCompleted ? 'bg-white/20 text-white' : 'bg-green-50 text-green-900'
+                                                <div className={`mt-4 p-3 rounded-lg ${index === 0
+                                                    ? (isCompleted ? 'bg-white/20 text-white' : 'bg-orange-50 text-orange-900')
+                                                    : (isCompleted ? 'bg-white/20 text-white' : 'bg-green-50 text-green-900')
                                                     }`}>
                                                     <p className="text-sm font-medium">{step.note}</p>
                                                 </div>
@@ -299,7 +299,6 @@ export default function ShopifySetupPage() {
                                 <li>• Cursor is approved for Shopify code when installed via Okta</li>
                                 <li>• Perfect for getting familiar with vibe coding, learning and prototyping</li>
                                 <li>• Never share merchant, partner, or buyer data with the AI</li>
-                                <li>• You get 500 premium AI requests per month</li>
                             </ul>
                         </Card>
                     </motion.div>
