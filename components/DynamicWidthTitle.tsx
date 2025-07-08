@@ -17,8 +17,8 @@ export default function DynamicWidthTitle({ children, className = '' }: DynamicW
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
     const measureRef = useRef<HTMLDivElement>(null);
-    const rafRef = useRef<number | undefined>();
-    const debounceRef = useRef<NodeJS.Timeout | undefined>();
+    const rafRef = useRef<number | undefined>(undefined);
+    const debounceRef = useRef<NodeJS.Timeout | undefined>(undefined);
     const previousModeRef = useRef<'single' | 'double'>('single');
 
     const [state, setState] = useState<TextState>({
