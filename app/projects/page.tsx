@@ -23,7 +23,7 @@ export default function ProjectsPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
+            <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
               Let's vibe
             </h1>
             <p className="text-black max-w-2xl">
@@ -49,7 +49,7 @@ export default function ProjectsPage() {
                 <Card className="p-6 sm:p-8 h-full border-0 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-all cursor-pointer group">
                   <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-6 sm:mb-8">
-                      <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-forest/20 text-forest">
+                      <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-yellow-600/20 text-yellow-600">
                         Start Small
                       </Badge>
                     </div>
@@ -84,7 +84,7 @@ export default function ProjectsPage() {
                 <Card className="p-6 sm:p-8 h-full border-0 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-all cursor-pointer group">
                   <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-6 sm:mb-8">
-                      <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-ocean/20 text-ocean">
+                      <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-orange-600/20 text-orange-600">
                         Beginner 2.0
                       </Badge>
                     </div>
@@ -119,7 +119,7 @@ export default function ProjectsPage() {
                 <Card className="p-6 sm:p-8 h-full border-0 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-all cursor-pointer group">
                   <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-6 sm:mb-8">
-                      <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-purple-600/20 text-purple-600">
+                      <Badge variant="outline" className="text-xs font-medium uppercase tracking-wide border-red-700/20 text-red-700">
                         Level Up
                       </Badge>
                     </div>

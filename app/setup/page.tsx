@@ -159,8 +159,8 @@ export default function SetupPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-              Set up Cursor
+            <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
+              Set up cursor
             </h1>
             <p className="text-lg sm:text-xl text-black">
               Let's get your system ready for vibe coding with Cursor. This takes about 15-20 minutes including all installations.

@@ -378,7 +378,7 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
                         transition={{ duration: 0.5 }}
                         className="max-w-4xl"
                     >
-                        <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
+                        <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
                             Vibe coding tips
                         </h1>
                         <p className="text-xl text-black max-w-2xl">
@@ -441,7 +441,7 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
                     >
-                        <h1 className="mb-8" style={{ letterSpacing: '-0.04em' }}>Copy & paste prompts</h1>
+                        <h1 className="mb-8 uppercase" style={{ letterSpacing: '-0.01em' }}>Copy & paste prompts</h1>
                         <p className="text-black mb-12 max-w-3xl">
                             Battle-tested prompts to help you build faster. Copy, paste, and customize them for your project.
                         </p>
@@ -460,7 +460,7 @@ Then try again. If that still doesn't work, open the Debug page for common fixes
                                 </div>
 
                                 {/* Prompts Grid */}
-                                <div className="grid md:grid-cols-2 gap-2">
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
                                     {category.prompts.map((prompt, promptIndex) => (
                                         <motion.div
                                             key={prompt.id}

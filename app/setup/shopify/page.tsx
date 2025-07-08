@@ -169,7 +169,7 @@ export default function ShopifySetupPage() {
                             <Card className="p-8 border-0 rounded-3xl bg-white shadow-sm">
                                 <div className="flex items-center gap-3 mb-6">
                                     <Lock className="w-6 h-6 text-black" />
-                                    <h1 className="text-2xl font-light">Shopify Employee Setup</h1>
+                                    <h1 className="text-2xl font-light uppercase">Shopify employee setup</h1>
                                 </div>
 
                                 <p className="text-black mb-6">
@@ -229,8 +229,8 @@ export default function ShopifySetupPage() {
                             Back to Setup
                         </Link>
 
-                        <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-                            Get set up, Shopifolk
+                        <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
+                            Get set up, shopifolk
                         </h1>
                         <p className="text-lg sm:text-xl text-black">
                             Follow these steps to set up Cursor in compliance with Shopify policies. Setup takes about 15-20 minutes.

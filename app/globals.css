@@ -1,6 +1,96 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Font Definitions */
+@font-face {
+  font-family: 'Inter Tight Variable';
+  src: url('/InterTight-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* VVDS Fifties Variable Font */
+@font-face {
+  font-family: 'VVDS Fifties Variable';
+  src: url('/VVDSFifties-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: block;
+  font-style: normal;
+}
+
+/* VVDS Fifties Font Variants */
+@font-face {
+  font-family: 'VVDS Fifties Condensed';
+  src: url('/VVDSFifties-CondLight.woff2') format('woff2'),
+    url('/VVDSFifties-CondLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'VVDS Fifties Condensed';
+  src: url('/VVDSFifties-CondReg.woff2') format('woff2'),
+    url('/VVDSFifties-CondReg.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'VVDS Fifties Semi-Condensed';
+  src: url('/VVDSFifties-SCondLight.woff2') format('woff2'),
+    url('/VVDSFifties-SCondLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'VVDS Fifties Semi-Condensed';
+  src: url('/VVDSFifties-SCondReg.woff2') format('woff2'),
+    url('/VVDSFifties-SCondReg.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'VVDS Fifties Medium';
+  src: url('/VVDSFifties-MedLight.woff2') format('woff2'),
+    url('/VVDSFifties-MedLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'VVDS Fifties Medium';
+  src: url('/VVDSFifties-MedReg.woff2') format('woff2'),
+    url('/VVDSFifties-MedReg.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'VVDS Fifties Expanded';
+  src: url('/VVDSFifties-ExpLight.woff2') format('woff2'),
+    url('/VVDSFifties-ExpLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'VVDS Fifties Expanded';
+  src: url('/VVDSFifties-ExpReg.woff2') format('woff2'),
+    url('/VVDSFifties-ExpReg.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Custom Font Declarations */
 @font-face {
   font-family: 'Magical Night';
@@ -99,7 +189,7 @@
   --ocean-foreground: oklch(0.98 0 0);
 
   /* Light mode colors */
-  --background: oklch(0.975 0 0);
+  --background: oklch(0.995 0.005 85);
   --foreground: oklch(0.15 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0 0);
@@ -271,9 +361,11 @@
   /* Responsive Typography Scale */
   h1 {
     @apply text-4xl sm:text-5xl md:text-6xl lg:text-8xl tracking-normal font-light leading-none;
-    font-family: 'Magical Night', 'Inter Tight', system-ui, -apple-system, sans-serif;
-    letter-spacing: -0.035em;
+    font-family: 'VVDS Fifties Variable', system-ui, -apple-system, sans-serif;
+    font-weight: 100;
+    letter-spacing: -0.01em;
     line-height: 0.9;
+    font-variation-settings: 'wdth' 75;
   }
 
   h2 {
@@ -734,7 +826,7 @@
   height: 100%;
   z-index: -2;
   overflow: hidden;
-  background: radial-gradient(ellipse at center bottom, #D4A574 0%, #E8B4B8 10%, #B8C5A6 20%, #F4C2A1 30%, #E5D4CE 40%, #EED9D0 50%, #F5F0E8 70%, #FFFFFF 90%);
+  background: radial-gradient(ellipse at center bottom, #FFFFF0 0%, #FFFEF2 20%, #FFFDF5 40%, #FFFCF7 60%, #FFFBFA 80%, #FFFAFC 90%, #FFFFFE 100%);
   background-size: 400% 400%;
   animation: gradient-shift 45s ease infinite;
 }
@@ -753,7 +845,7 @@
   height: 100%;
   z-index: -2;
   overflow: hidden;
-  background: radial-gradient(ellipse at center bottom, #D4A574 0%, #E8B4B8 10%, #B8C5A6 20%, #F4C2A1 30%, #E5D4CE 40%, #EED9D0 50%, #F5F0E8 70%, #FFFFFF 90%);
+  background: radial-gradient(ellipse at center bottom, #FFFFF0 0%, #FFFEF2 20%, #FFFDF5 40%, #FFFCF7 60%, #FFFBFA 80%, #FFFAFC 90%, #FFFFFE 100%);
   background-size: 400% 400%;
   animation: gradient-shift 45s ease infinite;
 }
@@ -767,12 +859,12 @@
   top: -25%;
   left: -25%;
   background:
-    radial-gradient(circle at 50% 70%, #B85450 0%, transparent 40%),
-    radial-gradient(circle at 30% 60%, #D4A574 0%, transparent 35%),
-    radial-gradient(circle at 70% 60%, #B8C5A6 0%, transparent 35%),
-    radial-gradient(circle at 40% 80%, #E8B4B8 0%, transparent 38%),
-    radial-gradient(circle at 60% 80%, #CC6B49 0%, transparent 42%);
-  filter: blur(70px) contrast(1.5) saturate(1.3);
+    radial-gradient(circle at 50% 70%, #FFF8E7 0%, transparent 40%),
+    radial-gradient(circle at 30% 60%, #FFF5E1 0%, transparent 35%),
+    radial-gradient(circle at 70% 60%, #FFF9EC 0%, transparent 35%),
+    radial-gradient(circle at 40% 80%, #FFF7E8 0%, transparent 38%),
+    radial-gradient(circle at 60% 80%, #FFF6E5 0%, transparent 42%);
+  filter: blur(70px) contrast(1.05) saturate(0.9);
   animation: gradient-morph 60s ease-in-out infinite;
   will-change: transform, border-radius;
   transform-origin: center center;
@@ -800,32 +892,32 @@
   transform-origin: center center;
 }
 
-/* Setup page - Light blue focus in middle */
+/* Setup page - Light ivory focus in middle */
 .gradient-mesh-setup::before {
   background:
-    radial-gradient(circle at 50% 60%, #00BFFF 0%, transparent 40%),
-    radial-gradient(circle at 50% 80%, #1E90FF 0%, transparent 45%);
+    radial-gradient(circle at 50% 60%, #FFF9E6 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, #FFF8E3 0%, transparent 45%);
 }
 
-/* Projects page - Sky blue focus in middle */
+/* Projects page - Warm ivory focus in middle */
 .gradient-mesh-projects::before {
   background:
-    radial-gradient(circle at 50% 65%, #0080FF 0%, transparent 40%),
-    radial-gradient(circle at 50% 85%, #4169E1 0%, transparent 45%);
+    radial-gradient(circle at 50% 65%, #FFF7E0 0%, transparent 40%),
+    radial-gradient(circle at 50% 85%, #FFF6DD 0%, transparent 45%);
 }
 
-/* Prompts page - Deep blue focus in middle bottom */
+/* Prompts page - Soft ivory focus in middle bottom */
 .gradient-mesh-prompts::before {
   background:
-    radial-gradient(circle at 50% 70%, #0040FF 0%, transparent 35%),
-    radial-gradient(circle at 50% 90%, #1E90FF 0%, transparent 40%);
+    radial-gradient(circle at 50% 70%, #FFF5DA 0%, transparent 35%),
+    radial-gradient(circle at 50% 90%, #FFF4D7 0%, transparent 40%);
 }
 
-/* Debug page - Mixed blues in middle */
+/* Debug page - Mixed ivory in middle */
 .gradient-mesh-debug::before {
   background:
-    radial-gradient(circle at 50% 60%, #4169E1 0%, transparent 35%),
-    radial-gradient(circle at 50% 80%, #0040FF 0%, transparent 40%);
+    radial-gradient(circle at 50% 60%, #FFF3D4 0%, transparent 35%),
+    radial-gradient(circle at 50% 80%, #FFF2D1 0%, transparent 40%);
 }
 
 /* Remove all spray paint dots for performance */
@@ -845,12 +937,12 @@
   top: -25%;
   left: -25%;
   background:
-    radial-gradient(circle at 50% 70%, #B85450 0%, transparent 40%),
-    radial-gradient(circle at 30% 60%, #D4A574 0%, transparent 35%),
-    radial-gradient(circle at 70% 60%, #B8C5A6 0%, transparent 35%),
-    radial-gradient(circle at 40% 80%, #E8B4B8 0%, transparent 38%),
-    radial-gradient(circle at 60% 80%, #CC6B49 0%, transparent 42%);
-  filter: blur(70px) contrast(1.5) saturate(1.3);
+    radial-gradient(circle at 50% 70%, #FFF8E7 0%, transparent 40%),
+    radial-gradient(circle at 30% 60%, #FFF5E1 0%, transparent 35%),
+    radial-gradient(circle at 70% 60%, #FFF9EC 0%, transparent 35%),
+    radial-gradient(circle at 40% 80%, #FFF7E8 0%, transparent 38%),
+    radial-gradient(circle at 60% 80%, #FFF6E5 0%, transparent 42%);
+  filter: blur(70px) contrast(1.05) saturate(0.9);
   animation: gradient-morph 60s ease-in-out infinite;
   will-change: transform, border-radius;
   transform-origin: center center;
@@ -893,7 +985,7 @@
   /* Simplify gradient on mobile */
   .gradient-mesh,
   .gradient-mesh-home {
-    background: radial-gradient(ellipse at center bottom, #D4A574 0%, #E8B4B8 20%, #B8C5A6 35%, #FFFFFF 75%);
+    background: radial-gradient(ellipse at center bottom, #FFFFF0 0%, #FFFEF2 20%, #FFFDF5 35%, #FFFFFE 75%);
     background-size: 200% 200%;
   }
 
@@ -949,6 +1041,27 @@
   border: 1px solid rgba(255, 20, 147, 0.2);
 }
 
+.frosted-glass-yellow {
+  background: linear-gradient(to bottom right, rgba(202, 138, 4, 0.08), rgba(202, 138, 4, 0.12)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(202, 138, 4, 0.2);
+}
+
+.frosted-glass-orange {
+  background: linear-gradient(to bottom right, rgba(234, 88, 12, 0.08), rgba(234, 88, 12, 0.12)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(234, 88, 12, 0.2);
+}
+
+.frosted-glass-red {
+  background: linear-gradient(to bottom right, rgba(185, 28, 28, 0.08), rgba(185, 28, 28, 0.12)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(185, 28, 28, 0.2);
+}
+
 .frosted-glass-orange {
   background: linear-gradient(to bottom right, rgba(220, 20, 60, 0.08), rgba(220, 20, 60, 0.12)) !important;
   backdrop-filter: blur(10px);
@@ -976,7 +1089,9 @@
 .frosted-glass-purple .text-white,
 .frosted-glass-orange .text-white,
 .frosted-glass-pink .text-white,
-.frosted-glass-teal .text-white {
+.frosted-glass-teal .text-white,
+.frosted-glass-yellow .text-white,
+.frosted-glass-red .text-white {
   color: rgb(17 24 39) !important;
   /* gray-900 */
 }
@@ -987,18 +1102,24 @@
 .frosted-glass-orange .text-white\/90,
 .frosted-glass-pink .text-white\/90,
 .frosted-glass-teal .text-white\/90,
+.frosted-glass-yellow .text-white\/90,
+.frosted-glass-red .text-white\/90,
 .frosted-glass-blue .text-white\/80,
 .frosted-glass-green .text-white\/80,
 .frosted-glass-purple .text-white\/80,
 .frosted-glass-orange .text-white\/80,
 .frosted-glass-pink .text-white\/80,
 .frosted-glass-teal .text-white\/80,
+.frosted-glass-yellow .text-white\/80,
+.frosted-glass-red .text-white\/80,
 .frosted-glass-blue .text-white\/70,
 .frosted-glass-green .text-white\/70,
 .frosted-glass-purple .text-white\/70,
 .frosted-glass-orange .text-white\/70,
 .frosted-glass-pink .text-white\/70,
-.frosted-glass-teal .text-white\/70 {
+.frosted-glass-teal .text-white\/70,
+.frosted-glass-yellow .text-white\/70,
+.frosted-glass-red .text-white\/70 {
   color: rgb(107 114 128) !important;
   /* gray-500 */
 }
@@ -1009,7 +1130,9 @@
 .frosted-glass-purple .bg-black,
 .frosted-glass-orange .bg-black,
 .frosted-glass-pink .bg-black,
-.frosted-glass-teal .bg-black {
+.frosted-glass-teal .bg-black,
+.frosted-glass-yellow .bg-black,
+.frosted-glass-red .bg-black {
   background-color: rgb(17 24 39) !important;
   /* gray-900 */
 }
@@ -1019,7 +1142,9 @@
 .frosted-glass-purple .border-black,
 .frosted-glass-orange .border-black,
 .frosted-glass-pink .border-black,
-.frosted-glass-teal .border-black {
+.frosted-glass-teal .border-black,
+.frosted-glass-yellow .border-black,
+.frosted-glass-red .border-black {
   border-color: rgb(17 24 39) !important;
   /* gray-900 */
 }
@@ -1035,7 +1160,9 @@
 .frosted-glass-purple .bg-black\/5,
 .frosted-glass-orange .bg-black\/5,
 .frosted-glass-pink .bg-black\/5,
-.frosted-glass-teal .bg-black\/5 {
+.frosted-glass-teal .bg-black\/5,
+.frosted-glass-yellow .bg-black\/5,
+.frosted-glass-red .bg-black\/5 {
   background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
@@ -1044,6 +1171,8 @@
 .frosted-glass-purple .border-white\/10,
 .frosted-glass-orange .border-white\/10,
 .frosted-glass-pink .border-white\/10,
-.frosted-glass-teal .border-white\/10 {
+.frosted-glass-teal .border-white\/10,
+.frosted-glass-yellow .border-white\/10,
+.frosted-glass-red .border-white\/10 {
   border-color: rgba(0, 0, 0, 0.1) !important;
 }

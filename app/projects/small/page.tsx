@@ -122,10 +122,10 @@ This button doesn't need to perform any action yet—just make sure the styling 
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <Badge className="mb-4" variant="secondary">
+            <Badge className="mb-4 bg-yellow-100 text-yellow-700 border-yellow-200" variant="secondary">
               Start Small
             </Badge>
-            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
+            <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
               Build a simple front-end page
             </h1>
             <p className="text-lg sm:text-xl text-black mb-4">
@@ -186,7 +186,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                   className="h-full"
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-blue' : 'bg-white'
+                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-yellow' : 'bg-white'
                     }`}
                     onClick={() => toggleStep(index)}
                   >
@@ -285,7 +285,7 @@ This button doesn't need to perform any action yet—just make sure the styling 
             transition={{ delay: 0.4, duration: 0.5 }}
             className="mt-8 sm:mt-12"
           >
-            <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-indigo-50 to-purple-50">
+            <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-yellow-50 to-amber-50">
               <div className="space-y-4">
                 <h2 className="text-2xl sm:text-3xl font-light">View your site locally in the browser</h2>
 

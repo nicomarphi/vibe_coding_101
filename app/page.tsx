@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import { useEffect, useState } from "react";
 import { Copy, Check, RefreshCw } from "lucide-react";
+import DynamicWidthTitle from "@/components/DynamicWidthTitle";
 
 export default function Home() {
   const [randomDebugTip, setRandomDebugTip] = useState({ bug: "", solution: "" });
@@ -14,6 +15,20 @@ export default function Home() {
   const [copiedTip, setCopiedTip] = useState(false);
   const [isRefreshingDebug, setIsRefreshingDebug] = useState(false);
   const [isRefreshingPrompt, setIsRefreshingPrompt] = useState(false);
+  const [isHoveringVideo, setIsHoveringVideo] = useState(false);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
+  // Photo flash images for hover effect
+  const photoFlashImages = [
+    '/images/u7312621251_illustration_mystical_dotted_texture_vintage_codi_56982ddf-3672-4824-a7f1-2ed1087d46aa_1.png',
+    '/images/u7312621251_illustration_mystical_dotted_texture_vintage_lapt_986094cf-107f-439a-a1e7-2c7adf925acd_3.png',
+    '/images/u7312621251_illustration_mystical_dotted_texture_vintage_lapt_ecd849d2-d83b-4e74-a58b-af2c0ef0d934_2.png',
+    '/images/u7312621251_illustration_mystical_dotted_texture_vintage_lapt_986094cf-107f-439a-a1e7-2c7adf925acd_2.png',
+    '/images/u7312621251_illustration_mystical_dotted_texture_vintage_lapt_d8c92822-62bd-405e-b0d4-a94c6b8b40fd_3.png',
+    '/images/u7312621251_vibe_coding_illustration_mystical_hand_drawn_goau_bf64ab4b-0b72-4ae9-b9a2-43ae80e1187f_1.png',
+    '/images/u7312621251_vibe_coding_illustration_mystical_dappled_texture_b2d820b6-7b39-41cd-aea8-b24b4ce455cc_1.png',
+    '/images/u7312621251_vibe_coding_illustration_mystical_hand_drawn_goau_f005ca2a-d5e4-4944-b662-e36bb0edf123_0.png'
+  ];
 
   const debugCards = [
     {
@@ -59,6 +74,42 @@ export default function Home() {
     {
       bug: "My styles aren't applying",
       solution: "\"The CSS/Tailwind classes I added aren't working. Can you check for typos, conflicting styles, missing imports, or specificity issues and fix them?\""
+    },
+    {
+      bug: "npm install failed or 'Module not found'",
+      solution: "\"I'm getting npm errors. Can you check what dependencies are missing and help me install them?\"\n\nOr try:\n\"Module not found error appeared. Can you fix the imports and install any missing packages?\""
+    },
+    {
+      bug: "Port 3000 is already in use",
+      solution: "\"Port 3000 is already being used. Can you help me either stop the other process or run this on a different port?\""
+    },
+    {
+      bug: "Red underlines everywhere (TypeScript errors)",
+      solution: "\"There are TypeScript errors showing up. Can you fix the type issues without changing the functionality?\"\n\nTip: These often aren't real problems, just type definitions."
+    },
+    {
+      bug: "I made changes but can't see them",
+      solution: "Try these in order:\n1. Hard refresh: Cmd + Shift + R\n2. Restart the server: Ctrl + C then npm run dev\n3. Ask: \"My changes aren't showing up. Can you help me clear the cache and restart everything?\""
+    },
+    {
+      bug: "Cursor is editing the wrong file",
+      solution: "Be more specific:\n\"Make this change in [exact filename] not in any other file.\"\n\nOr:\n\"You made changes in the wrong place. Can you move them to [correct file]?\""
+    },
+    {
+      bug: "How do I save my work?",
+      solution: "Your files auto-save! To create a backup:\n\"Can you help me commit my changes to git with a descriptive message about what I built?\""
+    },
+    {
+      bug: "Cursor deleted something important",
+      solution: "Don't panic! Use Cmd + Z to undo.\n\nIf that doesn't work:\n\"You accidentally deleted some code. Can you restore what was there before the last change?\""
+    },
+    {
+      bug: "My button/animation isn't working",
+      solution: "\"The [button/animation/hover effect] isn't responding. Can you check if the event handlers are connected properly and fix any issues?\""
+    },
+    {
+      bug: "Cursor keeps making the same mistake",
+      solution: "Be more direct:\n\"Stop. You keep doing [specific thing wrong]. Instead, please [exactly what you want].\"\n\nOr start fresh:\n\"Let's approach this differently. Can you [new specific instruction]?\""
     }
   ];
 
@@ -229,6 +280,16 @@ export default function Home() {
     setRandomPrompt(prompts[Math.floor(Math.random() * prompts.length)]);
   }, []);
 
+  // Photo flash animation effect
+  useEffect(() => {
+    if (isHoveringVideo) {
+      const interval = setInterval(() => {
+        setCurrentPhotoIndex((prev) => (prev + 1) % photoFlashImages.length);
+      }, 100); // Change photo every 100ms for rapid flash effect
+      return () => clearInterval(interval);
+    }
+  }, [isHoveringVideo, photoFlashImages.length]);
+
   const handleCopy = () => {
     navigator.clipboard.writeText(randomPrompt.prompt);
     setCopied(true);
@@ -293,36 +354,51 @@ export default function Home() {
               </div>
 
               {/* Original text that fades out on hover */}
-              <div className="flex justify-between items-start relative z-10 transition-all duration-500 group-hover:opacity-0">
-                <h1 className="text-7xl sm:text-7xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-none" style={{ letterSpacing: '-0.035em' }}>
-                  Vibe
-                </h1>
-                <h2 className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl font-light uppercase leading-none" style={{ letterSpacing: '-0.02em' }}>
+              <div className="w-full h-full relative z-10 transition-all duration-500 group-hover:opacity-0" style={{ overflow: 'visible' }}>
+                {/* 101 in top right */}
+                <h2
+                  className="absolute top-0 right-0 text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-light uppercase leading-none z-10"
+                  style={{
+                    letterSpacing: '-0.02em',
+                    fontFamily: '"VVDS Fifties Variable"',
+                    fontWeight: 100,
+                    fontVariationSettings: "'wdth' 100"
+                  }}
+                >
                   101
                 </h2>
+
+                {/* Vibe Coding fills the space */}
+                <div className="h-full w-full">
+                  <DynamicWidthTitle
+                    className="w-full h-full text-white"
+                  >
+                    Vibe coding
+                  </DynamicWidthTitle>
+                </div>
               </div>
-              <h1 className="text-7xl sm:text-8xl md:text-[6rem] lg:text-[8rem] xl:text-[10.5rem] font-light leading-[0.8] relative z-10 transition-all duration-500 group-hover:opacity-0" style={{ letterSpacing: '-0.02em' }}>
-                Coding
-              </h1>
 
               {/* New text that appears on hover */}
               <div className="absolute inset-0 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-700 z-20 p-6 md:p-8">
-                <p className="text-[1.81rem] md:text-[1.73rem] lg:text-[2.06rem] font-light text-left leading-[1.15] text-white w-[75%] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-out" style={{ letterSpacing: '-0.02em' }}>
-                  For designers who want to get set up with Cursor and start making things
+                <p className="text-lg sm:text-lg md:text-xl lg:text-2xl font-light text-left leading-[1.15] text-white w-[75%] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-out" style={{ letterSpacing: '-0.02em' }}>
+                  For designers who want to get set up with cursor and start making things
                 </p>
               </div>
             </motion.div>
 
             {/* Right block - Animated Visual */}
             <motion.div
-              className="col-span-1 md:col-span-6 rounded-3xl overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 relative min-h-[300px] md:min-h-0 order-2 md:order-none"
+              className="col-span-1 md:col-span-6 rounded-3xl overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 relative min-h-[300px] md:min-h-0 order-2 md:order-none group"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
+              onMouseEnter={() => setIsHoveringVideo(true)}
+              onMouseLeave={() => setIsHoveringVideo(false)}
             >
               {/* Video: video-vibe.mp4 */}
               <video
-                className="absolute inset-0 w-full h-full object-cover"
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHoveringVideo ? 'opacity-0' : 'opacity-100'
+                  }`}
                 autoPlay
                 loop
                 muted
@@ -330,6 +406,28 @@ export default function Home() {
               >
                 <source src="/videos/video-vibe.mp4" type="video/mp4" />
               </video>
+
+              {/* Photo flash overlay */}
+              <div
+                className={`absolute inset-0 transition-opacity duration-300 ${isHoveringVideo ? 'opacity-100' : 'opacity-0'
+                  }`}
+              >
+                {photoFlashImages.map((imgPath: string, index: number) => (
+                  <img
+                    key={index}
+                    src={imgPath}
+                    alt=""
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-100 ${index === currentPhotoIndex ? 'opacity-100' : 'opacity-0'
+                      }`}
+                  />
+                ))}
+
+                {/* Optional overlay effect - subtle grid pattern */}
+                <div className="absolute inset-0 opacity-10" style={{
+                  backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                  backgroundSize: '50px 50px'
+                }} />
+              </div>
             </motion.div>
 
             {/* Row 2: All other content in one row */}
@@ -356,7 +454,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#FF6347] to-[#FF5733] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
                 <Link href="/setup" className="w-full h-full flex items-center justify-center p-3 md:p-4 lg:p-6 relative z-10">
-                  <span className="text-center text-lg sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">GET SET UP<br />WITH CURSOR</span>
+                  <span className="text-center text-lg sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">Get set up<br />with cursor</span>
                 </Link>
               </motion.div>
 
@@ -381,7 +479,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#6B7F6A] to-[#8FA68E] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
                 <Link href="/projects" className="w-full h-full flex items-center justify-center p-3 md:p-4 lg:p-6 relative z-10">
-                  <span className="text-center text-lg sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">START A<br />PRACTICE<br />PROJECT</span>
+                  <span className="text-center text-lg sm:text-lg md:text-xl lg:text-2xl uppercase font-light leading-none">Start a<br />practice<br />project</span>
                 </Link>
               </motion.div>
             </div>
@@ -431,7 +529,7 @@ export default function Home() {
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Front of card */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#8FA68E] to-[#6B7F6A] text-white p-3 md:p-4 lg:p-6 flex flex-col cursor-pointer hover:shadow-lg transition-all backface-hidden">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#4d84fa] to-[#1c63f8] text-white p-3 md:p-4 lg:p-6 flex flex-col cursor-pointer hover:shadow-lg transition-all backface-hidden">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xs md:text-sm font-light uppercase">Debug</h3>
                     <div className="flex items-center gap-2">
@@ -443,7 +541,7 @@ export default function Home() {
                         <RefreshCw className={`w-3 h-3 md:w-4 md:h-4 text-white/70 hover:text-white transition-transform ${isRefreshingDebug ? 'animate-spin' : ''}`} />
                       </button>
                       <Link href="/debug" className="text-[10px] md:text-xs opacity-75 hover:opacity-100 transition-opacity uppercase" onClick={(e) => e.stopPropagation()}>
-                        SEE ALL →
+                        See all →
                       </Link>
                     </div>
                   </div>
@@ -457,7 +555,7 @@ export default function Home() {
 
                 {/* Back of card */}
                 <div
-                  className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#8FA68E]/90 to-[#6B7F6A]/90 text-white p-3 md:p-4 lg:p-6 flex flex-col cursor-pointer hover:shadow-lg transition-all"
+                  className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#4d84fa]/90 to-[#1c63f8]/90 text-white p-3 md:p-4 lg:p-6 flex flex-col cursor-pointer hover:shadow-lg transition-all"
                   style={{
                     transform: "rotateY(180deg)",
                     backfaceVisibility: "hidden"
@@ -506,9 +604,9 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Prompt showcase - Beige Ivory */}
+            {/* Prompt showcase - Pure White */}
             <motion.div
-              className="col-span-1 md:col-span-4 rounded-3xl bg-[#F5F0E8] text-black p-3 md:p-4 lg:p-6 flex flex-col relative overflow-hidden min-h-[250px] md:min-h-0 order-5 md:order-none"
+              className="col-span-1 md:col-span-4 rounded-3xl bg-white text-black p-3 md:p-4 lg:p-6 flex flex-col relative overflow-hidden min-h-[250px] md:min-h-0 order-5 md:order-none"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -523,7 +621,7 @@ export default function Home() {
               </div>
 
               <div className="flex items-center justify-between mb-2 relative">
-                <h3 className="text-xs md:text-sm font-light uppercase">Ready-to-Use Prompt</h3>
+                <h3 className="text-xs md:text-sm font-light uppercase">Ready-to-use prompt</h3>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={refreshPrompt}
@@ -533,7 +631,7 @@ export default function Home() {
                     <RefreshCw className={`w-3 h-3 md:w-4 md:h-4 text-black/70 hover:text-black transition-transform ${isRefreshingPrompt ? 'animate-spin' : ''}`} />
                   </button>
                   <Link href="/prompts" className="text-[10px] md:text-xs opacity-75 hover:opacity-100 transition-opacity uppercase">
-                    SEE ALL →
+                    See all →
                   </Link>
                 </div>
               </div>

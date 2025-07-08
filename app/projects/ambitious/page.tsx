@@ -119,10 +119,10 @@ Or just ask Cursor to use a Google Font by name!`
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <Badge className="mb-4" variant="secondary">
+            <Badge className="mb-4 bg-orange-100 text-orange-700 border-orange-200" variant="secondary">
               Beginner 2.0
             </Badge>
-            <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
+            <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
               Create a responsive portfolio grid
             </h1>
             <p className="text-black mb-8">
@@ -188,7 +188,7 @@ Or just ask Cursor to use a Google Font by name!`
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                   className="h-full"
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-blue' : 'bg-white'
+                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-orange' : 'bg-white'
                     }`}
                     onClick={() => toggleStep(index)}
                   >
@@ -280,7 +280,7 @@ Or just ask Cursor to use a Google Font by name!`
             transition={{ delay: 0.4, duration: 0.5 }}
             className="mt-12"
           >
-            <Card className="p-8 border-0 rounded-3xl bg-gradient-to-r from-cyan-50 to-blue-50">
+            <Card className="p-8 border-0 rounded-3xl bg-gradient-to-r from-orange-50 to-amber-50">
               <div className="space-y-4">
                 <h2 className="text-3xl font-light">View your site locally in the browser</h2>
 

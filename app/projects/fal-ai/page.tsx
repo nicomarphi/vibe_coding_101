@@ -126,11 +126,11 @@ Browse Google Fonts or your favorite font sites for something that feels magical
                         transition={{ duration: 0.5 }}
                         className="max-w-4xl"
                     >
-                        <Badge className="mb-4" variant="secondary">
+                        <Badge className="mb-4 bg-red-100 text-red-700 border-red-200" variant="secondary">
                             Level Up
                         </Badge>
-                        <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-                            Build an AI fortune teller app
+                        <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
+                            Build an ai fortune teller app
                         </h1>
                         <p className="text-lg sm:text-xl text-black mb-4">
                             Create a mystical app powered by AI
@@ -194,7 +194,7 @@ Browse Google Fonts or your favorite font sites for something that feels magical
                                     transition={{ delay: index * 0.05, duration: 0.5 }}
                                     className="h-full"
                                 >
-                                    <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-blue' : 'bg-white'
+                                    <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-red' : 'bg-white'
                                         }`}
                                         onClick={() => toggleStep(index)}
                                     >
@@ -309,7 +309,7 @@ Browse Google Fonts or your favorite font sites for something that feels magical
                         transition={{ delay: 0.3, duration: 0.5 }}
                         className="mt-8 sm:mt-12"
                     >
-                        <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-purple-50">
+                        <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-red-50">
                             <h3 className="text-xl sm:text-2xl font-light mb-4">Bonus Tip: Test Your API Key</h3>
                             <p className="text-sm sm:text-base text-black">
                                 If the request doesn't work, double-check that your .env.local file is correctly formatted, and make sure the key name matches in both your file and the code.
@@ -324,7 +324,7 @@ Browse Google Fonts or your favorite font sites for something that feels magical
                         transition={{ delay: 0.4, duration: 0.5 }}
                         className="mt-8 sm:mt-12"
                     >
-                        <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-purple-50 to-pink-50">
+                        <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-red-50 to-orange-50">
                             <div className="space-y-4">
                                 <h2 className="text-2xl sm:text-3xl font-light">View your fortune teller in the browser</h2>
 
