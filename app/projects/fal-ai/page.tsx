@@ -71,16 +71,16 @@ Ready to build something magical? Let's go!`,
         },
         {
             title: "Add a mystical font",
-            prompt: `Apply a mystical font to enhance the fortune teller theme. Use a Google Font like "Cinzel" for an ancient feel, or "Playfair Display" for elegance. Apply it to the title and fortune text. Set appropriate fallback fonts.`,
+            prompt: `Apply the custom font that's in the public folder to enhance the fortune teller theme. Use it for the main title and fortune text to make them feel magical. Set appropriate fallback fonts for when the custom font is loading.`,
             tip: "The right font makes it feel authentic",
-            note: `Want to use your own font file instead?
+            note: `How to add your font file:
 1. Download a mystical font (.woff, .woff2, or .ttf) 
 2. In Cursor's file explorer (left sidebar), find the "public" folder
 3. Drag your font file directly into the "public" folder
 4. Note your font filename (e.g., "MysticalFont.woff")
-5. Then copy the prompt above and mention your font filename
+5. Then copy the prompt above - Cursor will find and use your font
 
-Google Fonts suggestions: Cinzel, Playfair Display, Crimson Text, or Almendra`
+Browse Google Fonts or your favorite font sites for something that feels magical!`
         },
         {
             title: "Get your Fal.ai API key",
