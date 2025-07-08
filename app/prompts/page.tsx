@@ -18,9 +18,9 @@ export default function PromptsPage() {
 
     const generalTips = [
         {
-            title: "Use ChatGPT or Claude as Your Product Manager",
-            description: "For complex projects, use ChatGPT, Claude, or any AI chat to plan things out first. Ask it to help you break down your idea into features, create a project roadmap, or describe who will use your app and what they'll do. It's like having a product manager to organize your thoughts before you start coding.",
-            example: "Try: 'I want to build a recipe sharing app. Can you help me plan out the key features and pages I'll need?'"
+            title: "Let Cursor Be Your Product Manager",
+            description: "With Cursor's latest update, the AI agent can now handle task planning and product development directly. Just describe your project idea and ask Cursor to break it down into features, create a roadmap, or plan the architecture. It can manage the entire development process from planning to implementation.",
+            example: "Try: 'I want to build a recipe sharing app. Can you help me plan out the key features and pages I'll need, then build it step by step?'"
         },
         {
             title: "Start with the Structure",

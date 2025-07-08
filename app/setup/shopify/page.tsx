@@ -53,7 +53,7 @@ export default function ShopifySetupPage() {
         title: string;
         description: string;
         content: (string | React.ReactElement)[];
-        note?: string;
+        note?: string | React.ReactElement;
     }> = [
             {
                 title: "Install Cursor via Okta",
@@ -68,56 +68,60 @@ export default function ShopifySetupPage() {
                 note: "Do NOT download Cursor from cursor.sh - always use Okta for Shopify devices"
             },
             {
-                title: "Start Your First Project",
-                description: "Create a new project in Cursor",
+                title: "Enable Agent Mode",
+                description: "So Cursor can run full prompts",
                 content: [
-                    "Click 'Open project' in the Cursor welcome screen (folder icon)",
-                    "Navigate to your home directory and create a 'personal-projects' folder",
-                    "Inside that, create a subfolder for your project (e.g., 'my-first-vibe')",
-                    "Select the folder and click 'Open'",
-                    "Create your first file by clicking the + icon in the file explorer"
+                    "Open Cursor",
+                    "Press Cmd + L to open the Chat panel",
+                    "At the bottom of the chat window, open the model dropdown (it might say GPT-4)",
+                    "Choose the latest Claude model"
+                ]
+            },
+            {
+                title: "Turn On Format on Save",
+                description: "Cleaner code, automatically",
+                content: [
+                    "Press Cmd + , (comma) to open Settings",
+                    "In the search bar, type \"format on save\"",
+                    "Check the box when you find it",
+                    "Close the Settings tab"
+                ]
+            },
+            {
+                title: "Learn Some Shortcuts",
+                description: "These will save you time as you build:",
+                content: [
+                    "Cmd + K — Open Composer (for in-file edits)",
+                    "Cmd + L — Open the AI chat panel (for conversations and full project prompts)",
+                    "Cmd + P — Open files",
+                    "Cmd + Shift + F — Search across files",
+                    "Tab — Accept Cursor's code suggestions"
+                ]
+            },
+            {
+                title: "Set Up Your Code Environment",
+                description: "Install everything you need to build",
+                content: [
+                    "In Cursor, go to File → Open Folder and select your vibe-coding folder (or create it in your home directory)",
+                    "Press Cmd + L to open the Chat panel",
+                    "Paste this prompt in the chat:",
+                    <span key="3" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">"Install Node.js on my system. Then create a new Next.js project called 'vibe-starter' with TypeScript and Tailwind CSS. Set up the project with App Router, and install Framer Motion for animations. Configure Tailwind CSS properly and create a clean folder structure."</span>,
+                    "Cursor will install Node.js and create your project",
+                    "Wait for everything to finish installing"
                 ],
-                note: "Pro tip: Keep personal projects separate from Shopify work"
+                note: "This takes 5-10 minutes. Cursor will install Node.js, then all the packages. Watch the terminal for progress."
             },
             {
-                title: "Organize Multiple Projects",
-                description: "Keep your vibe coding organized",
+                title: "Test Your Setup",
+                description: "Make sure everything works",
                 content: [
-                    "Use your 'personal-projects' folder for all personal work",
-                    "Create descriptive project names (e.g., 'todo-app', 'portfolio-site')",
-                    "Use File → Open Recent to quickly switch between projects",
-                    "Consider using version control (Git) for important projects",
-                    "Keep learning projects separate from production code"
-                ]
-            },
-            {
-                title: "Learn the AI Features",
-                description: "Key Cursor features for vibe coding",
-                content: [
-                    "Chat (Cmd+L) - Ask questions and get code help in plain language",
-                    "Commands (Cmd+K) - Type /edit to change code, /explain to understand it",
-                    "Natural language search (Cmd+Shift+O) - Search code using regular words",
-                    "AI suggestions - Get smart code completions as you type"
-                ]
-            },
-            {
-                title: "Privacy & Data Rules",
-                description: "Keep Shopify data safe",
-                content: [
-                    "Never share merchant, partner, or buyer data with Cursor",
-                    "Be mindful of what Shopify code you share with Cursor's AI",
-                    "Cursor is approved for Shopify development work",
-                    "Use fake/sample data when working with sensitive information"
-                ]
-            },
-            {
-                title: "Best Practices for Beginners",
-                description: "Tips for effective vibe coding",
-                content: [
-                    "Focus on describing what you want, not how to code it",
-                    "Be specific - 'Make a blue button' is better than 'Make a button'",
-                    "Try multiple times - refine your prompts if the first result isn't perfect",
-                    "Always review what Cursor creates before running it"
+                    "Open Terminal (Cmd + Space, type \"Terminal\", press Enter)",
+                    "Navigate to your project:",
+                    <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">cd ~/vibe-coding/vibe-starter</span>,
+                    "Start the development server:",
+                    <span key="4" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">npm run dev</span>,
+                    "Open http://localhost:3000 in your browser",
+                    "You should see the Next.js welcome page!"
                 ]
             },
             {
@@ -129,6 +133,17 @@ export default function ShopifySetupPage() {
                     <span key="2">Review the <a href="https://vault.shopify.io/pages/Security-Awareness/Approved-Tools" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Shopify Approved Tools</a> page</span>,
                     "Ask your manager if you're unsure about any usage"
                 ]
+            },
+            {
+                title: "Privacy & Data Rules",
+                description: "Keep Shopify data safe",
+                content: [
+                    "Never share merchant, partner, or buyer data with Cursor",
+                    "Be mindful of what Shopify code you share with Cursor's AI",
+                    "Cursor is approved for Shopify development work",
+                    "Use fake/sample data when working with sensitive information"
+                ],
+                note: "Critical: Keep vibe coding projects in your home directory, not in Shopify repos"
             }
         ];
 
@@ -215,10 +230,10 @@ export default function ShopifySetupPage() {
                         </Link>
 
                         <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
-                            Cursor setup for Shopify
+                            Get set up, Shopifolk
                         </h1>
                         <p className="text-lg sm:text-xl text-black">
-                            Follow these specific guidelines to use Cursor safely and in compliance with Shopify policies.
+                            Follow these steps to set up Cursor in compliance with Shopify policies. Setup takes about 15-20 minutes.
                         </p>
                     </motion.div>
                 </div>
@@ -262,7 +277,7 @@ export default function ShopifySetupPage() {
                                                 {step.content.map((item, i) => (
                                                     <li key={i} className="flex items-start">
                                                         <span className="mr-2">•</span>
-                                                        <span className={`${isCompleted ? '[&_a]:text-white [&_a]:underline' : ''}`}>
+                                                        <span className={`${isCompleted ? '[&_a]:text-white [&_a]:underline [&_.font-mono]:bg-white/20 [&_.font-mono]:text-white [&_.font-mono]:border-white/30' : '[&_.font-mono]:bg-gray-100 [&_.font-mono]:text-black [&_.font-mono]:border-gray-300'} [&_.font-mono]:block [&_.font-mono]:w-full [&_.font-mono]:mt-2 [&_.font-mono]:mb-2 [&_.font-mono]:border [&_.font-mono]:rounded`}>
                                                             {item}
                                                         </span>
                                                     </li>
@@ -271,11 +286,8 @@ export default function ShopifySetupPage() {
 
                                             {/* Note section if present */}
                                             {step.note && (
-                                                <div className={`mt-4 p-3 rounded-lg ${index === 0
-                                                    ? (isCompleted ? 'bg-white/20 text-white' : 'bg-orange-50 text-orange-900')
-                                                    : (isCompleted ? 'bg-white/20 text-white' : 'bg-green-50 text-green-900')
-                                                    }`}>
-                                                    <p className="text-sm font-medium">{step.note}</p>
+                                                <div className={`mt-4 p-3 rounded-lg ${isCompleted ? 'bg-white/20 text-white' : 'bg-orange-50 text-orange-900'}`}>
+                                                    <div className="text-sm font-medium">{step.note}</div>
                                                 </div>
                                             )}
 
@@ -299,22 +311,7 @@ export default function ShopifySetupPage() {
                         })}
                     </div>
 
-                    {/* Important Notice */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4, duration: 0.5 }}
-                        className="mt-12"
-                    >
-                        <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-blue-50 to-indigo-50">
-                            <h2 className="text-xl sm:text-2xl font-light mb-4">Remember</h2>
-                            <ul className="space-y-2 text-sm sm:text-base text-black">
-                                <li>• Cursor is approved for Shopify code when installed via Okta</li>
-                                <li>• Perfect for getting familiar with vibe coding, learning and prototyping</li>
-                                <li>• Never share merchant, partner, or buyer data with the AI</li>
-                            </ul>
-                        </Card>
-                    </motion.div>
+
                 </div>
             </section>
         </div>

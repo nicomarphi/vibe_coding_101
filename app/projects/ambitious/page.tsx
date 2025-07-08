@@ -54,7 +54,7 @@ Have your images ready on your desktop or in a folder - we'll add them to your p
     },
     {
       title: "Set up your layout and grid",
-      prompt: `Create a new Next.js project called "my-portfolio-grid" with TypeScript and Tailwind CSS. Create a responsive image grid layout. At the top, add a heading that says "My Visual Journey" (I'll replace this with my own title later). Below that, build a grid with six image placeholders. The grid should be 1 column on mobile, 2 on tablet, and 3 on desktop. Each item should have a 16:9 aspect ratio, a light border, subtle rounding, and a small hover shadow.`,
+      prompt: `Create a new Next.js project called "my-portfolio-grid" with TypeScript and Tailwind CSS. Create a responsive image grid layout. At the top, add a heading that says "Eye Candy" (I'll replace this with my own title later). Below that, build a grid with six image placeholders. The grid should be 1 column on mobile, 2 on tablet, and 3 on desktop. Each item should have a 16:9 aspect ratio, a light border, subtle rounding, and a small hover shadow.`,
       tip: "Start with the structure, then add images"
     },
     {

@@ -37,7 +37,7 @@ export default function SetupPage() {
     title: string;
     description: string;
     content: (string | React.ReactElement)[];
-    note?: string;
+    note?: string | React.ReactElement;
   }> = [
       {
         title: "Install Cursor",
@@ -48,28 +48,16 @@ export default function SetupPage() {
           "Open your Downloads folder and double-click the installer",
           "Drag Cursor into your Applications folder"
         ],
-        note: "Shopifolk? Get set up on the link above"
-      },
-      {
-        title: "Start a New Practice Project Using Composer",
-        description: "Let Cursor build your folder and files for you",
-        content: [
-          "Open Cursor",
-          "Press Cmd + K to open the Composer",
-          "Paste this prompt:",
-          <span key="3" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">"Create a folder called 'vibe_101'. Inside, add an index.html file, a CSS folder, and a JS folder."</span>,
-          "Cursor will generate the project structure and files",
-          "Once it's created, you're ready to start prompting"
-        ]
+        note: <span key="note-shopify">Shopifolk? <Link href="/setup/shopify" className="underline hover:no-underline">Get set up here</Link></span>
       },
       {
         title: "Enable Agent Mode",
         description: "So Cursor can run full prompts",
         content: [
+          "Open Cursor",
           "Press Cmd + L to open the Chat panel",
-          "At the top of the panel, open the model dropdown (it might say GPT-4)",
-          "Choose the latest Claude model (Claude 3.5 Sonnet or Claude 3 Opus)",
-          "Find the Agent toggle in the top right and turn it on (it should light up)"
+          "At the bottom of the chat window, open the model dropdown (it might say GPT-4)",
+          "Choose the latest Claude model"
         ]
       },
       {
@@ -83,27 +71,40 @@ export default function SetupPage() {
         ]
       },
       {
-        title: "Know Your Shortcuts",
+        title: "Learn Some Shortcuts",
         description: "These will save you time as you build:",
         content: [
-          "Cmd + K — Open Composer for natural language prompting",
-          "Cmd + L — Open the AI chat panel",
+          "Cmd + K — Open Composer (for in-file edits)",
+          "Cmd + L — Open the AI chat panel (for conversations and full project prompts)",
           "Cmd + P — Open files",
           "Cmd + Shift + F — Search across files",
           "Tab — Accept Cursor's code suggestions"
         ]
       },
       {
-        title: "View Your Site Locally in the Browser",
-        description: "Check your work in a browser",
+        title: "Set Up Your Code Environment",
+        description: "Install everything you need to build",
         content: [
-          "Press Cmd + Space, type \"Terminal\", and hit Enter",
-          "Navigate to your project folder:",
-          <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">cd vibe_101</span>,
-          "Start the dev server:",
+          "In Cursor, go to File → Open Folder and select where you want to create your project (like your Desktop or Documents folder)",
+          "Press Cmd + L to open the Chat panel",
+          "Paste this prompt in the chat:",
+          <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">"Install Node.js on my system. Then create a new Next.js project called 'vibe-starter' with TypeScript and Tailwind CSS. Set up the project with App Router, and install Framer Motion for animations. Configure Tailwind CSS properly and create a clean folder structure."</span>,
+          "Cursor will install Node.js and create your project",
+          "Wait for everything to finish installing"
+        ],
+        note: "This takes 5-10 minutes. Cursor will install Node.js, then all the packages. Watch the terminal for progress."
+      },
+      {
+        title: "Test Your Setup",
+        description: "Make sure everything works",
+        content: [
+          "Open Terminal (Cmd + Space, type \"Terminal\", press Enter)",
+          "Navigate to where you created your project:",
+          <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">cd vibe-starter</span>,
+          "Start the development server:",
           <span key="4" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">npm run dev</span>,
-          "Open your browser and go to http://localhost:3000",
-          <span key="6" className="text-sm italic">Tip: If the page is blank or throws an error, Cursor might still be finishing something. Refresh after a few seconds or check the Debug section for help.</span>
+          "Open http://localhost:3000 in your browser",
+          "You should see the Next.js welcome page!"
         ]
       }
     ];
@@ -158,22 +159,11 @@ export default function SetupPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            {/* Shopify Employee Link */}
-            <div className="mb-6">
-              <Link
-                href="/setup/shopify"
-                className="inline-flex items-center gap-2 text-sm text-black hover:underline"
-              >
-                <span className="text-black">Shopifolk?</span>
-                <span className="text-black">→</span>
-              </Link>
-            </div>
-
             <h1 className="mb-2" style={{ letterSpacing: '-0.04em' }}>
               Set up Cursor
             </h1>
             <p className="text-lg sm:text-xl text-black">
-              Let's get your system ready for vibe coding with Cursor. This will only take a few minutes.
+              Let's get your system ready for vibe coding with Cursor. This takes about 15-20 minutes including all installations.
             </p>
           </motion.div>
         </div>

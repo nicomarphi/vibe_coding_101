@@ -59,7 +59,7 @@ Ready? Let's build something beautiful!`,
       },
       {
         title: "Give Cursor context",
-        prompt: `Create a new Next.js project called "my-first-page" with TypeScript and Tailwind CSS. I'm building a beginner front-end page using Next.js.
+        prompt: `Create a new Next.js project called "my-first-page" with TypeScript and Tailwind CSS.
 It should include Tailwind CSS for styling and Framer Motion for animation.
 The layout should be centered, with a custom font, a large headline, and a button.
 Keep the design clean, modern, and responsive.`,
