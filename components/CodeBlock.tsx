@@ -24,21 +24,21 @@ export default function CodeBlock({ code, className = "", inline = false }: Code
         return <span className={`font-mono bg-gray-100 px-1 py-0.5 rounded text-xs ${className}`}>{code}</span>;
     }
 
-    // Block code with copy button
+    // Block code with copy button - matching debug section style
     return (
-        <div className="relative group">
-            <span className={`font-mono bg-gray-100 px-2 py-1 rounded block pr-10 ${className}`}>
+        <div className="bg-white/50 rounded-lg p-2 sm:p-3 border border-gray-200 group relative w-full">
+            <p className={`text-xs sm:text-sm font-mono pr-8 sm:pr-10 break-words ${className}`}>
                 {code}
-            </span>
+            </p>
             <button
                 onClick={handleCopy}
-                className="absolute top-1/2 right-2 -translate-y-1/2 p-1 rounded opacity-0 group-hover:opacity-100 hover:bg-gray-200 transition-all"
+                className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 p-1 rounded hover:bg-gray-100 transition-colors"
                 title="Copy code"
             >
                 {copied ? (
-                    <Check className="w-3 h-3 text-green-600" />
+                    <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                 ) : (
-                    <Copy className="w-3 h-3 text-gray-600" />
+                    <Copy className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
                 )}
             </button>
         </div>
