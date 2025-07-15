@@ -96,6 +96,21 @@ export default function ShopifySetupPage() {
         note: "⚠️ Never download Cursor from cursor.sh—always use Okta for Shopify devices",
       },
       {
+        title: "Configure Cursor",
+        description: "Essential settings",
+        content: [
+          <span key="37">
+            Install cursor command: <CodeBlock code="Cmd+Shift+P" inline /> → type "Shell Command: Install 'cursor' command" → click it
+          </span>,
+          <span key="38">
+            Enable format on save: <CodeBlock code="Cmd+," inline /> → search "format on save" → toggle on
+          </span>,
+          <span key="39">
+            Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
+          </span>,
+        ],
+      },
+      {
         title: "Install Node.js",
         description: "Required to run your apps",
         content: [
@@ -122,21 +137,6 @@ export default function ShopifySetupPage() {
           </span>,
         ],
         note: "⚠️ If installation fails, don't retry—ask your manager or a developer for help",
-      },
-      {
-        title: "Configure Cursor",
-        description: "Essential settings",
-        content: [
-          <span key="37">
-            Install shell command: <CodeBlock code="Cmd+Shift+P" inline /> → type "Shell Command"
-          </span>,
-          <span key="38">
-            Enable format on save: <CodeBlock code="Cmd+," inline /> → search "format on save" → toggle on
-          </span>,
-          <span key="39">
-            Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
-          </span>,
-        ],
       },
       {
         title: "Set Up Your Workspace",

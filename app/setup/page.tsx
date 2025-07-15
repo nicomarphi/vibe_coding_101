@@ -52,6 +52,21 @@ export default function SetupPage() {
         note: <span key="note-shopify">Shopifolk? <Link href="/setup/shopify" className="underline hover:no-underline">Get set up here</Link></span>
       },
       {
+        title: "Configure Cursor",
+        description: "Essential settings",
+        content: [
+          <span key="37">
+            Install cursor command: <CodeBlock code="Cmd+Shift+P" inline /> → type "Shell Command: Install 'cursor' command" → click it
+          </span>,
+          <span key="38">
+            Enable format on save: <CodeBlock code="Cmd+," inline /> → search "format on save" → toggle on
+          </span>,
+          <span key="39">
+            Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
+          </span>,
+        ],
+      },
+      {
         title: "Install Node.js",
         description: "Required to run your apps",
         content: [
@@ -96,21 +111,6 @@ export default function SetupPage() {
           </span>,
         ],
         note: "Keep each project in its own folder—agents create many files!",
-      },
-      {
-        title: "Configure Cursor",
-        description: "Essential settings",
-        content: [
-          <span key="37">
-            Install shell command: <CodeBlock code="Cmd+Shift+P" inline /> → type "Shell Command" → Install
-          </span>,
-          <span key="38">
-            Enable format on save: <CodeBlock code="Cmd+," inline /> → search "format on save" → toggle on
-          </span>,
-          <span key="39">
-            Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
-          </span>,
-        ],
       },
       {
         title: "Using AI Agents",
