@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import confetti from "canvas-confetti";
+import CodeBlock from "@/components/CodeBlock";
 
 export default function SetupPage() {
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -88,7 +89,12 @@ export default function SetupPage() {
           "In Cursor, go to File → Open Folder and select where you want to create your project (like your Desktop or Documents folder)",
           "Press Cmd + L to open the Chat panel",
           "Paste this prompt in the chat:",
-          <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">"Install Node.js on my system. Then create a new Next.js project called 'vibe-starter' with TypeScript and Tailwind CSS. Set up the project with App Router, and install Framer Motion for animations. Configure Tailwind CSS properly and create a clean folder structure."</span>,
+          <div key="2">
+            <CodeBlock
+              code="Install Node.js on my system. Then create a new Next.js project called 'vibe-starter' with TypeScript and Tailwind CSS. Set up the project with App Router, and install Framer Motion for animations. Configure Tailwind CSS properly and create a clean folder structure."
+              className="text-sm"
+            />
+          </div>,
           "Cursor will install Node.js and create your project",
           "Wait for everything to finish installing"
         ],
@@ -100,9 +106,9 @@ export default function SetupPage() {
         content: [
           "Open Terminal (Cmd + Space, type \"Terminal\", press Enter)",
           "Navigate to where you created your project:",
-          <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">cd vibe-starter</span>,
+          <CodeBlock code="cd vibe-starter" inline className="text-sm" />,
           "Start the development server:",
-          <span key="4" className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">npm run dev</span>,
+          <CodeBlock code="npm run dev" inline className="text-sm" />,
           "Open http://localhost:3000 in your browser",
           "You should see the Next.js welcome page!"
         ]

@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import confetti from "canvas-confetti";
+import CodeBlock from "@/components/CodeBlock";
 
 export default function ShopifySetupPage() {
   const [password, setPassword] = useState("");
@@ -65,30 +66,24 @@ export default function ShopifySetupPage() {
         description: "Required to run your apps",
         content: [
           <span key="30">
-            Check if Node is already installed by typing in Terminal:
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm inline-block ml-2">
-              node -v
-            </span>
+            Check if Node is already installed by typing in Terminal: <CodeBlock code="node -v" inline />
           </span>,
           "If you see a version number, skip to the next card. If not, continue below.",
           <span key="36">
             Install <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Homebrew</a> by pasting this in Terminal:
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-xs block mt-2 mb-2 break-all overflow-x-auto">
-              /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            </span>
+            <div className="mt-2 mb-2">
+              <CodeBlock
+                code='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+                className="text-xs break-all overflow-x-auto"
+              />
+            </div>
           </span>,
           "Press Enter and wait for installation (you'll need your password)",
           <span key="37">
-            After Homebrew installs, run:
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm inline-block ml-2">
-              brew install node
-            </span>
+            After Homebrew installs, run: <CodeBlock code="brew install node" inline />
           </span>,
           <span key="38">
-            Verify by running:
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm inline-block ml-2">
-              node -v
-            </span>
+            Verify by running: <CodeBlock code="node -v" inline />
           </span>,
         ],
         note: "⚠️ If installation fails, don't retry—ask your manager or a developer for help",
@@ -136,10 +131,10 @@ export default function ShopifySetupPage() {
         description: "Essential settings",
         content: [
           <span key="37">
-            Install shell command: <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+Shift+P</span> → type "Shell Command"
+            Install shell command: <CodeBlock code="Cmd+Shift+P" inline /> → type "Shell Command"
           </span>,
           <span key="38">
-            Enable format on save: <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+,</span> → search "format on save" → toggle on
+            Enable format on save: <CodeBlock code="Cmd+," inline /> → search "format on save" → toggle on
           </span>,
           <span key="39">
             Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
@@ -151,10 +146,10 @@ export default function ShopifySetupPage() {
         description: "Let Cursor write and implement code for you",
         content: [
           <span key="37">
-            <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+I</span> → Agent mode (implements code)
+            <CodeBlock code="Cmd+I" inline /> → Agent mode (implements code)
           </span>,
           <span key="38">
-            <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+L</span> → Chat mode (answers questions)
+            <CodeBlock code="Cmd+L" inline /> → Chat mode (answers questions)
           </span>,
           "Select the Claude model with the 🧠 icon for best results",
           <span key="39">
@@ -172,16 +167,19 @@ export default function ShopifySetupPage() {
         title: "Your First Project",
         description: "Build something real",
         content: [
-          <span key="1">Open Agent mode (<span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+I</span>) and paste:</span>,
-          <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-xs block overflow-x-auto">
-            Create a Next.js app with JavaScript and Tailwind CSS. Use App Router, install GSAP for animations. Run the dev server when done.
-          </span>,
+          <span key="1">Open Agent mode (<CodeBlock code="Cmd+I" inline />) and paste:</span>,
+          <div key="2">
+            <CodeBlock
+              code="Create a Next.js app with JavaScript and Tailwind CSS. Use App Router, install GSAP for animations. Run the dev server when done."
+              className="text-xs overflow-x-auto"
+            />
+          </div>,
           "Wait for the setup to complete, then visit http://localhost:3000",
           <span key="3">
             Server controls:
             <ul className="ml-4 mt-1 text-sm">
-              <li>• <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Ctrl+C</span> → stop server</li>
-              <li>• <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">npm run dev</span> → restart server</li>
+              <li>• <CodeBlock code="Ctrl+C" inline /> → stop server</li>
+              <li>• <CodeBlock code="npm run dev" inline /> → restart server</li>
             </ul>
           </span>,
         ],
@@ -192,11 +190,11 @@ export default function ShopifySetupPage() {
         description: "Help Claude understand your needs",
         content: [
           <span key="37">
-            Reference files with <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">@filename</span> or drag & drop
+            Reference files with <CodeBlock code="@filename" inline /> or drag & drop
           </span>,
           "Add screenshots or mockups for Claude to replicate",
           <span key="38">
-            Try this: Create hello.txt → write "hello world" → use <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">@hello.txt</span> to reference it
+            Try this: Create hello.txt → write "hello world" → use <CodeBlock code="@hello.txt" inline /> to reference it
           </span>,
           "💡 Write complex prompts in .txt files instead of the chat box",
         ],
@@ -206,13 +204,13 @@ export default function ShopifySetupPage() {
         title: "Essential Shortcuts",
         description: "Speed up your workflow",
         content: [
-          <span key="1"><span className="font-mono text-sm">Cmd+K</span> → Edit code in-file</span>,
-          <span key="2"><span className="font-mono text-sm">Cmd+L</span> → Chat with AI</span>,
-          <span key="3"><span className="font-mono text-sm">Cmd+I</span> → Agent mode</span>,
-          <span key="4"><span className="font-mono text-sm">Cmd+P</span> → Find files</span>,
-          <span key="5"><span className="font-mono text-sm">Tab</span> → Accept suggestions</span>,
-          <span key="6"><span className="font-mono text-sm">Shift+Cmd+`</span> → Terminal</span>,
-          <span key="7"><span className="font-mono text-sm">Ctrl+C</span> → Stop server (in terminal)</span>,
+          <span key="1"><CodeBlock code="Cmd+K" inline className="text-sm" /> → Edit code in-file</span>,
+          <span key="2"><CodeBlock code="Cmd+L" inline className="text-sm" /> → Chat with AI</span>,
+          <span key="3"><CodeBlock code="Cmd+I" inline className="text-sm" /> → Agent mode</span>,
+          <span key="4"><CodeBlock code="Cmd+P" inline className="text-sm" /> → Find files</span>,
+          <span key="5"><CodeBlock code="Tab" inline className="text-sm" /> → Accept suggestions</span>,
+          <span key="6"><CodeBlock code="Shift+Cmd+`" inline className="text-sm" /> → Terminal</span>,
+          <span key="7"><CodeBlock code="Ctrl+C" inline className="text-sm" /> → Stop server (in terminal)</span>,
         ],
       },
 
