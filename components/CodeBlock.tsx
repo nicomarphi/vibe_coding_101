@@ -24,25 +24,23 @@ export default function CodeBlock({ code, className = "", inline = false }: Code
         return <span className={`font-mono bg-gray-100 px-1 py-0.5 rounded text-xs ${className}`}>{code}</span>;
     }
 
-    // Block code with copy button
+    // Block code with copy button - minimal style
     return (
-        <div className="mb-2 sm:mb-3 w-full">
-            <div className="bg-gray-50 rounded-lg p-2 sm:p-3 group relative w-full">
-                <p className={`text-xs sm:text-sm font-mono pr-8 sm:pr-10 break-words ${className}`}>
-                    {code}
-                </p>
-                <button
-                    onClick={handleCopy}
-                    className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 p-1 rounded hover:bg-gray-200 transition-colors"
-                    title="Copy code"
-                >
-                    {copied ? (
-                        <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
-                    ) : (
-                        <Copy className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" />
-                    )}
-                </button>
-            </div>
+        <div className="relative group inline-block w-full mb-2">
+            <code className={`font-mono text-xs sm:text-sm bg-gray-100 px-3 py-2 rounded block w-full pr-12 ${className}`}>
+                {code}
+            </code>
+            <button
+                onClick={handleCopy}
+                className="absolute top-1/2 right-2 -translate-y-1/2 p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                title="Copy code"
+            >
+                {copied ? (
+                    <Check className="w-4 h-4 text-green-600" />
+                ) : (
+                    <Copy className="w-4 h-4 text-gray-600" />
+                )}
+            </button>
         </div>
     );
 } 
