@@ -61,277 +61,158 @@ export default function ShopifySetupPage() {
     note?: string | React.ReactElement;
   }> = [
       {
-        title: "Set Up Your Code Environment",
-        description: "What you need to build",
+        title: "Install Node.js",
+        description: "Required to run your apps",
         content: [
-          "If you know for sure you have Node already installed, you can go to the next step.",
-          <span key="31">
-            If you think but aren't sure, open up the Terminal app, type the
-            following line and hit enter
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
+          <span key="30">
+            Check if Node is already installed by typing in Terminal:
+            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm inline-block ml-2">
               node -v
             </span>
-            If the terminal returns a version, you're all set !
           </span>,
-          <span key="32">
-            If you're still there, we will install Node.js. Node is a tool for you
-            to run javaScript code on your computer. It will be useful later to
-            run apps and spin websites.
-            <span
-              key="34"
-              className="font-mono bg-orange-200 px-2 py-1 rounded text-sm"
-            >
-              This might take a while, don't do this in a rush and do not close
-              the terminal unless there is a clear error.
+          "If you see a version number, skip to the next card. If not, continue below.",
+          <span key="36">
+            Install <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Homebrew</a> by pasting this in Terminal:
+            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-xs block mt-2 mb-2 break-all overflow-x-auto">
+              /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
             </span>
           </span>,
-          <span key="36">
-            First install{" "}
-            <a
-              href="https://brew.sh/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:no-underline"
-            >
-              Homebrew
-            </a>{" "}
-            by pasting the Install Homebrew command at the top of the page in your
-            Terminal app.
-          </span>,
-          <span key="36">
-            Once it's done, you can hit
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              cmd + k
-            </span>
-            to clear the terminal, and then type
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
+          "Press Enter and wait for installation (you'll need your password)",
+          <span key="37">
+            After Homebrew installs, run:
+            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm inline-block ml-2">
               brew install node
             </span>
           </span>,
-          "Wait for everything to finish installing",
-          <span key="37">
-            Once it's done, you can hit
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              cmd + k
-            </span>
-            again and then type
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
+          <span key="38">
+            Verify by running:
+            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm inline-block ml-2">
               node -v
             </span>
-            If the terminal returns a version, you're all set !
           </span>,
         ],
-        note: "If the installation failed, you don't get a version back in the terminal or if you're unsure, do not run it twice, reach out to your manager or your favorite dev",
+        note: "⚠️ If installation fails, don't retry—ask your manager or a developer for help",
       },
       {
         title: "Install Cursor via Okta",
         description: "The Shopify-approved installation method",
         content: [
           <span key="okta">
-            Go to{" "}
-            <a
-              href="http://shopify.okta.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:no-underline"
-            >
-              Shopify Okta
-            </a>
+            Go to <a href="http://shopify.okta.com/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Shopify Okta</a> and search for 'Cursor'
           </span>,
-          "Search for 'Cursor' in the apps",
-          "Bonus : While you're here, request access to the shopify/playground and shopify/world github",
           "Click 'Add' and follow the installation prompts",
           "Once installed, open Cursor from your Applications folder",
-          "Unless it prompts you an error, we're all set !",
-          "Download and login in Cursor through Okta ONLY - do not use GitHub or Google login as it might fail and create issues.",
-          "Bonus : Not required but it's a good time to check if you have access to your github account.",
-        ],
-        note: "Generally speaking, there are ways to install commonly used tools and repositories at Shopify. If you feel like you're hacking your computer, you might be doing something wrong. In doubt ask the Vault Agent or your manager",
-      },
-      {
-        title: "Set Up Your Code Environment part. 2",
-        description: "Keep your computer clean",
-        content: [
-          "In the Finder, click on the `Go` tab in the menu bar and then on `Home`",
-          "Create a `vibe-coding` folder, use this folder to put other folders, do not install anything directly in there.",
-          "Create a folder `my-first-app` inside.",
-          "Get into Cursor and either, navigate to `my-first-app` using the Open folder button, or drag and drop the folder in the app window. You should see an empty window with a navbar on the left, with `my-first-app` at the top.",
-
-          <span key="37">
-            Bonus : For a better experience in the Terminal
-            <br />
-            <ul>
-              <li>- Install the iTerm2 app from Self Service</li>
-              <li>
-                - Install{" "}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:no-underline"
-                  href="https://ohmyz.sh/"
-                >
-                  Oh My Zsh
-                </a>
-              </li>
+          "Log in through Okta ONLY—not GitHub or Google",
+          <span key="bonus">
+            💡 While in Okta, request access to:
+            <ul className="ml-4 mt-1">
+              <li>• shopify/playground</li>
+              <li>• shopify/world</li>
             </ul>
           </span>,
         ],
-        note: "Agents have the tendency to create a lot of files, it can go wild pretty fast and can mess up the AI results with conflicting contexts, make sure to keep at least one level of organization.",
+        note: "⚠️ Never download Cursor from cursor.sh—always use Okta for Shopify devices",
       },
       {
-        title: "Set Up Cursor",
-        description: "Just what's needed !",
+        title: "Set Up Your Workspace",
+        description: "Organize your projects",
+        content: [
+          "In Finder, go to your Home folder (Go → Home)",
+          "Create a `vibe-coding` folder",
+          "Inside that, create a `my-first-app` folder",
+          "Open this folder in Cursor (drag it onto Cursor or use File → Open Folder)",
+          <span key="37">
+            💡 Optional upgrades:
+            <ul className="ml-4 mt-1">
+              <li>• Install iTerm2 from Self Service</li>
+              <li>• Install <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer" className="underline">Oh My Zsh</a></li>
+            </ul>
+          </span>,
+        ],
+        note: "Keep each project in its own folder—agents create many files!",
+      },
+      {
+        title: "Configure Cursor",
+        description: "Essential settings",
         content: [
           <span key="37">
-            First, hit
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              cmd + shift + p
-            </span>
-            a bar should open, type ( it should auto-complete )
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              Shell Command : Install Cursor command
-            </span>
-            This will allow us to run the Terminal from within Cursor.
+            Install shell command: <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+Shift+P</span> → type "Shell Command"
           </span>,
-          <span key="37">
-            Then, hit
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              cmd + , (comma)
-            </span>
-            to open the Settings, then hit
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              cmd + f
-            </span>
-            and search for " Format on Save" and toggle it.
+          <span key="38">
+            Enable format on save: <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+,</span> → search "format on save" → toggle on
           </span>,
-
-          <span key="37">
-            Then click on Cursor in the menu bar and go to
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              {`Cursor Settings > Models`}
-            </span>
-            and check that Claude 4 Sonnet and Opus are turned on ( you can pick
-            some others if you want to try, or disable the one that you don't need
-            )
+          <span key="39">
+            Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
           </span>,
         ],
       },
       {
-        title: "Using the Agents",
-        description:
-          "Cursor can not only generate code but implement it for you.",
+        title: "Using AI Agents",
+        description: "Let Cursor write and implement code for you",
         content: [
           <span key="37">
-            In Cursor, hit
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              cmd + I
-            </span>
-            to open the Chat panel.
+            <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+I</span> → Agent mode (implements code)
           </span>,
-          "At the bottom of the chat box, in the second dropdown, make sure to use the latest Claude model.",
-          "Some models have a reasoning, some don't, indicated by a little brain next to it, only the reasoning models can be used with Agents. ",
-          <span key="37">
-            Most of the time, the agents will automatically act on your prompt. If
-            you have a question, hit
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              cmd + L
-            </span>
-            instead to open use the Ask command.
+          <span key="38">
+            <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+L</span> → Chat mode (answers questions)
           </span>,
-          <span key="37">
-            Bonus : Agents work better when they are given{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:no-underline"
-              href="https://docs.cursor.com/context/rules/"
-            >
-              custom rules
-            </a>
-            {" "}(check Cursor's documentation on how to set them up). Don't hesitate to restart a conversation if you feel it's stuck in
-            a loop. You can also reference a previous conversation in the prompt
-            or ask it to search the web.
+          "Select the Claude model with the 🧠 icon for best results",
+          <span key="39">
+            💡 Pro tips:
+            <ul className="ml-4 mt-1 text-sm">
+              <li>• Be specific—one task at a time</li>
+              <li>• Add <a href="https://docs.cursor.com/context/rules/" target="_blank" rel="noopener noreferrer" className="underline">custom rules</a> for better results</li>
+              <li>• Restart the chat if it gets stuck</li>
+            </ul>
           </span>,
         ],
-        note: "Agents are like humans, if you give vague instructions or ask for too much things at the same time, it will often do a bad job. Take the time to give precise indications on what you want to do.",
+        note: "Clear instructions = better results. Vague prompts = messy code.",
       },
       {
-        title: "Kickstart Your First Project",
-        description: "And make sure everything works",
+        title: "Your First Project",
+        description: "Build something real",
         content: [
-          "Open an Agent panel ( Cmd + I )",
-          "Paste the following prompt",
-          <span
-            key="2"
-            className="font-mono bg-gray-100 px-2 py-1 rounded text-sm"
-          >
-            Create a new Next.js project, use the current folder as the root. Use
-            JavaScript and Tailwind CSS. Set up the project with the React App
-            Router, and install GSAP for animations. Configure Tailwind CSS
-            properly and create a clean folder structure for me to add pages to my
-            app. Run the app once you're done and do not create any other servers
-            unless i tell you.
+          <span key="1">Open Agent mode (<span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Cmd+I</span>) and paste:</span>,
+          <span key="2" className="font-mono bg-gray-100 px-2 py-1 rounded text-xs block overflow-x-auto">
+            Create a Next.js app with JavaScript and Tailwind CSS. Use App Router, install GSAP for animations. Run the dev server when done.
           </span>,
-          "Once done, you should be able to open http://localhost:3000 ( you might have different numbers after the :, look in the Claude answer to confirm which port is being used ) in your browser and see the Next.js welcome page!",
-          <span>
-            Sometimes the app will crash, forcing you to restart the server, in
-            this case click in the Terminal panel and hit,
-            <span
-              key="2"
-              className="font-mono bg-gray-100 px-2 py-1 rounded text-sm"
-            >
-              Ctrl + C
-            </span>{" "}
-            to kill the app and then you will need to type
-            <span
-              key="21"
-              className="font-mono bg-gray-100 px-2 py-1 rounded text-sm"
-            >
-              npm run dev
-            </span>{" "}
-            to re-run the server. Cursor and Claude are still not great at
-            managing this part, so it's better to kill and restart the server
-            yourself instead of asking the AI to do it !.
+          "Wait for the setup to complete, then visit http://localhost:3000",
+          <span key="3">
+            Server controls:
+            <ul className="ml-4 mt-1 text-sm">
+              <li>• <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">Ctrl+C</span> → stop server</li>
+              <li>• <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">npm run dev</span> → restart server</li>
+            </ul>
           </span>,
         ],
-        note: " Also keep an eye on Claude because he sometimes will start a new server after each code update, make sure to include that in your prompt and always close these extra servers if you see one.",
+        note: "If Claude creates multiple servers, stop extras with Ctrl+C",
       },
       {
-        title: "Understanding Context",
-        description: "It's all about the context !",
+        title: "Working with Context",
+        description: "Help Claude understand your needs",
         content: [
           <span key="37">
-            The most important piece of an agentic workflow is how well you define
-            the context, Cursor can read files and look at images. Add the context
-            to your folder and you can then type
-            <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
-              @ + the name of your file
-            </span>
-            or drag and drop it, or click on the little @ at the top left and
-            navigate to your file for Claude to include. A good idea is to write
-            your prompt in a .txt file instead of the chat box. Or you can provide
-            a screenshot or images to replicate. Be mindful of file sizes, this is
-            not Midjourney or Figma, this will crash your computer.
+            Reference files with <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">@filename</span> or drag & drop
           </span>,
-          "As an exercice, right-click on the empty space in the left panel, add a new file, name it 'hello.txt', write 'hello world' in it, then ask the Agent to read this file instead of scanning the whole codebase everytime.This is important because you now realize you can ask Cursor to look at specific files. This will speed up your debugging process.",
-          "Bonus : Typing in the chat box is often a little bit clunky, you can write your complex prompts as text files and pass them to Cursor.",
+          "Add screenshots or mockups for Claude to replicate",
+          <span key="38">
+            Try this: Create hello.txt → write "hello world" → use <span className="font-mono bg-gray-100 px-1 py-0.5 rounded text-xs">@hello.txt</span> to reference it
+          </span>,
+          "💡 Write complex prompts in .txt files instead of the chat box",
         ],
       },
 
       {
-        title: "Learn Some Shortcuts",
-        description: "These will save you time as you build:",
+        title: "Essential Shortcuts",
+        description: "Speed up your workflow",
         content: [
-          "Cmd + K — Open Composer (for in-file edits)",
-          "Cmd + L — Open the AI Chat panel (for conversations and full project prompts)",
-          "Cmd + I — Open the AI Agent panel",
-          "Cmd + P — Open the file navigator",
-          "Cmd + F — Search a specific word in the current file",
-          "Cmd + D  — Select the next instance of a specific chain of character ( useful to navigate a file quickly )",
-          <span>Shift + Cmd +{"`"} - Open the Terminal panel </span>,
-          "In the terminal : Ctrl + C — Kill the current Node app and shut the server.",
-          "Tab — Accept Cursor's code suggestions",
-          "Hotreload — By default, Next.js and Remix use hot reload, which means that when you save your files, it will automatically udpate the browser for you. If you're exploring and try to use other tech ( as you should ), this might not be implemented and asking Claude to use Vite.js will usually solve this.",
+          <span key="1"><span className="font-mono text-sm">Cmd+K</span> → Edit code in-file</span>,
+          <span key="2"><span className="font-mono text-sm">Cmd+L</span> → Chat with AI</span>,
+          <span key="3"><span className="font-mono text-sm">Cmd+I</span> → Agent mode</span>,
+          <span key="4"><span className="font-mono text-sm">Cmd+P</span> → Find files</span>,
+          <span key="5"><span className="font-mono text-sm">Tab</span> → Accept suggestions</span>,
+          <span key="6"><span className="font-mono text-sm">Shift+Cmd+`</span> → Terminal</span>,
+          <span key="7"><span className="font-mono text-sm">Ctrl+C</span> → Stop server (in terminal)</span>,
         ],
       },
 
@@ -370,7 +251,7 @@ export default function ShopifySetupPage() {
         title: "Privacy & Data Rules",
         description: "Keep Shopify data safe",
         content: [
-          "Never ever agree to Cursor asking for more Read or Write permissions",
+          "Never agree to Cursor asking for additional read or write permissions",
           "Never share merchant, partner, or buyer data with Cursor",
           "Be mindful of what Shopify code you share with Cursor's AI",
           "Cursor is approved for Shopify development work",
@@ -382,10 +263,10 @@ export default function ShopifySetupPage() {
         title: "Vibe Coding at Shopify",
         description: "Best practices",
         content: [
-          "Do not mix your experimentations with the Shopify codebase, e.g. do not save anything within the World or B3 folder if you have them.",
-          "If you want to access Shopify infrastructure, use dev and not git. Ask the Vault Agent about it",
+          "Don't mix your experiments with the Shopify codebase (e.g., don't save anything in the World or B3 folders)",
+          "To access Shopify infrastructure, use dev, not git. Ask the Vault Agent about it.",
           <span>
-            If you want to share your prototypes, use your personal github account
+            To share prototypes, use your personal GitHub account
             with Vercel or use{" "}
             <a
               target="_blank"
@@ -395,18 +276,23 @@ export default function ShopifySetupPage() {
             >
               Stitch
             </a>
-            . Prefer Stitch if you're prototyping with anything related to the
-            Shoppy IP ( logos are ok but do not upload a portion of Supply on
-            Vercel )
+            . Prefer Stitch if you're prototyping with anything related to
+            Shopify IP (logos are OK, but don't upload any portion of Supply to
+            Vercel).
           </span>,
-          "Use MCP servers with caution",
-          "And we will never repeat it enough, in any doubt, ask your manager or favorite dev.",
+          "Use MCP servers with caution.",
+          "When in doubt, always ask your manager or a developer.",
         ],
       },
       {
-        title: "Have fun and test ideas !",
-        description: "And don't forget to share often",
-        content: [],
+        title: "Start Building!",
+        description: "You're ready to vibe code",
+        content: [
+          "✨ Experiment freely—break things, learn, iterate",
+          "🎯 Build something you'd actually use",
+          "🚀 Share your projects in #cursor on Slack",
+          "💡 Remember: Done is better than perfect",
+        ],
       },
     ];
 
@@ -506,7 +392,7 @@ export default function ShopifySetupPage() {
             </h1>
             <p className="text-lg sm:text-xl text-black">
               Follow these steps to set up Cursor in compliance with Shopify
-              policies. Setup takes about 15-20 minutes.
+              policies. Setup takes about 15–20 minutes.
             </p>
           </motion.div>
         </div>
