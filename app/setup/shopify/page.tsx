@@ -17,11 +17,25 @@ export default function ShopifySetupPage() {
   const [showError, setShowError] = useState(false);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
-  // Simple password check (in production, this should be server-side)
-  const handlePasswordSubmit = (e: React.FormEvent) => {
+  // WARNING: This is NOT secure for production use!
+  // Client-side password validation can always be bypassed.
+  // For production, implement proper server-side authentication.
+  // This is only meant for basic access control in a demo/educational context.
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // You can change this password to whatever you want
-    if (password === "shoppyisavibe") {
+
+    // Hash the password using Web Crypto API
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    // Compare with pre-computed hash of the password
+    // This is the SHA-256 hash of the password - still not fully secure but better than plaintext
+    const correctPasswordHash = "a055dcd1c7edda0202d1a2d9767492f71b155868cda0c8736f9d9ba95ffdbc70";
+
+    if (hashHex === correctPasswordHash) {
       setIsAuthenticated(true);
       setShowError(false);
     } else {
