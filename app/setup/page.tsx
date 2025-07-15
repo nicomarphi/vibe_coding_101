@@ -41,11 +41,25 @@ export default function SetupPage() {
     note?: string | React.ReactElement;
   }> = [
       {
+        title: "Install Cursor",
+        description: "The AI-powered code editor",
+        content: [
+          <span key="0">Go to <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">cursor.sh</a></span>,
+          "Click the big Download button",
+          "Open your Downloads folder and double-click the installer",
+          "Drag Cursor into your Applications folder"
+        ],
+        note: <span key="note-shopify">Shopifolk? <Link href="/setup/shopify" className="underline hover:no-underline">Get set up here</Link></span>
+      },
+      {
         title: "Install Node.js",
         description: "Required to run your apps",
         content: [
+          <span key="29">
+            Open Terminal in Cursor: go to Terminal → New Terminal or press <CodeBlock code="Ctrl+`" inline /> (Control + backtick)
+          </span>,
           <span key="30">
-            Check if Node is already installed by typing in Terminal: <CodeBlock code="node -v" inline />
+            Check if Node is already installed by typing: <CodeBlock code="node -v" inline />
           </span>,
           "If you see a version number, skip to the next card. If not, continue below.",
           <span key="36">
@@ -64,17 +78,6 @@ export default function SetupPage() {
           </span>,
         ],
         note: "⚠️ If installation fails, don't retry—ask a friend or developer for help",
-      },
-      {
-        title: "Install Cursor",
-        description: "The AI-powered code editor",
-        content: [
-          <span key="0">Go to <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">cursor.sh</a></span>,
-          "Click the big Download button",
-          "Open your Downloads folder and double-click the installer",
-          "Drag Cursor into your Applications folder"
-        ],
-        note: <span key="note-shopify">Shopifolk? <Link href="/setup/shopify" className="underline hover:no-underline">Get set up here</Link></span>
       },
       {
         title: "Set Up Your Workspace",

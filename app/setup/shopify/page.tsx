@@ -76,31 +76,6 @@ export default function ShopifySetupPage() {
     note?: string | React.ReactElement;
   }> = [
       {
-        title: "Install Node.js",
-        description: "Required to run your apps",
-        content: [
-          <span key="30">
-            Check if Node is already installed by typing in Terminal: <CodeBlock code="node -v" inline />
-          </span>,
-          "If you see a version number, skip to the next card. If not, continue below.",
-          <span key="36">
-            Install <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Homebrew</a> by pasting this in Terminal:
-          </span>,
-          <CodeBlock
-            code='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-            className="text-xs break-all overflow-x-auto"
-          />,
-          "Press Enter and wait for installation (you'll need your password)",
-          <span key="37">
-            After Homebrew installs, run: <CodeBlock code="brew install node" inline />
-          </span>,
-          <span key="38">
-            Verify by running: <CodeBlock code="node -v" inline />
-          </span>,
-        ],
-        note: "⚠️ If installation fails, don't retry—ask your manager or a developer for help",
-      },
-      {
         title: "Install Cursor via Okta",
         description: "The Shopify-approved installation method",
         content: [
@@ -121,6 +96,49 @@ export default function ShopifySetupPage() {
         note: "⚠️ Never download Cursor from cursor.sh—always use Okta for Shopify devices",
       },
       {
+        title: "Install Node.js",
+        description: "Required to run your apps",
+        content: [
+          <span key="29">
+            Open Terminal in Cursor: go to Terminal → New Terminal or press <CodeBlock code="Ctrl+`" inline /> (Control + backtick)
+          </span>,
+          <span key="30">
+            Check if Node is already installed by typing: <CodeBlock code="node -v" inline />
+          </span>,
+          "If you see a version number, skip to the next card. If not, continue below.",
+          <span key="36">
+            Install <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Homebrew</a> by pasting this in Terminal:
+          </span>,
+          <CodeBlock
+            code='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+            className="text-xs break-all overflow-x-auto"
+          />,
+          "Press Enter and wait for installation (you'll need your password)",
+          <span key="37">
+            After Homebrew installs, run: <CodeBlock code="brew install node" inline />
+          </span>,
+          <span key="38">
+            Verify by running: <CodeBlock code="node -v" inline />
+          </span>,
+        ],
+        note: "⚠️ If installation fails, don't retry—ask your manager or a developer for help",
+      },
+      {
+        title: "Configure Cursor",
+        description: "Essential settings",
+        content: [
+          <span key="37">
+            Install shell command: <CodeBlock code="Cmd+Shift+P" inline /> → type "Shell Command"
+          </span>,
+          <span key="38">
+            Enable format on save: <CodeBlock code="Cmd+," inline /> → search "format on save" → toggle on
+          </span>,
+          <span key="39">
+            Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
+          </span>,
+        ],
+      },
+      {
         title: "Set Up Your Workspace",
         description: "Organize your projects",
         content: [
@@ -137,21 +155,6 @@ export default function ShopifySetupPage() {
           </span>,
         ],
         note: "Keep each project in its own folder—agents create many files!",
-      },
-      {
-        title: "Configure Cursor",
-        description: "Essential settings",
-        content: [
-          <span key="37">
-            Install shell command: <CodeBlock code="Cmd+Shift+P" inline /> → type "Shell Command"
-          </span>,
-          <span key="38">
-            Enable format on save: <CodeBlock code="Cmd+," inline /> → search "format on save" → toggle on
-          </span>,
-          <span key="39">
-            Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
-          </span>,
-        ],
       },
       {
         title: "Using AI Agents",
