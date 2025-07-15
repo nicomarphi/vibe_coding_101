@@ -50,13 +50,11 @@ export default function SetupPage() {
           "If you see a version number, skip to the next card. If not, continue below.",
           <span key="36">
             Install <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Homebrew</a> by pasting this in Terminal:
-            <div className="mt-2 mb-2">
-              <CodeBlock
-                code='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-                className="text-xs break-all overflow-x-auto"
-              />
-            </div>
           </span>,
+          <CodeBlock
+            code='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+            className="text-xs break-all overflow-x-auto"
+          />,
           "Press Enter and wait for installation (you'll need your password)",
           <span key="37">
             After Homebrew installs, run: <CodeBlock code="brew install node" inline />
@@ -138,12 +136,11 @@ export default function SetupPage() {
         description: "Build something real",
         content: [
           <span key="1">Open Agent mode (<CodeBlock code="Cmd+I" inline />) and paste:</span>,
-          <div key="2">
-            <CodeBlock
-              code="Create a Next.js app with JavaScript and Tailwind CSS. Use App Router, install Framer Motion for animations. Run the dev server when done."
-              className="text-sm"
-            />
-          </div>,
+          <CodeBlock
+            key="2"
+            code="Create a Next.js app with JavaScript and Tailwind CSS. Use App Router, install Framer Motion for animations. Run the dev server when done."
+            className="text-sm"
+          />,
           "Wait for the setup to complete, then visit http://localhost:3000",
           <span key="3">
             Server controls:
