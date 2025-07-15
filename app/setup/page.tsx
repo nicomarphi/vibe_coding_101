@@ -41,6 +41,33 @@ export default function SetupPage() {
     note?: string | React.ReactElement;
   }> = [
       {
+        title: "Install Node.js",
+        description: "Required to run your apps",
+        content: [
+          <span key="30">
+            Check if Node is already installed by typing in Terminal: <CodeBlock code="node -v" inline />
+          </span>,
+          "If you see a version number, skip to the next card. If not, continue below.",
+          <span key="36">
+            Install <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Homebrew</a> by pasting this in Terminal:
+            <div className="mt-2 mb-2">
+              <CodeBlock
+                code='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+                className="text-xs break-all overflow-x-auto"
+              />
+            </div>
+          </span>,
+          "Press Enter and wait for installation (you'll need your password)",
+          <span key="37">
+            After Homebrew installs, run: <CodeBlock code="brew install node" inline />
+          </span>,
+          <span key="38">
+            Verify by running: <CodeBlock code="node -v" inline />
+          </span>,
+        ],
+        note: "⚠️ If installation fails, don't retry—ask a friend or developer for help",
+      },
+      {
         title: "Install Cursor",
         description: "The AI-powered code editor",
         content: [
@@ -52,66 +79,108 @@ export default function SetupPage() {
         note: <span key="note-shopify">Shopifolk? <Link href="/setup/shopify" className="underline hover:no-underline">Get set up here</Link></span>
       },
       {
-        title: "Enable Agent Mode",
-        description: "So Cursor can run full prompts",
+        title: "Set Up Your Workspace",
+        description: "Organize your projects",
         content: [
-          "Open Cursor",
-          "Press Cmd + L to open the Chat panel",
-          "At the bottom of the chat window, open the model dropdown (it might say GPT-4)",
-          "Choose the latest Claude model"
-        ]
+          "In Finder, go to your Home folder (or choose a location for your projects)",
+          "Create a `vibe-coding` folder",
+          "Inside that, create a `my-first-app` folder",
+          "Open this folder in Cursor (drag it onto Cursor or use File → Open Folder)",
+          <span key="37">
+            💡 Optional upgrades:
+            <ul className="ml-4 mt-1">
+              <li>• Install <a href="https://www.iterm2.com/" target="_blank" rel="noopener noreferrer" className="underline">iTerm2</a> for a better terminal</li>
+              <li>• Install <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer" className="underline">Oh My Zsh</a> for terminal superpowers</li>
+            </ul>
+          </span>,
+        ],
+        note: "Keep each project in its own folder—agents create many files!",
       },
       {
-        title: "Turn On Format on Save",
-        description: "Cleaner code, automatically",
+        title: "Configure Cursor",
+        description: "Essential settings",
         content: [
-          "Press Cmd + , (comma) to open Settings",
-          "In the search bar, type \"format on save\"",
-          "Check the box when you find it",
-          "Close the Settings tab"
-        ]
+          <span key="37">
+            Install shell command: <CodeBlock code="Cmd+Shift+P" inline /> → type "Shell Command" → Install
+          </span>,
+          <span key="38">
+            Enable format on save: <CodeBlock code="Cmd+," inline /> → search "format on save" → toggle on
+          </span>,
+          <span key="39">
+            Set AI models: Cursor menu → Cursor Settings → Models → enable Claude Sonnet & Opus
+          </span>,
+        ],
       },
       {
-        title: "Learn Some Shortcuts",
-        description: "These will save you time as you build:",
+        title: "Using AI Agents",
+        description: "Let Cursor write and implement code for you",
         content: [
-          "Cmd + K — Open Composer (for in-file edits)",
-          "Cmd + L — Open the AI chat panel (for conversations and full project prompts)",
-          "Cmd + P — Open files",
-          "Cmd + Shift + F — Search across files",
-          "Tab — Accept Cursor's code suggestions"
-        ]
+          <span key="37">
+            <CodeBlock code="Cmd+I" inline /> → Agent mode (implements code)
+          </span>,
+          <span key="38">
+            <CodeBlock code="Cmd+L" inline /> → Chat mode (answers questions)
+          </span>,
+          "Select the Claude model with the 🧠 icon for best results",
+          <span key="39">
+            💡 Pro tips:
+            <ul className="ml-4 mt-1 text-sm">
+              <li>• Be specific—one task at a time</li>
+              <li>• Add <a href="https://docs.cursor.com/context/rules/" target="_blank" rel="noopener noreferrer" className="underline">custom rules</a> for better results</li>
+              <li>• Restart the chat if it gets stuck</li>
+            </ul>
+          </span>,
+        ],
+        note: "Clear instructions = better results. Vague prompts = messy code.",
       },
       {
-        title: "Set Up Your Code Environment",
-        description: "Install everything you need to build",
+        title: "Your First Project",
+        description: "Build something real",
         content: [
-          "In Cursor, go to File → Open Folder and select where you want to create your project (like your Desktop or Documents folder)",
-          "Press Cmd + L to open the Chat panel",
-          "Paste this prompt in the chat:",
+          <span key="1">Open Agent mode (<CodeBlock code="Cmd+I" inline />) and paste:</span>,
           <div key="2">
             <CodeBlock
-              code="Install Node.js on my system. Then create a new Next.js project called 'vibe-starter' with TypeScript and Tailwind CSS. Set up the project with App Router, and install Framer Motion for animations. Configure Tailwind CSS properly and create a clean folder structure."
+              code="Create a Next.js app with JavaScript and Tailwind CSS. Use App Router, install Framer Motion for animations. Run the dev server when done."
               className="text-sm"
             />
           </div>,
-          "Cursor will install Node.js and create your project",
-          "Wait for everything to finish installing"
+          "Wait for the setup to complete, then visit http://localhost:3000",
+          <span key="3">
+            Server controls:
+            <ul className="ml-4 mt-1 text-sm">
+              <li>• <CodeBlock code="Ctrl+C" inline /> → stop server</li>
+              <li>• <CodeBlock code="npm run dev" inline /> → restart server</li>
+            </ul>
+          </span>,
         ],
-        note: "This takes 5-10 minutes. Cursor will install Node.js, then all the packages. Watch the terminal for progress."
+        note: "If Claude creates multiple servers, stop extras with Ctrl+C",
       },
       {
-        title: "Test Your Setup",
-        description: "Make sure everything works",
+        title: "Working with Context",
+        description: "Help Claude understand your needs",
         content: [
-          "Open Terminal (Cmd + Space, type \"Terminal\", press Enter)",
-          "Navigate to where you created your project:",
-          <CodeBlock code="cd vibe-starter" inline className="text-sm" />,
-          "Start the development server:",
-          <CodeBlock code="npm run dev" inline className="text-sm" />,
-          "Open http://localhost:3000 in your browser",
-          "You should see the Next.js welcome page!"
-        ]
+          <span key="37">
+            Reference files with <CodeBlock code="@filename" inline /> or drag & drop
+          </span>,
+          "Add screenshots or mockups for Claude to replicate",
+          <span key="38">
+            Try this: Create hello.txt → write "hello world" → use <CodeBlock code="@hello.txt" inline /> to reference it
+          </span>,
+          "💡 Write complex prompts in .txt files instead of the chat box",
+        ],
+      },
+      {
+        title: "Essential Shortcuts",
+        description: "Speed up your workflow",
+        content: [
+          <span key="1"><CodeBlock code="Cmd+K" inline className="text-sm" /> → Edit code in-file</span>,
+          <span key="2"><CodeBlock code="Cmd+L" inline className="text-sm" /> → Chat with AI</span>,
+          <span key="3"><CodeBlock code="Cmd+I" inline className="text-sm" /> → Agent mode</span>,
+          <span key="4"><CodeBlock code="Cmd+P" inline className="text-sm" /> → Find files</span>,
+          <span key="5"><CodeBlock code="Tab" inline className="text-sm" /> → Accept suggestions</span>,
+          <span key="6"><CodeBlock code="Shift+Cmd+`" inline className="text-sm" /> → Terminal</span>,
+          <span key="7"><CodeBlock code="Ctrl+C" inline className="text-sm" /> → Stop server (in terminal)</span>,
+        ],
       }
     ];
 
