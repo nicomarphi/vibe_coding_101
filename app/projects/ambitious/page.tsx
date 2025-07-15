@@ -188,9 +188,8 @@ Or just ask Cursor to use a Google Font by name!`
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                   className="h-full"
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-orange' : 'bg-white'
+                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden !py-0 ${isCompleted ? 'frosted-glass-orange' : 'bg-white'
                     }`}
-                    onClick={() => toggleStep(index)}
                   >
                     <div className="p-8 h-full flex flex-col relative">
                       {/* Title - Big and left aligned */}
@@ -254,8 +253,12 @@ Or just ask Cursor to use a Google Font by name!`
                       </div>
 
                       {/* Checkbox evenly positioned in bottom right corner */}
-                      <div className="absolute bottom-4 right-4">
-                        <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center ${isCompleted
+                      <div
+                        className="absolute bottom-4 right-4 cursor-pointer group"
+                        onClick={() => toggleStep(index)}
+                        title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
+                      >
+                        <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all group-hover:scale-110 ${isCompleted
                           ? 'bg-black border-black'
                           : 'border-black hover:bg-gray-100'
                           }`}>

@@ -186,9 +186,8 @@ This button doesn't need to perform any action yet—just make sure the styling 
                   transition={{ delay: index * 0.05, duration: 0.5 }}
                   className="h-full"
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? 'frosted-glass-yellow' : 'bg-white'
+                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden !py-0 ${isCompleted ? 'frosted-glass-yellow' : 'bg-white'
                     }`}
-                    onClick={() => toggleStep(index)}
                   >
                     <div className="p-6 sm:p-8 pb-16 sm:pb-20 h-full flex flex-col relative">
                       {/* Title - Big and left aligned */}
@@ -259,8 +258,12 @@ This button doesn't need to perform any action yet—just make sure the styling 
                       </div>
 
                       {/* Checkbox evenly positioned in bottom right corner */}
-                      <div className="absolute bottom-4 right-4 sm:bottom-5 sm:right-5">
-                        <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center ${isCompleted
+                      <div
+                        className="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 cursor-pointer group"
+                        onClick={() => toggleStep(index)}
+                        title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
+                      >
+                        <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center transition-all group-hover:scale-110 ${isCompleted
                           ? 'bg-black border-black'
                           : 'border-black hover:bg-gray-100'
                           }`}>

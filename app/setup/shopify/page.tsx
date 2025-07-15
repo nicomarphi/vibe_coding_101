@@ -414,9 +414,8 @@ export default function ShopifySetupPage() {
                   className="h-full"
                 >
                   <Card
-                    className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer !py-0 ${isCompleted ? "frosted-glass-blue" : "bg-white"
+                    className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden !py-0 ${isCompleted ? "frosted-glass-blue" : "bg-white"
                       }`}
-                    onClick={() => toggleStep(index)}
                   >
                     <div className="p-6 sm:p-8 h-full flex flex-col relative">
                       {/* Title - Big and left aligned */}
@@ -447,7 +446,7 @@ export default function ShopifySetupPage() {
                               className={`${isCompleted
                                 ? "[&_a]:text-white [&_a]:underline [&_.font-mono]:bg-white/20 [&_.font-mono]:text-white [&_.font-mono]:border-white/30"
                                 : "[&_.font-mono]:bg-gray-100 [&_.font-mono]:text-black [&_.font-mono]:border-gray-300"
-                                } [&_.font-mono]:block [&_.font-mono]:w-full [&_.font-mono]:mt-2 [&_.font-mono]:mb-2 [&_.font-mono]:border [&_.font-mono]:rounded`}
+                                } [&_.font-mono]:block [&_.font-mono]:w-full [&_.font-mono]:mt-2 [&_.font-mono]:mb-2 [&_.font-mono]:border [&_.font-mono]:rounded [&_.font-mono]:select-all [&_.font-mono]:cursor-text`}
                             >
                               {item}
                             </span>
@@ -468,9 +467,13 @@ export default function ShopifySetupPage() {
                       )}
 
                       {/* Checkbox evenly positioned in bottom right corner */}
-                      <div className="absolute bottom-4 right-4 sm:bottom-5 sm:right-5">
+                      <div
+                        className="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 cursor-pointer group"
+                        onClick={() => toggleStep(index)}
+                        title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
+                      >
                         <div
-                          className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center ${isCompleted
+                          className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center transition-all group-hover:scale-110 ${isCompleted
                             ? "bg-black border-black"
                             : "border-black hover:bg-gray-100"
                             }`}
