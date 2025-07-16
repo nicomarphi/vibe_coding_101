@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Copy, Check, ArrowLeft, Sparkles, CheckCircle2 } from "lucide-react";
+import { Copy, Check, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
@@ -14,7 +14,7 @@ export default function AmbitiousProject() {
   const [copiedStep, setCopiedStep] = useState<number | null>(null);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [projectComplete, setProjectComplete] = useState(false);
-  const [sidebarTip, setSidebarTip] = useState<string>("");
+
 
   const copyToClipboard = (text: string, stepIndex: number) => {
     navigator.clipboard.writeText(text);
@@ -34,75 +34,71 @@ export default function AmbitiousProject() {
     // Trigger confetti when completing a step
     if (isCompleting) {
       confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
+        particleCount: 50,
+        spread: 40,
+        origin: { y: 0.7 },
+        colors: ['#22c55e', '#3b82f6', '#f59e0b']
       });
     }
   };
 
-  const prompts = [
-    {
-      title: "Prerequisites check",
-      prompt: `What you need before starting:
-• Cursor is open and ready
-• 6 images you want to showcase (photos, illustrations, or GIFs)
-• Images should be under 1MB each for best performance
-
-Have your images ready on your desktop or in a folder - we'll add them to your project after Cursor creates it!`,
-      tip: "Gather your visuals first"
-    },
-    {
-      title: "Set up your layout and grid",
-      prompt: `Create a new Next.js project called "my-portfolio-grid" with TypeScript and Tailwind CSS. Create a responsive image grid layout. At the top, add a heading that says "Eye Candy" (I'll replace this with my own title later). Below that, build a grid with six image placeholders. The grid should be 1 column on mobile, 2 on tablet, and 3 on desktop. Each item should have a 16:9 aspect ratio, a light border, subtle rounding, and a small hover shadow.`,
-      tip: "Start with the structure, then add images"
-    },
-    {
-      title: "Add your images to the project",
-      prompt: `Time to add your images!
-
-In Cursor's file explorer (left sidebar), find the "public" folder
-Right-click on "public" and select "New Folder"
-Name it "images"
-Drag your 6 images from your desktop into this new "images" folder
-Rename them to: image1.jpg, image2.jpg, etc. (or .png, .gif - match your file types)`,
-      tip: "Organize your images in the project",
-      note: "Manual step: Do this directly in Cursor's file explorer - no need to copy this prompt!"
-    },
-    {
-      title: "Connect images to your grid",
-      prompt: `Replace the placeholders with the six static images I just added to the public/images folder. Use image paths like /images/image1.jpg through /images/image6.jpg. Make sure the images fill the grid items and maintain aspect ratio.`,
-      tip: "Now your images come to life!"
-    },
-    {
-      title: "Make it responsive",
-      prompt: `Refine the layout to be fully responsive using Tailwind. On small screens, the grid should be full-width with padding. On larger screens, limit the max width of the container. Adjust spacing and alignment so the layout looks good across all breakpoints.`,
-      tip: "Test on different screen sizes to see the magic"
-    },
-    {
-      title: "Add animation",
-      prompt: `Use Framer Motion to animate the layout. Fade in the heading first, then stagger the grid items with a scale and opacity animation. On hover, slightly scale the image (e.g., 1.05) and increase the box shadow. Keep all animations subtle and polished.`,
-      tip: "Subtle animations make everything feel professional."
-    },
-    {
-      title: "Add a custom font",
-      prompt: `Apply a custom font to the whole site. You can use a Google Font (like "Space Grotesk") or upload your own WOFF/TTF file. Make it easy to swap the font name later. Set a clean fallback stack with system fonts.`,
-      tip: "A unique font can transform the entire feel",
-      note: `How to add your own font file:
-1. Download a font (.woff, .woff2, or .ttf) from Google Fonts or your favorite source
-2. In Cursor's file explorer (left sidebar), find the "public" folder  
-3. Drag your font file directly into the "public" folder
-4. Note your font filename (e.g., "SpaceGrotesk.woff")
-5. Then copy the prompt above and mention your font filename
-
-Or just ask Cursor to use a Google Font by name!`
-    },
-    {
-      title: "Refine layout styling",
-      prompt: `Use Tailwind to improve spacing and layout. Add or adjust padding, margins, and background color. Feel free to experiment with different background colors or section spacing as long as the layout stays simple and readable.`,
-      tip: "This is where you make it truly yours"
-    }
-  ];
+  const prompts: Array<{
+    title: string;
+    prompt: string;
+    tip: string;
+    estimatedTime?: string;
+  }> = [
+      {
+        title: "Create the project",
+        prompt: `Create a new Next.js app called "my-portfolio-grid" with TypeScript and Tailwind CSS.
+Set up a responsive image grid layout with a heading.`,
+        tip: "This creates the foundation for your portfolio",
+        estimatedTime: "30 seconds"
+      },
+      {
+        title: "Build the grid structure",
+        prompt: `Create a responsive grid layout:
+- Add a large heading at the top
+- Create a grid with 6 image placeholders
+- 1 column on mobile, 2 on tablet, 3 on desktop
+- Use aspect-ratio-[16/9] for consistent sizing
+- Add subtle borders and rounded corners`,
+        tip: "Grid layout adapts to different screen sizes",
+        estimatedTime: "1 minute"
+      },
+      {
+        title: "Add images",
+        prompt: `Replace the placeholders with real images:
+- Use sample images from Unsplash (https://source.unsplash.com/random/800x600)
+- Or use numbered placeholders like https://via.placeholder.com/800x600
+- Ensure images fill their containers
+- Add alt text for accessibility`,
+        tip: "Images bring your portfolio to life",
+        estimatedTime: "45 seconds"
+      },
+      {
+        title: "Add hover animations",
+        prompt: `Use Framer Motion to add animations:
+- Fade in the heading from the top
+- Stagger the grid items appearance
+- Scale images to 1.05 on hover
+- Add shadow increase on hover
+- Keep animations smooth and subtle`,
+        tip: "Animations create visual interest",
+        estimatedTime: "1 minute"
+      },
+      {
+        title: "Polish the design",
+        prompt: `Refine the overall look:
+- Add a subtle background gradient or color
+- Improve spacing between elements
+- Ensure proper padding on all screen sizes
+- Add a footer with your name or credits
+- Make any final visual adjustments`,
+        tip: "Small details make a big difference",
+        estimatedTime: "1 minute"
+      }
+    ];
 
   return (
     <div className="min-h-screen">
@@ -111,7 +107,7 @@ Or just ask Cursor to use a Google Font by name!`
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-6 px-8">
+      <section className="pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -123,150 +119,189 @@ Or just ask Cursor to use a Google Font by name!`
               Beginner 2.0
             </Badge>
             <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
-              Create a responsive portfolio grid
+              Responsive Portfolio Grid
             </h1>
-            <p className="text-black mb-8">
-              This practice project walks you through building a clean, responsive image grid using Cursor. You'll add your own images, adjust the layout, apply custom fonts and animations, and refine the overall styling. Great if you want to go a little deeper.
+            <p className="text-lg sm:text-xl text-black mb-8">
+              Practice building a responsive image grid with animations
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* What You'll Practice Section */}
-      <section className="py-3 px-8">
+      {/* What You'll Build Section */}
+      <section className="py-2 sm:py-3 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <Card className="p-8 border-0 rounded-3xl bg-white shadow-sm">
-              <h2 className="text-2xl font-light mb-6">What you'll practice:</h2>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-ocean flex-shrink-0" />
-                  <span className="text-black">Prompting Cursor to structure a page</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-ocean flex-shrink-0" />
-                  <span className="text-black">Displaying static images or GIFs from the public folder</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-ocean flex-shrink-0" />
-                  <span className="text-black">Creating responsive layouts with Tailwind</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-ocean flex-shrink-0" />
-                  <span className="text-black">Adding subtle animations with Framer Motion</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-ocean flex-shrink-0" />
-                  <span className="text-black">Applying a custom font site-wide</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-ocean flex-shrink-0" />
-                  <span className="text-black">Tuning visual details like spacing and color</span>
-                </li>
-              </ul>
+            <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-white shadow-sm">
+              <h2 className="text-xl sm:text-2xl font-light mb-4 sm:mb-6">What you'll build:</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div>
+                    <p className="font-medium text-black">Responsive Grid Layout</p>
+                    <p className="text-sm text-gray-600">Adapts from 1 to 3 columns based on screen size</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-black">Image Gallery</p>
+                    <p className="text-sm text-gray-600">Display 6 images with consistent aspect ratios</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <p className="font-medium text-black">Hover Effects</p>
+                    <p className="text-sm text-gray-600">Scale and shadow animations on interaction</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-black">Staggered Animations</p>
+                    <p className="text-sm text-gray-600">Items appear sequentially for visual impact</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 p-3 bg-gray-50 rounded-lg">
+                <p className="text-sm text-black">
+                  <span className="font-medium">Total time:</span> 20-25 minutes including image setup
+                </p>
+                <p className="text-xs text-gray-600 mt-1">
+                  (Not including breaking things, fixing them, and iterating)
+                </p>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Before You Start */}
+      <section className="py-6 sm:py-8 px-4 sm:px-6 md:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-white shadow-sm">
+              <h2 className="text-lg sm:text-xl font-medium mb-3">
+                Before you start
+              </h2>
+              <div className="space-y-2 text-sm sm:text-base">
+                <p className="text-black">Make sure you have:</p>
+                <ul className="space-y-1 ml-6">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    <span>Cursor open and ready</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    <span>Opened the chat panel with <code className="px-2 py-0.5 bg-gray-100 rounded text-sm">Cmd+L</code></span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    <span>5 minutes to build something cool</span>
+                  </li>
+                </ul>
+              </div>
             </Card>
           </motion.div>
         </div>
       </section>
 
       {/* Prompts Section */}
-      <section className="py-12 px-8">
+      <section className="py-8 sm:py-12 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-6"
+          >
+            <h2 className="text-2xl sm:text-3xl font-light">Steps:</h2>
+          </motion.div>
+
+          <div className="space-y-3 sm:space-y-4">
             {prompts.map((prompt, index) => {
               const isCompleted = completedSteps.includes(index);
 
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.5 }}
-                  className="h-full"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden !py-0 ${isCompleted ? 'frosted-glass-orange' : 'bg-white'
-                    }`}
-                  >
-                    <div className="p-8 h-full flex flex-col relative">
-                      {/* Title - Big and left aligned */}
-                      <h3 className={`text-3xl font-light mb-6 ${isCompleted ? 'text-white' : 'text-black'
-                        }`}>
-                        Step {index + 1}: {prompt.title}
-                      </h3>
-
-                      {/* Tip */}
-                      <div className={`mb-6 ${isCompleted ? 'text-white/90' : 'text-black'}`}>
-                        <p className="text-sm">
-                          {prompt.tip}
-                        </p>
-                      </div>
-
-                      {/* Prompt or Checklist */}
-                      <div className="flex-grow">
-                        {(index === 0 || index === 2) ? (
-                          // Prerequisites/Manual checklist format
-                          <div className={`space-y-2 ${isCompleted ? 'text-white/90' : 'text-black'}`}>
-                            {prompt.prompt.split('\n').filter(line => line.trim()).map((line, i) => {
-                              if (line.startsWith('•') || line.match(/^\d\./)) {
-                                return (
-                                  <div key={i} className="flex items-start gap-2">
-                                    <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isCompleted ? 'text-white' : 'text-ocean'}`} />
-                                    <span className="text-sm">{line.replace(/^[•\d\.]\s*/, '').trim()}</span>
-                                  </div>
-                                );
-                              }
-                              return <p key={i} className="text-sm font-medium mb-2">{line}</p>;
-                            })}
-                          </div>
-                        ) : (
-                          // Regular prompt with copy button
-                          <div className={`rounded-lg p-4 border relative ${isCompleted
-                            ? 'bg-white/20 border-white/30'
-                            : 'bg-gray-50 border-gray-200'
+                  <Card className={`border-0 rounded-2xl shadow-sm hover:shadow-md transition-all overflow-hidden ${isCompleted ? 'bg-gradient-to-r from-green-50 to-emerald-50' : 'bg-white'
+                    }`}>
+                    <div className="p-6 sm:p-8">
+                      <div className="flex items-start gap-4">
+                        {/* Step number */}
+                        <div className="flex-shrink-0">
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isCompleted ? 'bg-green-500' : 'bg-gray-100'
                             }`}>
-                            <p className={`text-sm font-mono pr-10 whitespace-pre-line ${isCompleted ? 'text-white' : 'text-black'
+                            {isCompleted ? (
+                              <Check className="w-6 h-6 text-white" />
+                            ) : (
+                              <span className={`text-lg font-medium ${isCompleted ? 'text-white' : 'text-gray-600'}`}>
+                                {index + 1}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-grow">
+                          <div className="flex items-center gap-3 mb-2">
+                            <h3 className={`text-lg sm:text-xl font-medium ${isCompleted ? 'text-green-700' : 'text-black'
+                              }`}>
+                              Step {index + 1}: {prompt.title}
+                            </h3>
+                            {prompt.estimatedTime && (
+                              <Badge variant="secondary" className="text-xs">
+                                {prompt.estimatedTime}
+                              </Badge>
+                            )}
+                          </div>
+
+                          <p className={`text-sm mb-4 ${isCompleted ? 'text-green-600' : 'text-gray-600'}`}>
+                            {prompt.tip}
+                          </p>
+
+                          {/* Prompt box */}
+                          <div className="relative">
+                            <div className={`rounded-lg p-4 font-mono text-sm whitespace-pre-line ${isCompleted
+                              ? 'bg-green-100 text-green-800 border border-green-200'
+                              : 'bg-gray-50 text-black border border-gray-200'
                               }`}>
                               {prompt.prompt}
-                            </p>
+                            </div>
                             <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                copyToClipboard(prompt.prompt, index);
-                              }}
-                              className={`absolute top-3 right-3 p-1 rounded transition-colors ${isCompleted
-                                ? 'hover:bg-white/20'
-                                : 'hover:bg-gray-100'
+                              onClick={() => copyToClipboard(prompt.prompt, index)}
+                              className={`absolute top-3 right-3 p-2 rounded-lg transition-all ${isCompleted
+                                ? 'bg-green-200 hover:bg-green-300'
+                                : 'bg-white hover:bg-gray-100'
                                 }`}
                             >
                               {copiedStep === index ? (
-                                <Check className={`w-4 h-4 ${isCompleted ? 'text-white' : 'text-green-600'}`} />
+                                <Check className="w-4 h-4 text-green-600" />
                               ) : (
-                                <Copy className={`w-4 h-4 ${isCompleted ? 'text-white/70' : 'text-black'}`} />
+                                <Copy className={`w-4 h-4 ${isCompleted ? 'text-green-700' : 'text-gray-600'}`} />
                               )}
                             </button>
                           </div>
-                        )}
-                      </div>
+                        </div>
 
-                      {/* Checkbox evenly positioned in bottom right corner */}
-                      <div
-                        className="absolute bottom-4 right-4 cursor-pointer group"
-                        onClick={() => toggleStep(index)}
-                        title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
-                      >
-                        <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all group-hover:scale-110 ${isCompleted
-                          ? 'bg-black border-black'
-                          : 'border-black hover:bg-gray-100'
-                          }`}>
-                          {isCompleted ? (
-                            <Check className="w-5 h-5 text-white" />
-                          ) : (
-                            <Check className="w-4 h-4 text-black/30" />
-                          )}
+                        {/* Checkbox */}
+                        <div className="flex-shrink-0">
+                          <button
+                            onClick={() => toggleStep(index)}
+                            className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all hover:scale-110 ${isCompleted
+                              ? 'bg-green-500 border-green-500'
+                              : 'border-gray-300 hover:border-gray-400'
+                              }`}
+                            title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
+                          >
+                            {isCompleted && <Check className="w-4 h-4 text-white" />}
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -276,66 +311,74 @@ Or just ask Cursor to use a Google Font by name!`
             })}
           </div>
 
-          {/* Run Your Project Section */}
+          {/* Preview Your Work Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
             className="mt-12"
           >
-            <Card className="p-8 border-0 rounded-3xl bg-gradient-to-r from-orange-50 to-amber-50">
-              <div className="space-y-4">
-                <h2 className="text-3xl font-light">View your site locally in the browser</h2>
+            <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-blue-50 to-purple-50">
+              <h2 className="text-2xl sm:text-3xl font-light mb-6">Preview your creation</h2>
 
-                <div className="space-y-4">
-                  <div className="mb-4 p-3 rounded-lg bg-purple-50 border border-purple-200">
-                    <p className="text-sm text-purple-900 font-medium">What's Terminal?</p>
-                    <p className="text-sm text-purple-800 mt-1">Think of Terminal as a text-based remote control for your computer. You type commands, press Enter, and your computer does things!</p>
-                  </div>
-
-                  <div>
-                    <p className="text-black font-medium mb-1">Open your Terminal</p>
-                    <p className="text-sm text-black">Press Cmd + Space, type "Terminal", then press Enter.</p>
-                  </div>
-
-                  <div>
-                    <p className="text-black font-medium mb-1">Navigate to your project folder</p>
-                    <p className="text-sm text-black mb-2">In the terminal, type:</p>
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 relative">
-                      <p className="text-sm font-mono text-black">cd my-portfolio-grid</p>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-medium mb-3">Using Cursor's terminal:</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-medium text-blue-600">1</span>
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm sm:text-base text-black mb-2">
+                          Open the terminal in Cursor with <code className="px-2 py-0.5 bg-white rounded text-sm">Ctrl+`</code>
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-sm text-black mt-2">Then press Enter.</p>
-                  </div>
 
-                  <div>
-                    <p className="text-black font-medium mb-1">Start the development server</p>
-                    <p className="text-sm text-black mb-2">Type:</p>
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 relative">
-                      <p className="text-sm font-mono text-black">npm run dev</p>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-medium text-blue-600">2</span>
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm sm:text-base text-black mb-2">Navigate to your project:</p>
+                        <div className="bg-gray-900 text-gray-100 rounded-lg p-3 font-mono text-sm">
+                          cd my-portfolio-grid
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-sm text-black mt-2">Then press Enter.</p>
-                    <div className="mt-2 p-2 rounded bg-blue-50">
-                      <p className="text-sm text-blue-800"><strong>What's happening?</strong> This starts a local web server on your computer - like a mini version of the internet just for you to preview your site!</p>
-                    </div>
-                  </div>
 
-                  <div>
-                    <p className="text-black font-medium mb-1">Open your site in a browser</p>
-                    <p className="text-sm text-black mb-2">Go to:</p>
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 relative">
-                      <p className="text-sm font-mono text-black">http://localhost:3000</p>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-medium text-blue-600">3</span>
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm sm:text-base text-black mb-2">Start your server:</p>
+                        <div className="bg-gray-900 text-gray-100 rounded-lg p-3 font-mono text-sm">
+                          npm run dev
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-medium text-blue-600">4</span>
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm sm:text-base text-black mb-2">Visit in your browser:</p>
+                        <div className="bg-white rounded-lg p-3 font-mono text-sm text-blue-600">
+                          http://localhost:3000
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-gray-200">
-                  <p className="text-sm text-black font-medium mb-2">Common hiccups:</p>
-                  <ul className="text-sm text-black space-y-1 ml-4">
-                    <li>• <strong>Images not showing?</strong> Check file names match exactly (image1.jpg vs Image1.JPG)</li>
-                    <li>• <strong>Layout broken?</strong> Save all files (Cmd+S) and refresh your browser</li>
-                    <li>• <strong>Nothing appears?</strong> Check if npm is still installing (look for activity in Terminal)</li>
-                    <li>• <strong>Error messages?</strong> Head to the <Link href="/debug" className="text-blue-600 hover:text-blue-800 underline">Debug page</Link> for solutions</li>
-                  </ul>
+                <div className="pt-6 border-t border-gray-200">
+                  <p className="text-sm font-medium text-black mb-2">Your portfolio grid is now live!</p>
+                  <p className="text-sm text-gray-600">
+                    If something doesn't look right, check out our <Link href="/debug" className="text-blue-600 hover:text-blue-800 underline">debug guide</Link>.
+                  </p>
                 </div>
               </div>
             </Card>
@@ -345,50 +388,56 @@ Or just ask Cursor to use a Google Font by name!`
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-12 md:col-span-2"
+            transition={{ delay: 0.9, duration: 0.5 }}
+            className="mt-8 sm:mt-12"
           >
-            <Card className="p-10 border-0 rounded-3xl bg-white shadow-sm">
+            <Card className="p-6 sm:p-10 border-0 rounded-3xl bg-white shadow-sm">
               <div className="text-center">
-                <h2 className="text-3xl font-light mb-4">
-                  {projectComplete ? "Incredible work!" : "Done?"}
+                <h2 className="text-2xl sm:text-3xl font-light mb-4">
+                  {projectComplete ? "Nice work!" : "Ready to wrap up?"}
                 </h2>
-                <p className="text-lg text-black mb-8">
+                <p className="text-sm sm:text-lg text-black mb-6 sm:mb-8 max-w-2xl mx-auto">
                   {projectComplete
-                    ? "You've built a professional portfolio grid! Add your own images and share it with friends."
-                    : "Once the layout looks solid and everything loads as expected, you're done."
-                  }
+                    ? "You built a responsive portfolio grid with animations. Try adding your own images or changing the layout to make it yours."
+                    : "Once your grid is displaying properly with all animations working, you're done!"}
                 </p>
-                <div
-                  className="inline-flex items-center gap-3 cursor-pointer"
-                  onClick={() => setProjectComplete(!projectComplete)}
+                <button
+                  onClick={() => {
+                    setProjectComplete(!projectComplete);
+                    if (!projectComplete) {
+                      confetti({
+                        particleCount: 200,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                      });
+                    }
+                  }}
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-all hover:scale-105"
                 >
-                  <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center ${projectComplete
-                    ? 'bg-black border-black'
-                    : 'border-black hover:bg-gray-100'
+                  <div className={`w-6 h-6 rounded-full border-2 border-white flex items-center justify-center ${projectComplete ? 'bg-white' : ''
                     }`}>
-                    {projectComplete && (
-                      <Check className="w-5 h-5 text-white" />
-                    )}
+                    {projectComplete && <Check className="w-4 h-4 text-black" />}
                   </div>
-                  <span className="text-lg font-medium">I completed this practice project</span>
-                </div>
+                  <span className="font-medium">I completed this project!</span>
+                </button>
 
                 {projectComplete && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="mt-8 space-y-4"
+                    className="mt-8 space-y-6"
                   >
-                    <p className="text-black">
-                      Wow! You've really leveled up your Cursor skills. What will you create next?
-                    </p>
-                    <div className="flex gap-2 sm:gap-3 justify-center">
-                      <Link href="/prompts" className="btn-primary">
-                        Browse More Prompts
+                    <div className="p-4 bg-green-50 rounded-lg inline-block">
+                      <p className="text-sm text-green-800 font-medium">
+                        Try customizing the grid size, animations, or colors to make it unique!
+                      </p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                      <Link href="/projects/fal-ai" className="btn-primary">
+                        Try the AI Fortune Teller
                       </Link>
-                      <Link href="/debug" className="btn-secondary">
-                        Learn to Debug
+                      <Link href="/prompts" className="btn-secondary">
+                        Explore More Prompts
                       </Link>
                     </div>
                   </motion.div>

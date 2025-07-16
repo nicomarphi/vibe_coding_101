@@ -112,6 +112,10 @@ export default function DebugPage() {
     {
       bug: "Cursor keeps making the same mistake",
       solution: "Be more direct:\n\"Stop. You keep doing [specific thing wrong]. Instead, please [exactly what you want].\"\n\nOr start fresh:\n\"Let's approach this differently. Can you [new specific instruction]?\""
+    },
+    {
+      bug: "Component not updating when data changes",
+      solution: "\"My component isn't re-rendering when the data changes. Can you check if the state is being updated correctly and props are being passed down properly?\"\n\nOr be specific:\n\"The [component name] should update when [specific data] changes but it's not working.\""
     }
   ];
 

@@ -80,7 +80,7 @@ export default function ShopifySetupPage() {
         description: "The Shopify-approved installation method",
         content: [
           <span key="okta">
-            Go to <a href="http://shopify.okta.com/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Shopify Okta</a> and search for 'Cursor'
+            Go to <a href="https://shopify.okta.com/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Shopify Okta</a> and search for 'Cursor'
           </span>,
           "Click 'Add' and follow the installation prompts",
           "Once installed, open Cursor from your Applications folder",
@@ -295,6 +295,32 @@ export default function ShopifySetupPage() {
           "Use MCP servers with caution.",
           "When in doubt, always ask your manager or a developer.",
         ],
+      },
+      {
+        title: "Set Up GitHub",
+        description: "Save and share your code",
+        content: [
+          <span key="1">
+            You can use your Shopify GitHub account, but create personal repositories for vibe coding projects
+          </span>,
+          "In Cursor, open the Source Control panel (icon on left sidebar)",
+          <span key="3">
+            Initialize repository: click "Initialize Repository" button
+          </span>,
+          <span key="4">
+            Stage changes: click the + icon next to "Changes"
+          </span>,
+          <span key="5">
+            Commit: type a message like "Initial commit" and click checkmark
+          </span>,
+          <span key="6">
+            Push to GitHub: click "Publish Branch" and follow prompts
+          </span>,
+          <span key="7">
+            💡 When publishing, create the repository under your personal namespace, not Shopify org
+          </span>,
+        ],
+        note: "Keep personal projects separate from official Shopify work repositories",
       },
       {
         title: "Start Building!",

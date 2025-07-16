@@ -181,6 +181,48 @@ export default function SetupPage() {
           <span key="6"><CodeBlock code="Shift+Cmd+`" inline className="text-sm" /> → Terminal</span>,
           <span key="7"><CodeBlock code="Ctrl+C" inline className="text-sm" /> → Stop server (in terminal)</span>,
         ],
+      },
+      {
+        title: "Set Up GitHub",
+        description: "Save and share your code",
+        content: [
+          <span key="1">
+            Create a free account at <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="underline">github.com</a>
+          </span>,
+          "In Cursor, open the Source Control panel (icon on left sidebar)",
+          <span key="3">
+            Initialize repository: click "Initialize Repository" button
+          </span>,
+          <span key="4">
+            Stage changes: click the + icon next to "Changes"
+          </span>,
+          <span key="5">
+            Commit: type a message like "Initial commit" and click checkmark
+          </span>,
+          <span key="6">
+            Push to GitHub: click "Publish Branch" and follow prompts
+          </span>,
+          <span key="7">
+            💡 Your code is now backed up and shareable!
+          </span>,
+        ],
+        note: "GitHub saves your work online—never lose code again",
+      },
+      {
+        title: "What's Next?",
+        description: "You're ready to start vibe coding!",
+        content: [
+          <span key="1">
+            🎯 <Link href="/projects" className="underline font-medium">Start a practice project</Link> - Choose from 3 guided tutorials
+          </span>,
+          <span key="2">
+            💡 <Link href="/prompts" className="underline font-medium">Browse tips & prompts</Link> - Level up your Cursor skills
+          </span>,
+          <span key="3">
+            🐛 <Link href="/debug" className="underline font-medium">Check debug guide</Link> - Solutions for when things break
+          </span>,
+          "✨ Remember: Done is better than perfect. Start building!"
+        ]
       }
     ];
 
@@ -239,6 +281,7 @@ export default function SetupPage() {
             </h1>
             <p className="text-lg sm:text-xl text-black">
               Let's get your system ready for vibe coding with Cursor. This takes about 15-20 minutes including all installations.
+              <span className="text-sm block mt-2 text-gray-600">(Not including breaking things, fixing them, and iterating)</span>
             </p>
           </motion.div>
         </div>

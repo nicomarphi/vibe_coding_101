@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Copy, Check, ArrowLeft, Sparkles, CheckCircle2 } from "lucide-react";
+import { Copy, Check, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
@@ -14,7 +14,6 @@ export default function StartSmallProject() {
   const [copiedStep, setCopiedStep] = useState<number | null>(null);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [projectComplete, setProjectComplete] = useState(false);
-  const [sidebarTip, setSidebarTip] = useState<string>("");
 
   const copyToClipboard = (text: string, stepIndex: number) => {
     navigator.clipboard.writeText(text);
@@ -34,9 +33,10 @@ export default function StartSmallProject() {
     // Trigger confetti when completing a step
     if (isCompleting) {
       confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
+        particleCount: 50,
+        spread: 40,
+        origin: { y: 0.7 },
+        colors: ['#22c55e', '#3b82f6', '#f59e0b']
       });
     }
   };
@@ -45,65 +45,64 @@ export default function StartSmallProject() {
     title: string;
     prompt: string;
     tip: string;
-    note?: string;
+    estimatedTime?: string;
   }> = [
       {
-        title: "Prerequisites check",
-        prompt: `What you need before starting:
-• Cursor is open
-• You're in the chat panel (Cmd+L)
-• You have a font file ready (optional - download from Google Fonts or use a font you like)
+        title: "Create your project",
+        prompt: `Create a new Next.js app called "my-landing-page" with TypeScript, Tailwind CSS, and the App Router. 
+Keep it simple and clean.`,
+        tip: "This creates all the files and folders you need",
+        estimatedTime: "30 seconds"
+      },
+      {
+        title: "Build the hero section",
+        prompt: `Create a beautiful hero section for the homepage with:
+- A large, bold headline that says "Welcome to the Future"
+- A subtitle that says "Where ideas become reality"
+- Center everything in the viewport
+- Add a subtle gradient background from purple to blue
+- Make it fully responsive`,
+        tip: "The hero section is the first thing visitors see",
+        estimatedTime: "1 minute"
+      },
+      {
+        title: "Add an animated button",
+        prompt: `Below the subtitle, add a call-to-action button that:
+- Says "Get Started"
+- Has rounded corners and a dark background
+- Scales up slightly on hover
+- Has a subtle shadow
+- Bounces when clicked
+Use Framer Motion for the animations`,
+        tip: "Interactive elements make your site feel alive",
+        estimatedTime: "45 seconds"
+      },
+      {
+        title: "Create feature cards",
+        prompt: `Below the hero section, add a row of 3 feature cards:
+1. "Lightning Fast" 
+2. "Beautiful Design"
+3. "Easy to Use"
 
-Ready? Let's build something beautiful!`,
-        tip: "Making sure you're set up for success"
+Each card should have:
+- A white background with subtle shadow
+- A title and subtitle
+- A short description
+- Fade in animation when scrolling
+Make them stack on mobile`,
+        tip: "Features help explain what makes your product special",
+        estimatedTime: "1 minute"
       },
       {
-        title: "Give Cursor context",
-        prompt: `Create a new Next.js project called "my-first-page" with TypeScript and Tailwind CSS.
-It should include Tailwind CSS for styling and Framer Motion for animation.
-The layout should be centered, with a custom font, a large headline, and a button.
-Keep the design clean, modern, and responsive.`,
-        tip: "Always start by describing what you're trying to make."
-      },
-      {
-        title: "Set up Tailwind and Framer Motion",
-        prompt: `Set up Tailwind CSS and Framer Motion in this practice project.
-Configure Tailwind and PostCSS, update globals.css with base styles, and ensure Framer Motion is ready to use in components.`,
-        tip: "Install both at once to keep things tidy."
-      },
-      {
-        title: "Create a base layout",
-        prompt: `Create a layout component that wraps all pages using a <main> tag.
-Center all content both vertically and horizontally in the viewport.
-Add padding and a soft background gradient that fades from light gray to white.`,
-        tip: "This becomes the foundation for the rest of your page."
-      },
-      {
-        title: "Add your custom font",
-        prompt: `I've uploaded a font file to the public folder. Now apply this custom font globally using Tailwind CSS.
-Set up the @font-face in globals.css and configure it in the Tailwind config.
-Add a clean, modern sans-serif fallback font stack.`,
-        tip: "Custom fonts make your site unique",
-        note: `How to add your font:
-1. Download a font (.woff, .woff2, or .ttf) from Google Fonts or your favorite source
-2. In Cursor's file explorer (left sidebar), find the "public" folder
-3. Drag your font file directly into the "public" folder
-4. Note your font filename (e.g., "MyFont.woff")
-5. Then copy the prompt above to tell Cursor to use it`
-      },
-      {
-        title: "Add a headline",
-        prompt: `On the homepage, add a centered headline that says: "Hello, beautiful world!"
-Make it bold, responsive, and add a small text shadow for contrast.`,
-        tip: "Big, clear type makes a strong first impression."
-      },
-      {
-        title: "Add a button with animation",
-        prompt: `Below the headline, add a large button with rounded corners and a gradient background.
-Style it using Tailwind. Use Framer Motion to scale slightly on hover and bounce on click.
-The button should say: "[insert your own button text here]"
-This button doesn't need to perform any action yet—just make sure the styling and animation work.`,
-        tip: "Use Tailwind for the styling, and Framer Motion for animation."
+        title: "Polish with animations",
+        prompt: `Add these final touches:
+- Make the headline fade in from the top
+- Make the subtitle fade in from the bottom
+- Stagger the feature cards animation
+- Add a hover effect to the cards (lift up slightly)
+- Ensure everything looks great on mobile`,
+        tip: "Small animations create a premium feel",
+        estimatedTime: "1 minute"
       }
     ];
 
@@ -122,23 +121,20 @@ This button doesn't need to perform any action yet—just make sure the styling 
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <Badge className="mb-4 bg-yellow-100 text-yellow-700 border-yellow-200" variant="secondary">
-              Start Small
+            <Badge className="mb-4 bg-emerald-100 text-emerald-700 border-emerald-200" variant="secondary">
+              Beginner Friendly
             </Badge>
             <h1 className="mb-2 uppercase" style={{ letterSpacing: '-0.01em' }}>
-              Build a simple front-end page
+              Super Simple Page
             </h1>
-            <p className="text-lg sm:text-xl text-black mb-4">
-              Build a simple, responsive front-end layout using Cursor
-            </p>
-            <p className="text-sm sm:text-base text-black mb-8">
-              In this practice project, you'll prompt Cursor to build a clean layout using Tailwind and Framer Motion. You'll also upload a custom font, add a headline, and style an animated button. No coding needed—just clear, step-by-step prompts.
+            <p className="text-lg sm:text-xl text-black mb-8">
+              Practice building a landing page with Tailwind CSS and Framer Motion
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* What You'll Learn Section */}
+      {/* What You'll Build Section */}
       <section className="py-2 sm:py-3 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -147,25 +143,71 @@ This button doesn't need to perform any action yet—just make sure the styling 
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-white shadow-sm">
-              <h2 className="text-xl sm:text-2xl font-light mb-4 sm:mb-6">What you'll practice:</h2>
-              <ul className="space-y-2 sm:space-y-3">
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-forest flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-black">Giving Cursor clear context before a build</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-forest flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-black">Setting up Tailwind and Framer Motion</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-forest flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-black">Uploading and applying a custom font</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-forest flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-black">Prompting for layout structure and animation</span>
-                </li>
-              </ul>
+              <h2 className="text-xl sm:text-2xl font-light mb-4 sm:mb-6">What you'll build:</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div>
+                    <p className="font-medium text-black">Beautiful Hero Section</p>
+                    <p className="text-sm text-gray-600">Eye-catching headlines with gradient backgrounds</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-black">Interactive Button</p>
+                    <p className="text-sm text-gray-600">Hover effects and click animations</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <p className="font-medium text-black">Feature Cards</p>
+                    <p className="text-sm text-gray-600">Showcase your product's best features</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-black">Smooth Animations</p>
+                    <p className="text-sm text-gray-600">Professional transitions and effects</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 p-3 bg-gray-50 rounded-lg">
+                <p className="text-sm text-black">
+                  <span className="font-medium">Total time:</span> 15-20 minutes including setup
+                </p>
+                <p className="text-xs text-gray-600 mt-1">
+                  (Not including breaking things, fixing them, and iterating)
+                </p>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Before You Start */}
+      <section className="py-6 sm:py-8 px-4 sm:px-6 md:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-white shadow-sm">
+              <h2 className="text-lg sm:text-xl font-medium mb-3">
+                Before you start
+              </h2>
+              <div className="space-y-2 text-sm sm:text-base">
+                <p className="text-black">Make sure you have:</p>
+                <ul className="space-y-1 ml-6">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    <span>Cursor open and ready</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    <span>Opened the chat panel with <code className="px-2 py-0.5 bg-gray-100 rounded text-sm">Cmd+L</code></span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    <span>A few minutes to build something cool</span>
+                  </li>
+                </ul>
+              </div>
             </Card>
           </motion.div>
         </div>
@@ -174,104 +216,98 @@ This button doesn't need to perform any action yet—just make sure the styling 
       {/* Prompts Section */}
       <section className="py-8 sm:py-12 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-6"
+          >
+            <h2 className="text-2xl sm:text-3xl font-light">Steps:</h2>
+          </motion.div>
+
+          <div className="space-y-3 sm:space-y-4">
             {prompts.map((prompt, index) => {
               const isCompleted = completedSteps.includes(index);
 
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.5 }}
-                  className="h-full"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
                 >
-                  <Card className={`h-full border-0 rounded-3xl shadow-sm hover:shadow-lg transition-all overflow-hidden !py-0 ${isCompleted ? 'frosted-glass-yellow' : 'bg-white'
-                    }`}
-                  >
-                    <div className="p-6 sm:p-8 pb-16 sm:pb-20 h-full flex flex-col relative">
-                      {/* Title - Big and left aligned */}
-                      <h3 className={`text-2xl sm:text-3xl font-light mb-4 sm:mb-6 ${isCompleted ? 'text-white' : 'text-black'
-                        }`}>
-                        Step {index + 1}: {prompt.title}
-                      </h3>
-
-                      {/* Tip */}
-                      <div className={`mb-4 sm:mb-6 ${isCompleted ? 'text-white/90' : 'text-black'}`}>
-                        <p className="text-xs sm:text-sm">
-                          {prompt.tip}
-                        </p>
-                      </div>
-
-                      {/* Special note for manual steps */}
-                      {prompt.note && (
-                        <div className={`mb-4 sm:mb-6 p-3 rounded-lg ${isCompleted ? 'bg-white/20 text-white' : 'bg-orange-100 text-orange-900'}`}>
-                          <p className="text-xs sm:text-sm font-medium">{prompt.note}</p>
-                        </div>
-                      )}
-
-                      {/* Prompt or Checklist */}
-                      <div className="flex-grow">
-                        {index === 0 ? (
-                          // Prerequisites checklist format
-                          <div className={`space-y-2 ${isCompleted ? 'text-white/90' : 'text-black'}`}>
-                            {prompt.prompt.split('\n').filter(line => line.trim()).map((line, i) => {
-                              if (line.startsWith('•')) {
-                                return (
-                                  <div key={i} className="flex items-start gap-2">
-                                    <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isCompleted ? 'text-white' : 'text-forest'}`} />
-                                    <span className="text-sm">{line.substring(1).trim()}</span>
-                                  </div>
-                                );
-                              }
-                              return <p key={i} className="text-sm font-medium mb-2">{line}</p>;
-                            })}
-                          </div>
-                        ) : (
-                          // Regular prompt with copy button
-                          <div className={`rounded-lg p-3 sm:p-4 border relative ${isCompleted
-                            ? 'bg-white/20 border-white/30'
-                            : 'bg-gray-50 border-gray-200'
+                  <Card className={`border-0 rounded-2xl shadow-sm hover:shadow-md transition-all overflow-hidden ${isCompleted ? 'bg-gradient-to-r from-green-50 to-emerald-50' : 'bg-white'
+                    }`}>
+                    <div className="p-6 sm:p-8">
+                      <div className="flex items-start gap-4">
+                        {/* Step number */}
+                        <div className="flex-shrink-0">
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isCompleted ? 'bg-green-500' : 'bg-gray-100'
                             }`}>
-                            <p className={`text-xs sm:text-sm font-mono pr-8 sm:pr-10 whitespace-pre-line ${isCompleted ? 'text-white' : 'text-black'
+                            {isCompleted ? (
+                              <Check className="w-6 h-6 text-white" />
+                            ) : (
+                              <span className={`text-lg font-medium ${isCompleted ? 'text-white' : 'text-gray-600'}`}>
+                                {index + 1}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-grow">
+                          <div className="flex items-center gap-3 mb-2">
+                            <h3 className={`text-lg sm:text-xl font-medium ${isCompleted ? 'text-green-700' : 'text-black'
+                              }`}>
+                              Step {index + 1}: {prompt.title}
+                            </h3>
+                            {prompt.estimatedTime && (
+                              <Badge variant="secondary" className="text-xs">
+                                {prompt.estimatedTime}
+                              </Badge>
+                            )}
+                          </div>
+
+                          <p className={`text-sm mb-4 ${isCompleted ? 'text-green-600' : 'text-gray-600'}`}>
+                            {prompt.tip}
+                          </p>
+
+                          {/* Prompt box */}
+                          <div className="relative">
+                            <div className={`rounded-lg p-4 font-mono text-sm whitespace-pre-line ${isCompleted
+                              ? 'bg-green-100 text-green-800 border border-green-200'
+                              : 'bg-gray-50 text-black border border-gray-200'
                               }`}>
                               {prompt.prompt}
-                            </p>
+                            </div>
                             <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                copyToClipboard(prompt.prompt, index);
-                              }}
-                              className={`absolute top-2 right-2 sm:top-3 sm:right-3 p-1 rounded transition-colors ${isCompleted
-                                ? 'hover:bg-white/20'
-                                : 'hover:bg-gray-100'
+                              onClick={() => copyToClipboard(prompt.prompt, index)}
+                              className={`absolute top-3 right-3 p-2 rounded-lg transition-all ${isCompleted
+                                ? 'bg-green-200 hover:bg-green-300'
+                                : 'bg-white hover:bg-gray-100'
                                 }`}
                             >
                               {copiedStep === index ? (
-                                <Check className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white' : 'text-green-600'}`} />
+                                <Check className="w-4 h-4 text-green-600" />
                               ) : (
-                                <Copy className={`w-3 h-3 sm:w-4 sm:h-4 ${isCompleted ? 'text-white/70' : 'text-black'}`} />
+                                <Copy className={`w-4 h-4 ${isCompleted ? 'text-green-700' : 'text-gray-600'}`} />
                               )}
                             </button>
                           </div>
-                        )}
-                      </div>
+                        </div>
 
-                      {/* Checkbox evenly positioned in bottom right corner */}
-                      <div
-                        className="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 cursor-pointer group"
-                        onClick={() => toggleStep(index)}
-                        title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
-                      >
-                        <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center transition-all group-hover:scale-110 ${isCompleted
-                          ? 'bg-black border-black'
-                          : 'border-black hover:bg-gray-100'
-                          }`}>
-                          {isCompleted ? (
-                            <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                          ) : (
-                            <Check className="w-3 h-3 sm:w-4 sm:h-4 text-black/30" />
-                          )}
+                        {/* Checkbox */}
+                        <div className="flex-shrink-0">
+                          <button
+                            onClick={() => toggleStep(index)}
+                            className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all hover:scale-110 ${isCompleted
+                              ? 'bg-green-500 border-green-500'
+                              : 'border-gray-300 hover:border-gray-400'
+                              }`}
+                            title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
+                          >
+                            {isCompleted && <Check className="w-4 h-4 text-white" />}
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -281,66 +317,74 @@ This button doesn't need to perform any action yet—just make sure the styling 
             })}
           </div>
 
-          {/* Run Your Project Section */}
+          {/* Preview Your Work Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="mt-8 sm:mt-12"
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="mt-12"
           >
-            <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-yellow-50 to-amber-50">
-              <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-light">View your site locally in the browser</h2>
+            <Card className="p-6 sm:p-8 border-0 rounded-3xl bg-gradient-to-r from-blue-50 to-purple-50">
+              <h2 className="text-2xl sm:text-3xl font-light mb-6">Preview your creation</h2>
 
-                <div className="space-y-4">
-                  <div className="mb-4 p-3 rounded-lg bg-purple-50 border border-purple-200">
-                    <p className="text-xs sm:text-sm text-purple-900 font-medium">What's Terminal?</p>
-                    <p className="text-xs sm:text-sm text-purple-800 mt-1">Think of Terminal as a text-based remote control for your computer. You type commands, press Enter, and your computer does things!</p>
-                  </div>
-
-                  <div>
-                    <p className="text-sm sm:text-base text-black font-medium mb-1">Open your Terminal</p>
-                    <p className="text-xs sm:text-sm text-black">Press Cmd + Space, type "Terminal", then press Enter.</p>
-                  </div>
-
-                  <div>
-                    <p className="text-sm sm:text-base text-black font-medium mb-1">Navigate to your project folder</p>
-                    <p className="text-xs sm:text-sm text-black mb-2">In the terminal, type:</p>
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 relative">
-                      <p className="text-xs sm:text-sm font-mono text-black">cd my-first-page</p>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-medium mb-3">Quick way (using Cursor's terminal):</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-medium text-blue-600">1</span>
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm sm:text-base text-black mb-2">
+                          Open the terminal in Cursor with <code className="px-2 py-0.5 bg-white rounded text-sm">Ctrl+`</code> (that's the backtick key)
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xs sm:text-sm text-black mt-2">Then press Enter.</p>
-                  </div>
 
-                  <div>
-                    <p className="text-sm sm:text-base text-black font-medium mb-1">Start the development server</p>
-                    <p className="text-xs sm:text-sm text-black mb-2">Type:</p>
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 relative">
-                      <p className="text-xs sm:text-sm font-mono text-black">npm run dev</p>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-medium text-blue-600">2</span>
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm sm:text-base text-black mb-2">Navigate to your project folder:</p>
+                        <div className="bg-gray-900 text-gray-100 rounded-lg p-3 font-mono text-sm">
+                          cd my-landing-page
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-xs sm:text-sm text-black mt-2">Then press Enter.</p>
-                    <div className="mt-2 p-2 rounded bg-blue-50">
-                      <p className="text-xs text-blue-800"><strong>What's happening?</strong> This starts a local web server on your computer - like a mini version of the internet just for you to preview your site!</p>
-                    </div>
-                  </div>
 
-                  <div>
-                    <p className="text-sm sm:text-base text-black font-medium mb-1">Open your site in a browser</p>
-                    <p className="text-xs sm:text-sm text-black mb-2">Go to:</p>
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 relative">
-                      <p className="text-xs sm:text-sm font-mono text-black">http://localhost:3000</p>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-medium text-blue-600">3</span>
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm sm:text-base text-black mb-2">Start your development server:</p>
+                        <div className="bg-gray-900 text-gray-100 rounded-lg p-3 font-mono text-sm">
+                          npm run dev
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-medium text-blue-600">4</span>
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm sm:text-base text-black mb-2">Open your browser and visit:</p>
+                        <div className="bg-white rounded-lg p-3 font-mono text-sm text-blue-600">
+                          http://localhost:3000
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-gray-200">
-                  <p className="text-sm text-black font-medium mb-2">Common hiccups:</p>
-                  <ul className="text-xs sm:text-sm text-black space-y-1 ml-4">
-                    <li>• <strong>Nothing appears?</strong> Check if npm is still installing (look for activity in Terminal)</li>
-                    <li>• <strong>Styles look broken?</strong> Save all files (Cmd+S) and refresh your browser</li>
-                    <li>• <strong>Changes don't show?</strong> Hard refresh your browser (Cmd+Shift+R)</li>
-                    <li>• <strong>Error messages?</strong> Head to the <Link href="/debug" className="text-blue-600 hover:text-blue-800 underline">Debug page</Link> for solutions</li>
-                  </ul>
+                <div className="pt-6 border-t border-gray-200">
+                  <p className="text-sm font-medium text-black mb-2">That's it! Your site should now be live locally.</p>
+                  <p className="text-sm text-gray-600">
+                    If something doesn't look right, check out our <Link href="/debug" className="text-blue-600 hover:text-blue-800 underline">debug guide</Link> for quick fixes.
+                  </p>
                 </div>
               </div>
             </Card>
@@ -350,50 +394,56 @@ This button doesn't need to perform any action yet—just make sure the styling 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
             className="mt-8 sm:mt-12"
           >
             <Card className="p-6 sm:p-10 border-0 rounded-3xl bg-white shadow-sm">
               <div className="text-center">
                 <h2 className="text-2xl sm:text-3xl font-light mb-4">
-                  {projectComplete ? "Amazing work!" : "Done?"}
+                  {projectComplete ? "You did it!" : "Ready to celebrate?"}
                 </h2>
-                <p className="text-sm sm:text-lg text-black mb-6 sm:mb-8">
+                <p className="text-sm sm:text-lg text-black mb-6 sm:mb-8 max-w-2xl mx-auto">
                   {projectComplete
-                    ? "You've created your first beautiful page with Cursor! Take a moment to admire your work."
-                    : "If everything looks good and you've prompted Cursor through all six steps, you're done! You can always come back and tweak the project later."
-                  }
+                    ? "You just built a modern, animated landing page from scratch. That's seriously impressive! Your site has gradient backgrounds, smooth animations, and interactive elements — all the hallmarks of professional web design."
+                    : "Once your site is running and looking good, you've officially completed your first Cursor project!"}
                 </p>
-                <div
-                  className="inline-flex items-center gap-3 cursor-pointer"
-                  onClick={() => setProjectComplete(!projectComplete)}
+                <button
+                  onClick={() => {
+                    setProjectComplete(!projectComplete);
+                    if (!projectComplete) {
+                      confetti({
+                        particleCount: 200,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                      });
+                    }
+                  }}
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-all hover:scale-105"
                 >
-                  <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center ${projectComplete
-                    ? 'bg-black border-black'
-                    : 'border-black hover:bg-gray-100'
+                  <div className={`w-6 h-6 rounded-full border-2 border-white flex items-center justify-center ${projectComplete ? 'bg-white' : ''
                     }`}>
-                    {projectComplete && (
-                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                    )}
+                    {projectComplete && <Check className="w-4 h-4 text-black" />}
                   </div>
-                  <span className="text-base sm:text-lg font-medium">I completed this practice project</span>
-                </div>
+                  <span className="font-medium">I completed this project!</span>
+                </button>
 
                 {projectComplete && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="mt-6 sm:mt-8 space-y-4"
+                    className="mt-8 space-y-6"
                   >
-                    <p className="text-sm sm:text-base text-black">
-                      Ready for more? Try the ambitious project or explore the debug section!
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center">
-                      <Link href="/projects/ambitious" className="btn-primary w-full sm:w-auto">
-                        Try Ambitious Practice Project
+                    <div className="p-4 bg-green-50 rounded-lg inline-block">
+                      <p className="text-sm text-green-800 font-medium">
+                        Pro tip: Try changing the colors, text, or animations in your project. Just describe what you want to Cursor!
+                      </p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                      <Link href="/projects/ambitious" className="btn-primary">
+                        Level Up: Try the Ambitious Project
                       </Link>
-                      <Link href="/prompts" className="btn-secondary w-full sm:w-auto">
-                        Browse Prompts
+                      <Link href="/prompts" className="btn-secondary">
+                        Explore More Prompts
                       </Link>
                     </div>
                   </motion.div>

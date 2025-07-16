@@ -381,7 +381,7 @@ export default function Home() {
               {/* New text that appears on hover */}
               <div className="absolute inset-0 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-700 z-20 p-6 md:p-8">
                 <p className="text-lg sm:text-lg md:text-xl lg:text-2xl font-light text-left leading-[1.15] text-white w-[75%] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-out" style={{ letterSpacing: '-0.02em' }}>
-                  For designers who want to get set up with cursor and start making things
+                  Practice projects: Simple landing page, portfolio grid, AI fortune teller
                 </p>
               </div>
             </motion.div>
