@@ -48,60 +48,109 @@ export default function StartSmallProject() {
     estimatedTime?: string;
   }> = [
       {
-        title: "Create your project",
-        prompt: `Create a new Next.js app called "my-landing-page" with TypeScript, Tailwind CSS, and the App Router. 
-Keep it simple and clean.`,
-        tip: "This creates all the files and folders you need",
+        title: "Build the entire landing page",
+        prompt: `Create a beautiful, modern landing page using Next.js with the following specifications:
+
+PROJECT SETUP:
+- Create a new Next.js app called "my-landing-page" 
+- Use TypeScript, Tailwind CSS v3 (IMPORTANT: use @3.x, NOT v4), and App Router
+- Install framer-motion for animations
+
+HERO SECTION:
+- Large, bold headline: "Welcome to the Future" 
+- Subtitle: "Where ideas become reality"
+- Center everything in viewport
+- Purple to blue gradient background
+- Fully responsive design
+
+CALL-TO-ACTION BUTTON:
+- Below subtitle, add "Get Started" button
+- Dark background, rounded corners
+- Scale up slightly on hover
+- Subtle shadow effect
+- Add click animation using Framer Motion
+
+FEATURE CARDS SECTION:
+- Below hero, add 3 feature cards in a row:
+  1. "Lightning Fast" 
+  2. "Beautiful Design"
+  3. "Easy to Use"
+- Each card: white background, subtle shadow, title, subtitle, description
+- Responsive: stack on mobile, row on desktop
+
+ANIMATIONS:
+- Headline fades in from top
+- Subtitle fades in from bottom  
+- Feature cards stagger in with scroll
+- Cards lift slightly on hover
+
+Make it beautiful, modern, and production-ready!`,
+        tip: "This creates your complete landing page in one go",
+        estimatedTime: "2 minutes"
+      },
+      {
+        title: "Customize the colors",
+        prompt: `Change the gradient to use your favorite colors. Try:
+- Sunset theme: orange to pink
+- Ocean theme: teal to deep blue  
+- Forest theme: green to emerald
+- Or pick any colors you like!
+
+Also update the button and card hover effects to match the new color scheme.`,
+        tip: "Make it yours by changing the color palette",
         estimatedTime: "30 seconds"
       },
       {
-        title: "Build the hero section",
-        prompt: `Create a beautiful hero section for the homepage with:
-- A large, bold headline that says "Welcome to the Future"
-- A subtitle that says "Where ideas become reality"
-- Center everything in the viewport
-- Add a subtle gradient background from purple to blue
-- Make it fully responsive`,
-        tip: "The hero section is the first thing visitors see",
-        estimatedTime: "1 minute"
-      },
-      {
-        title: "Add an animated button",
-        prompt: `Below the subtitle, add a call-to-action button that:
-- Says "Get Started"
-- Has rounded corners and a dark background
-- Scales up slightly on hover
-- Has a subtle shadow
-- Bounces when clicked
-Use Framer Motion for the animations`,
-        tip: "Interactive elements make your site feel alive",
-        estimatedTime: "45 seconds"
-      },
-      {
-        title: "Create feature cards",
-        prompt: `Below the hero section, add a row of 3 feature cards:
-1. "Lightning Fast" 
-2. "Beautiful Design"
-3. "Easy to Use"
+        title: "Add more content",
+        prompt: `Add these sections to make it a complete landing page:
 
-Each card should have:
-- A white background with subtle shadow
-- A title and subtitle
-- A short description
-- Fade in animation when scrolling
-Make them stack on mobile`,
-        tip: "Features help explain what makes your product special",
+1. Add a navigation bar at the top with:
+   - Logo/brand name on the left
+   - Menu items: Features, About, Contact
+   - Sticky positioning
+
+2. Add a testimonial section with:
+   - 2-3 customer quotes
+   - Names and titles
+   - Subtle background pattern
+
+3. Add a footer with:
+   - Copyright notice
+   - Social media links
+   - Quick links
+
+Keep the same design style and animations!`,
+        tip: "Turn it into a full landing page",
         estimatedTime: "1 minute"
       },
       {
-        title: "Polish with animations",
-        prompt: `Add these final touches:
-- Make the headline fade in from the top
-- Make the subtitle fade in from the bottom
-- Stagger the feature cards animation
-- Add a hover effect to the cards (lift up slightly)
-- Ensure everything looks great on mobile`,
-        tip: "Small animations create a premium feel",
+        title: "Make it more interactive",
+        prompt: `Add these interactive elements:
+
+1. Parallax scrolling effect on the hero background
+2. Smooth scroll to sections when clicking nav items
+3. Add a "back to top" button that appears on scroll
+4. Make the Get Started button open a modal with an email signup form
+5. Add confetti animation when form is submitted
+
+Use Framer Motion for all animations!`,
+        tip: "Add engaging interactions",
+        estimatedTime: "1 minute"
+      },
+      {
+        title: "Polish and optimize",
+        prompt: `Final touches for production:
+
+1. Add meta tags for SEO in the layout
+2. Optimize images (if any) with next/image
+3. Add loading states for any async operations
+4. Ensure perfect mobile responsiveness
+5. Add subtle hover states to all interactive elements
+6. Test and fix any accessibility issues
+7. Add a custom 404 page
+
+Make it shine!`,
+        tip: "Production-ready polish",
         estimatedTime: "1 minute"
       }
     ];
@@ -168,10 +217,10 @@ Make them stack on mobile`,
               </div>
               <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                 <p className="text-sm text-black">
-                  <span className="font-medium">Total time:</span> 15-20 minutes including setup
+                  <span className="font-medium">Total time:</span> 5-10 minutes for initial build
                 </p>
                 <p className="text-xs text-gray-600 mt-1">
-                  (Not including breaking things, fixing them, and iterating)
+                  (Plus time for iterations and customization)
                 </p>
               </div>
             </Card>
@@ -222,7 +271,7 @@ Make them stack on mobile`,
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mb-6"
           >
-            <h2 className="text-2xl sm:text-3xl font-light">Steps:</h2>
+            <h2 className="text-2xl sm:text-3xl font-light">Prompts to try:</h2>
           </motion.div>
 
           <div className="space-y-3 sm:space-y-4">
@@ -259,7 +308,7 @@ Make them stack on mobile`,
                           <div className="flex items-center gap-3 mb-2">
                             <h3 className={`text-lg sm:text-xl font-medium ${isCompleted ? 'text-green-700' : 'text-black'
                               }`}>
-                              Step {index + 1}: {prompt.title}
+                              {index === 0 ? 'Start here:' : 'Then try:'} {prompt.title}
                             </h3>
                             {prompt.estimatedTime && (
                               <Badge variant="secondary" className="text-xs">

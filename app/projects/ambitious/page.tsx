@@ -49,53 +49,135 @@ export default function AmbitiousProject() {
     estimatedTime?: string;
   }> = [
       {
-        title: "Create the project",
-        prompt: `Create a new Next.js app called "my-portfolio-grid" with TypeScript and Tailwind CSS.
-Set up a responsive image grid layout with a heading.`,
-        tip: "This creates the foundation for your portfolio",
-        estimatedTime: "30 seconds"
+        title: "Build the complete portfolio grid",
+        prompt: `Create a beautiful responsive portfolio grid with animations using Next.js:
+
+PROJECT SETUP:
+- Create new Next.js app called "my-portfolio-grid"
+- Use TypeScript, Tailwind CSS v3 (IMPORTANT: use @3.x, NOT v4), and App Router
+- Install framer-motion for animations
+
+LAYOUT STRUCTURE:
+- Large, bold heading at the top: "My Creative Work"
+- Subtitle: "A collection of my favorite projects"
+- Add padding and center the content
+
+IMAGE GRID:
+- Create a 6-image grid layout
+- Use real images from Unsplash: https://source.unsplash.com/random/800x600?sig=1 (change sig=1,2,3 etc for different images)
+- Or use placeholder images: https://via.placeholder.com/800x600/purple/white?text=Project+1
+- Responsive breakpoints:
+  - Mobile: 1 column
+  - Tablet (md): 2 columns  
+  - Desktop (lg): 3 columns
+- Use aspect-[16/9] for consistent sizing
+- Add subtle borders and rounded corners (rounded-lg)
+- Include proper alt text for accessibility
+
+ANIMATIONS WITH FRAMER MOTION:
+- Fade in heading from top with 0.5s duration
+- Fade in subtitle with 0.2s delay
+- Stagger grid items appearance (0.1s delay between each)
+- On hover: scale to 1.05 and increase shadow
+- Smooth transitions (0.3s duration)
+
+STYLING:
+- Clean white background
+- Subtle shadows on cards
+- Consistent spacing between elements
+- Beautiful typography
+
+Make it portfolio-ready and impressive!`,
+        tip: "This creates your entire portfolio grid in one prompt",
+        estimatedTime: "2 minutes"
       },
       {
-        title: "Build the grid structure",
-        prompt: `Create a responsive grid layout:
-- Add a large heading at the top
-- Create a grid with 6 image placeholders
-- 1 column on mobile, 2 on tablet, 3 on desktop
-- Use aspect-ratio-[16/9] for consistent sizing
-- Add subtle borders and rounded corners`,
-        tip: "Grid layout adapts to different screen sizes",
+        title: "Make it more dynamic",
+        prompt: `Transform the static grid into an interactive gallery:
+
+1. Add category filters at the top:
+   - "All", "Design", "Photography", "Development"
+   - Smooth filter animations when switching categories
+   - Active filter highlighted
+
+2. Add a lightbox effect:
+   - Click any image to open in fullscreen
+   - Dark overlay background
+   - Close button and ESC key to exit
+   - Smooth zoom animation
+
+3. Add image overlays on hover:
+   - Project title appears
+   - View project button
+   - Semi-transparent dark overlay
+
+Keep all existing animations smooth!`,
+        tip: "Add professional gallery features",
         estimatedTime: "1 minute"
       },
       {
-        title: "Add images",
-        prompt: `Replace the placeholders with real images:
-- Use sample images from Unsplash (https://source.unsplash.com/random/800x600)
-- Or use numbered placeholders like https://via.placeholder.com/800x600
-- Ensure images fill their containers
-- Add alt text for accessibility`,
-        tip: "Images bring your portfolio to life",
-        estimatedTime: "45 seconds"
-      },
-      {
-        title: "Add hover animations",
-        prompt: `Use Framer Motion to add animations:
-- Fade in the heading from the top
-- Stagger the grid items appearance
-- Scale images to 1.05 on hover
-- Add shadow increase on hover
-- Keep animations smooth and subtle`,
-        tip: "Animations create visual interest",
+        title: "Add loading states and polish",
+        prompt: `Enhance the user experience with these additions:
+
+1. Add skeleton loading states:
+   - Show gray placeholder boxes while images load
+   - Pulse animation on skeletons
+   - Smooth transition when images appear
+
+2. Add lazy loading:
+   - Load images as user scrolls
+   - Use Intersection Observer
+
+3. Add a "Load More" button:
+   - Initially show 6 images
+   - Load 3 more each time
+   - Smooth animation for new items
+
+4. Add subtle parallax effect on scroll`,
+        tip: "Professional loading experience",
         estimatedTime: "1 minute"
       },
       {
-        title: "Polish the design",
-        prompt: `Refine the overall look:
-- Add a subtle background gradient or color
-- Improve spacing between elements
-- Ensure proper padding on all screen sizes
-- Add a footer with your name or credits
-- Make any final visual adjustments`,
-        tip: "Small details make a big difference",
+        title: "Create different layouts",
+        prompt: `Add a layout switcher to toggle between different views:
+
+1. Grid view (current)
+2. Masonry layout (Pinterest-style with varied heights)
+3. List view (larger images with descriptions)
+4. Carousel view (horizontal scrolling)
+
+Add smooth transitions between layout changes using Framer Motion's layout animations.
+
+Include toggle buttons at the top right to switch views.`,
+        tip: "Multiple viewing options",
+        estimatedTime: "1 minute"
+      },
+      {
+        title: "Final touches",
+        prompt: `Polish for a professional portfolio:
+
+1. Add a hero section above the grid:
+   - Your name and title
+   - Brief introduction
+   - Social media links
+
+2. Add footer with:
+   - Contact information
+   - Copyright notice
+   - Back to top button
+
+3. Performance optimizations:
+   - Use next/image for optimization
+   - Add blur placeholders
+   - Optimize for Core Web Vitals
+
+4. Make it fully accessible:
+   - Keyboard navigation
+   - Screen reader friendly
+   - Focus indicators
+
+Ready to showcase your work!`,
+        tip: "Portfolio-ready finishing touches",
         estimatedTime: "1 minute"
       }
     ];
@@ -162,10 +244,10 @@ Set up a responsive image grid layout with a heading.`,
               </div>
               <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                 <p className="text-sm text-black">
-                  <span className="font-medium">Total time:</span> 20-25 minutes including image setup
+                  <span className="font-medium">Total time:</span> 5-10 minutes for initial build
                 </p>
                 <p className="text-xs text-gray-600 mt-1">
-                  (Not including breaking things, fixing them, and iterating)
+                  (Plus time for iterations and enhancements)
                 </p>
               </div>
             </Card>
@@ -216,7 +298,7 @@ Set up a responsive image grid layout with a heading.`,
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mb-6"
           >
-            <h2 className="text-2xl sm:text-3xl font-light">Steps:</h2>
+            <h2 className="text-2xl sm:text-3xl font-light">Prompts to try:</h2>
           </motion.div>
 
           <div className="space-y-3 sm:space-y-4">
@@ -253,7 +335,7 @@ Set up a responsive image grid layout with a heading.`,
                           <div className="flex items-center gap-3 mb-2">
                             <h3 className={`text-lg sm:text-xl font-medium ${isCompleted ? 'text-green-700' : 'text-black'
                               }`}>
-                              Step {index + 1}: {prompt.title}
+                              {index === 0 ? 'Start here:' : 'Then try:'} {prompt.title}
                             </h3>
                             {prompt.estimatedTime && (
                               <Badge variant="secondary" className="text-xs">

@@ -49,23 +49,43 @@ export default function FalAiProject() {
         isManual?: boolean;
     }> = [
             {
-                title: "Create the project",
-                prompt: `Create a new Next.js app called "ai-fortune-teller" with TypeScript and Tailwind CSS.
-Set up a mystical fortune teller interface with a dark theme.`,
-                tip: "This creates the foundation for your AI app",
-                estimatedTime: "30 seconds"
-            },
-            {
-                title: "Build the interface",
-                prompt: `Create a fortune teller interface with:
-- Dark background with purple gradient
-- Centered title "AI Oracle"
-- Input field for user questions
-- Glowing button that says "Reveal My Fortune"
-- Empty card area for displaying fortunes
-- Use Tailwind for all styling`,
-                tip: "The UI sets the mystical mood",
-                estimatedTime: "1 minute"
+                title: "Build the complete AI fortune teller",
+                prompt: `Create a mystical AI-powered fortune teller app using Next.js and Fal.ai:
+
+PROJECT SETUP:
+- Create new Next.js app called "ai-fortune-teller"
+- Use TypeScript, Tailwind CSS v3 (IMPORTANT: use @3.x, NOT v4), and App Router
+- Install framer-motion for animations
+- Create .env.local file with: FAL_API_KEY=your-api-key-here (we'll get this key in next step)
+
+USER INTERFACE:
+- Dark background with purple to black gradient
+- Centered title "AI Oracle" with mystical font styling
+- Subtitle: "Ask the cosmos anything..."
+- Input field for questions with glowing border
+- Submit button "Reveal My Fortune" with purple glow effect
+- Card area below for displaying fortunes (initially hidden)
+- Add starry particle background effect for ambiance
+
+API INTEGRATION:
+- Create API route at /api/fortune
+- Accept POST requests with user's question
+- Call Fal.ai text generation API using the API key
+- Format prompt: "You are a mystical fortune teller. Give a mysterious and poetic fortune about: [user question]. Keep it brief and enigmatic."
+- Return formatted fortune response
+- Handle errors gracefully
+
+ANIMATIONS & POLISH:
+- Input field glows when focused
+- Button pulses with mystical energy on hover
+- Loading state: spinning crystal ball icon while waiting
+- Fortune card fades in with ethereal effect
+- Typewriter effect for fortune text
+- Error messages appear as "The spirits are disturbed..."
+
+Make it feel magical and mysterious!`,
+                tip: "This creates your complete fortune teller app",
+                estimatedTime: "3 minutes"
             },
             {
                 title: "Get your Fal.ai API key",
@@ -73,41 +93,91 @@ Set up a mystical fortune teller interface with a dark theme.`,
 1. Visit fal.ai and sign up for a free account
 2. Go to your dashboard
 3. Find the API Keys section
-4. Create a new API key and copy it`,
+4. Create a new API key and copy it
+5. Replace "your-api-key-here" in your .env.local file with the actual key`,
                 tip: "You'll need this to connect to the AI",
                 estimatedTime: "2 minutes",
                 isManual: true
             },
             {
-                title: "Set up environment variable",
-                prompt: `Create a .env.local file in the root of your project with:
-FAL_API_KEY=your-api-key-here
+                title: "Add fortune history",
+                prompt: `Enhance the app with these features:
 
-Then update your code to use process.env.FAL_API_KEY for API calls.`,
-                tip: "Keep your API key secure",
-                estimatedTime: "30 seconds"
+1. Fortune History:
+   - Store last 5 fortunes in state
+   - Display them in a sidebar or below main area
+   - Each shows question and fortune with timestamp
+   - Fade in animation for new entries
+   - Clear history button
+
+2. Fortune Categories:
+   - Add buttons for quick fortunes: "Love", "Career", "Future", "Lucky Numbers"
+   - Pre-populate input when clicked
+   - Different color themes for each category
+
+3. Share Feature:
+   - Add "Share Fortune" button
+   - Copy to clipboard functionality
+   - Twitter/X share button
+   - Success animation when copied`,
+                tip: "Keep track of mystical insights",
+                estimatedTime: "1 minute"
             },
             {
-                title: "Connect to Fal.ai API",
-                prompt: `Create an API route that:
-- Accepts the user's question
-- Sends it to Fal.ai's text generation API
-- Formats the prompt to request mystical fortunes
-- Returns the AI-generated fortune
-Use the FAL_API_KEY from environment variables`,
-                tip: "This brings the AI magic to life",
+                title: "Add mystical effects",
+                prompt: `Make it more immersive with advanced effects:
+
+1. Background Enhancements:
+   - Animated gradient that shifts colors slowly
+   - Floating mystical orbs using CSS animations
+   - Parallax star field effect on mouse move
+   - Fog overlay animation
+
+2. Sound Effects (optional):
+   - Mystical chime when fortune appears
+   - Ambient background music toggle
+   - Click sounds for interactions
+
+3. Fortune Card Styling:
+   - Tarot card-inspired design
+   - Gold border with corner ornaments
+   - Old paper texture background
+   - Wax seal animation when fortune appears
+
+4. Crystal Ball Loading Animation:
+   - Replace simple spinner with animated crystal ball
+   - Swirling mists inside the ball
+   - Glowing effect that intensifies`,
+                tip: "Create an immersive mystical experience",
                 estimatedTime: "1.5 minutes"
             },
             {
-                title: "Add animations and polish",
-                prompt: `Use Framer Motion to:
-- Fade in fortunes when they appear
-- Add a loading spinner while waiting
-- Make the button pulse on hover
-- Add error handling with friendly messages
-- Polish the overall mystical aesthetic`,
-                tip: "Animations make it feel magical",
-                estimatedTime: "1 minute"
+                title: "Add advanced AI features",
+                prompt: `Expand the AI capabilities:
+
+1. Multi-Model Support:
+   - Add dropdown to select different AI "spirits"
+   - Each has unique personality and style
+   - Examples: "Ancient Oracle", "Cosmic Sage", "Dream Walker"
+
+2. Context Awareness:
+   - Include time of day in prompts for relevant fortunes
+   - Add user's zodiac sign input for personalized readings
+   - Moon phase integration for "optimal" fortune timing
+
+3. Fortune Enhancement:
+   - Add "Clarify this fortune" button
+   - Generate related follow-up questions
+   - Suggest lucky numbers based on fortune
+
+4. Export Features:
+   - Download fortune as mystical-styled image
+   - PDF generation with beautiful formatting
+   - Email fortune to yourself
+
+Make it the ultimate AI fortune telling experience!`,
+                tip: "Advanced features for power users",
+                estimatedTime: "2 minutes"
             }
         ];
 
@@ -173,10 +243,10 @@ Use the FAL_API_KEY from environment variables`,
                             </div>
                             <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                                 <p className="text-sm text-black">
-                                    <span className="font-medium">Total time:</span> 25-30 minutes including API setup
+                                    <span className="font-medium">Total time:</span> 10-15 minutes for initial build + API setup
                                 </p>
                                 <p className="text-xs text-gray-600 mt-1">
-                                    (Not including breaking things, fixing them, and iterating)
+                                    (Plus time for iterations and advanced features)
                                 </p>
                             </div>
                         </Card>
@@ -235,7 +305,7 @@ Use the FAL_API_KEY from environment variables`,
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="mb-6"
                     >
-                        <h2 className="text-2xl sm:text-3xl font-light">Steps:</h2>
+                        <h2 className="text-2xl sm:text-3xl font-light">Prompts to try:</h2>
                     </motion.div>
 
                     <div className="space-y-3 sm:space-y-4">
@@ -272,7 +342,7 @@ Use the FAL_API_KEY from environment variables`,
                                                     <div className="flex items-center gap-3 mb-2">
                                                         <h3 className={`text-lg sm:text-xl font-medium ${isCompleted ? 'text-green-700' : 'text-black'
                                                             }`}>
-                                                            Step {index + 1}: {prompt.title}
+                                                            {index === 0 ? 'Start here:' : index === 1 ? 'Manual step:' : 'Then try:'} {prompt.title}
                                                         </h3>
                                                         {prompt.estimatedTime && (
                                                             <Badge variant="secondary" className="text-xs">
