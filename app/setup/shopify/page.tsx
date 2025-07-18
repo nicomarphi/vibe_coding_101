@@ -16,6 +16,17 @@ export default function ShopifySetupPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showError, setShowError] = useState(false);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [rememberMe, setRememberMe] = useState(true);
+
+  // Check localStorage for existing authentication on mount
+  useEffect(() => {
+    const storedAuth = localStorage.getItem('shopifySetupAuth');
+    if (storedAuth === 'true') {
+      setIsAuthenticated(true);
+    }
+    setIsCheckingAuth(false);
+  }, []);
 
   // WARNING: This is NOT secure for production use!
   // Client-side password validation can always be bypassed.
@@ -38,6 +49,10 @@ export default function ShopifySetupPage() {
     if (hashHex === correctPasswordHash) {
       setIsAuthenticated(true);
       setShowError(false);
+      // Store authentication state in localStorage if remember me is checked
+      if (rememberMe) {
+        localStorage.setItem('shopifySetupAuth', 'true');
+      }
     } else {
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
@@ -334,6 +349,20 @@ export default function ShopifySetupPage() {
       },
     ];
 
+  // Show loading state while checking auth
+  if (isCheckingAuth) {
+    return (
+      <div className="min-h-screen">
+        <div className="gradient-mesh gradient-mesh-setup" />
+        <div className="grain-overlay" />
+        <Navigation />
+        <div className="flex items-center justify-center h-screen">
+          <div className="animate-pulse text-gray-500">Loading...</div>
+        </div>
+      </div>
+    );
+  }
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen">
@@ -381,6 +410,19 @@ export default function ShopifySetupPage() {
                     />
                   </div>
 
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="rememberMe"
+                      checked={rememberMe}
+                      onChange={(e) => setRememberMe(e.target.checked)}
+                      className="w-4 h-4 text-black border-gray-300 rounded focus:ring-black"
+                    />
+                    <label htmlFor="rememberMe" className="text-sm text-gray-600">
+                      Remember me on this device
+                    </label>
+                  </div>
+
                   {showError && (
                     <p className="text-red-600 text-sm">
                       Incorrect password. Please try again.
@@ -417,13 +459,26 @@ export default function ShopifySetupPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <Link
-              href="/setup"
-              className="inline-flex items-center gap-2 text-sm text-black hover:underline mb-6"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Setup
-            </Link>
+            <div className="flex items-center justify-between mb-6">
+              <Link
+                href="/setup"
+                className="inline-flex items-center gap-2 text-sm text-black hover:underline"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Setup
+              </Link>
+
+              <button
+                onClick={() => {
+                  localStorage.removeItem('shopifySetupAuth');
+                  setIsAuthenticated(false);
+                  setPassword('');
+                }}
+                className="text-sm text-gray-600 hover:text-black transition-colors"
+              >
+                Logout
+              </button>
+            </div>
 
             <h1 className="mb-2 uppercase" style={{ letterSpacing: "-0.01em" }}>
               Get set up, Shopifolk
