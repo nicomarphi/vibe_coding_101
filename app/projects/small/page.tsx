@@ -86,7 +86,7 @@ ANIMATIONS:
 
 `,
         tip: "This creates your complete landing page in one go",
-        estimatedTime: "2 minutes"
+        estimatedTime: "5-7 minutes"
       },
       {
         title: "Customize the colors",
@@ -98,7 +98,7 @@ ANIMATIONS:
 
 Update the button and card hover effects to match the new color scheme.`,
         tip: "Make it yours by changing the color palette",
-        estimatedTime: "30 seconds"
+        estimatedTime: "3-5 minutes"
       },
       {
         title: "Add more content",
@@ -121,7 +121,7 @@ Update the button and card hover effects to match the new color scheme.`,
 
 Keep the same design style and animations.`,
         tip: "Turn it into a full landing page",
-        estimatedTime: "1 minute"
+        estimatedTime: "5-7 minutes"
       },
       {
         title: "Make it more interactive",
@@ -135,7 +135,7 @@ Keep the same design style and animations.`,
 
 Use Framer Motion for all animations.`,
         tip: "Add engaging interactions",
-        estimatedTime: "1 minute"
+        estimatedTime: "5-7 minutes"
       },
       {
         title: "Polish and optimize",
@@ -149,7 +149,7 @@ Use Framer Motion for all animations.`,
 6. Test and fix any accessibility issues
 7. Add a custom 404 page`,
         tip: "Production-ready polish",
-        estimatedTime: "1 minute"
+        estimatedTime: "3-5 minutes"
       }
     ];
 
@@ -215,10 +215,10 @@ Use Framer Motion for all animations.`,
               </div>
               <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                 <p className="text-sm text-black">
-                  <span className="font-medium">Total time:</span> 5-10 minutes for initial build
+                  <span className="font-medium">Total time:</span> 20-30 minutes
                 </p>
                 <p className="text-xs text-gray-600 mt-1">
-                  (Plus time for iterations and customization)
+                  (Includes initial build and iterations)
                 </p>
               </div>
             </Card>

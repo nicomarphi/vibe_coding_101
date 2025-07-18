@@ -83,7 +83,7 @@ ANIMATIONS & POLISH:
 - Typewriter effect for fortune text
 - Error messages appear as "The spirits are disturbed..."`,
                 tip: "This creates your complete fortune teller app",
-                estimatedTime: "3 minutes"
+                estimatedTime: "10-12 minutes"
             },
             {
                 title: "Get your Fal.ai API key",
@@ -94,7 +94,7 @@ ANIMATIONS & POLISH:
 4. Create a new API key and copy it
 5. Replace "your-api-key-here" in your .env.local file with the actual key`,
                 tip: "You'll need this to connect to the AI",
-                estimatedTime: "2 minutes",
+                estimatedTime: "3-5 minutes",
                 isManual: true
             },
             {
@@ -119,7 +119,7 @@ ANIMATIONS & POLISH:
    - Twitter/X share button
    - Success animation when copied`,
                 tip: "Keep track of mystical insights",
-                estimatedTime: "1 minute"
+                estimatedTime: "5-7 minutes"
             },
             {
                 title: "Add mystical effects",
@@ -147,7 +147,7 @@ ANIMATIONS & POLISH:
    - Swirling mists inside the ball
    - Glowing effect that intensifies`,
                 tip: "Create an immersive mystical experience",
-                estimatedTime: "1.5 minutes"
+                estimatedTime: "7-10 minutes"
             },
             {
                 title: "Add advanced AI features",
@@ -173,7 +173,7 @@ ANIMATIONS & POLISH:
    - PDF generation with beautiful formatting
    - Email fortune to yourself`,
                 tip: "Advanced features for power users",
-                estimatedTime: "2 minutes"
+                estimatedTime: "5-8 minutes"
             }
         ];
 
@@ -239,10 +239,10 @@ ANIMATIONS & POLISH:
                             </div>
                             <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                                 <p className="text-sm text-black">
-                                    <span className="font-medium">Total time:</span> 10-15 minutes for initial build + API setup
+                                    <span className="font-medium">Total time:</span> 30-40 minutes
                                 </p>
                                 <p className="text-xs text-gray-600 mt-1">
-                                    (Plus time for iterations and advanced features)
+                                    (Includes initial build, API setup, and iterations)
                                 </p>
                             </div>
                         </Card>

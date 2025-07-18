@@ -87,7 +87,7 @@ STYLING:
 - Consistent spacing between elements
 - Beautiful typography`,
         tip: "This creates your entire portfolio grid in one prompt",
-        estimatedTime: "2 minutes"
+        estimatedTime: "7-10 minutes"
       },
       {
         title: "Make it more dynamic",
@@ -111,7 +111,7 @@ STYLING:
 
 Keep all existing animations smooth.`,
         tip: "Add professional gallery features",
-        estimatedTime: "1 minute"
+        estimatedTime: "5-7 minutes"
       },
       {
         title: "Add loading states and polish",
@@ -133,7 +133,7 @@ Keep all existing animations smooth.`,
 
 4. Add subtle parallax effect on scroll`,
         tip: "Professional loading experience",
-        estimatedTime: "1 minute"
+        estimatedTime: "5-7 minutes"
       },
       {
         title: "Create different layouts",
@@ -148,7 +148,7 @@ Add smooth transitions between layout changes using Framer Motion's layout anima
 
 Include toggle buttons at the top right to switch views.`,
         tip: "Multiple viewing options",
-        estimatedTime: "1 minute"
+        estimatedTime: "5-7 minutes"
       },
       {
         title: "Final touches",
@@ -174,7 +174,7 @@ Include toggle buttons at the top right to switch views.`,
    - Screen reader friendly
    - Focus indicators`,
         tip: "Portfolio-ready finishing touches",
-        estimatedTime: "1 minute"
+        estimatedTime: "3-5 minutes"
       }
     ];
 
@@ -240,10 +240,10 @@ Include toggle buttons at the top right to switch views.`,
               </div>
               <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                 <p className="text-sm text-black">
-                  <span className="font-medium">Total time:</span> 5-10 minutes for initial build
+                  <span className="font-medium">Total time:</span> 25-35 minutes
                 </p>
                 <p className="text-xs text-gray-600 mt-1">
-                  (Plus time for iterations and enhancements)
+                  (Includes initial build and iterations)
                 </p>
               </div>
             </Card>

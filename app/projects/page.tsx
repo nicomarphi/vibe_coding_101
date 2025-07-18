@@ -63,9 +63,9 @@ export default function ProjectsPage() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
-                      <span>15-20 minutes</span>
+                      <span>20-30 minutes</span>
                       <span className="hidden sm:inline">•</span>
-                      <span>5 steps</span>
+                      <span>5 prompts</span>
                     </div>
                   </div>
                 </Card>
@@ -98,9 +98,9 @@ export default function ProjectsPage() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
-                      <span>20-25 minutes</span>
+                      <span>25-35 minutes</span>
                       <span className="hidden sm:inline">•</span>
-                      <span>5 steps</span>
+                      <span>5 prompts</span>
                     </div>
                   </div>
                 </Card>
@@ -133,9 +133,9 @@ export default function ProjectsPage() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-xs sm:text-sm text-black">
-                      <span>25-30 minutes</span>
+                      <span>30-40 minutes</span>
                       <span className="hidden sm:inline">•</span>
-                      <span>6 steps</span>
+                      <span>5 prompts</span>
                     </div>
                   </div>
                 </Card>
