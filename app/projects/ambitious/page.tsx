@@ -85,9 +85,7 @@ STYLING:
 - Clean white background
 - Subtle shadows on cards
 - Consistent spacing between elements
-- Beautiful typography
-
-Make it portfolio-ready and impressive!`,
+- Beautiful typography`,
         tip: "This creates your entire portfolio grid in one prompt",
         estimatedTime: "2 minutes"
       },
@@ -111,7 +109,7 @@ Make it portfolio-ready and impressive!`,
    - View project button
    - Semi-transparent dark overlay
 
-Keep all existing animations smooth!`,
+Keep all existing animations smooth.`,
         tip: "Add professional gallery features",
         estimatedTime: "1 minute"
       },
@@ -174,9 +172,7 @@ Include toggle buttons at the top right to switch views.`,
 4. Make it fully accessible:
    - Keyboard navigation
    - Screen reader friendly
-   - Focus indicators
-
-Ready to showcase your work!`,
+   - Focus indicators`,
         tip: "Portfolio-ready finishing touches",
         estimatedTime: "1 minute"
       }

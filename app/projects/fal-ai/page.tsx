@@ -81,9 +81,7 @@ ANIMATIONS & POLISH:
 - Loading state: spinning crystal ball icon while waiting
 - Fortune card fades in with ethereal effect
 - Typewriter effect for fortune text
-- Error messages appear as "The spirits are disturbed..."
-
-Make it feel magical and mysterious!`,
+- Error messages appear as "The spirits are disturbed..."`,
                 tip: "This creates your complete fortune teller app",
                 estimatedTime: "3 minutes"
             },
@@ -173,9 +171,7 @@ Make it feel magical and mysterious!`,
 4. Export Features:
    - Download fortune as mystical-styled image
    - PDF generation with beautiful formatting
-   - Email fortune to yourself
-
-Make it the ultimate AI fortune telling experience!`,
+   - Email fortune to yourself`,
                 tip: "Advanced features for power users",
                 estimatedTime: "2 minutes"
             }

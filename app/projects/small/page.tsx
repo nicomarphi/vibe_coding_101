@@ -84,7 +84,7 @@ ANIMATIONS:
 - Feature cards stagger in with scroll
 - Cards lift slightly on hover
 
-Make it beautiful, modern, and production-ready!`,
+`,
         tip: "This creates your complete landing page in one go",
         estimatedTime: "2 minutes"
       },
@@ -96,7 +96,7 @@ Make it beautiful, modern, and production-ready!`,
 - Forest theme: green to emerald
 - Or pick any colors you like!
 
-Also update the button and card hover effects to match the new color scheme.`,
+Update the button and card hover effects to match the new color scheme.`,
         tip: "Make it yours by changing the color palette",
         estimatedTime: "30 seconds"
       },
@@ -119,7 +119,7 @@ Also update the button and card hover effects to match the new color scheme.`,
    - Social media links
    - Quick links
 
-Keep the same design style and animations!`,
+Keep the same design style and animations.`,
         tip: "Turn it into a full landing page",
         estimatedTime: "1 minute"
       },
@@ -133,7 +133,7 @@ Keep the same design style and animations!`,
 4. Make the Get Started button open a modal with an email signup form
 5. Add confetti animation when form is submitted
 
-Use Framer Motion for all animations!`,
+Use Framer Motion for all animations.`,
         tip: "Add engaging interactions",
         estimatedTime: "1 minute"
       },
@@ -147,9 +147,7 @@ Use Framer Motion for all animations!`,
 4. Ensure perfect mobile responsiveness
 5. Add subtle hover states to all interactive elements
 6. Test and fix any accessibility issues
-7. Add a custom 404 page
-
-Make it shine!`,
+7. Add a custom 404 page`,
         tip: "Production-ready polish",
         estimatedTime: "1 minute"
       }
