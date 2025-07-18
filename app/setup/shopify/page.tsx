@@ -453,32 +453,38 @@ export default function ShopifySetupPage() {
       {/* Hero Section */}
       <section className="pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
+          {/* Logout link aligned to the right */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex justify-end mb-4"
+          >
+            <button
+              onClick={() => {
+                localStorage.removeItem('shopifySetupAuth');
+                setIsAuthenticated(false);
+                setPassword('');
+              }}
+              className="text-sm text-black/60 hover:text-black underline decoration-black/20 hover:decoration-black/60 transition-all"
+            >
+              Logout
+            </button>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <div className="flex items-center justify-between mb-6">
-              <Link
-                href="/setup"
-                className="inline-flex items-center gap-2 text-sm text-black hover:underline"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Setup
-              </Link>
-
-              <button
-                onClick={() => {
-                  localStorage.removeItem('shopifySetupAuth');
-                  setIsAuthenticated(false);
-                  setPassword('');
-                }}
-                className="text-sm text-gray-600 hover:text-black transition-colors"
-              >
-                Logout
-              </button>
-            </div>
+            <Link
+              href="/setup"
+              className="inline-flex items-center gap-2 text-sm text-black hover:underline mb-6"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Setup
+            </Link>
 
             <h1 className="mb-2 uppercase" style={{ letterSpacing: "-0.01em" }}>
               Get set up, Shopifolk
