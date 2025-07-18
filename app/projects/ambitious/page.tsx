@@ -240,10 +240,10 @@ Include toggle buttons at the top right to switch views.`,
               </div>
               <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                 <p className="text-sm text-black">
-                  <span className="font-medium">Total time:</span> 25-35 minutes
+                  <span className="font-medium">Initial build:</span> 25-35 minutes
                 </p>
                 <p className="text-xs text-gray-600 mt-1">
-                  (Includes initial build and iterations)
+                  (Iterations and tweaking can take hours of joyful exploration)
                 </p>
               </div>
             </Card>

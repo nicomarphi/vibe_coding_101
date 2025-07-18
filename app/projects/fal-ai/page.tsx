@@ -239,10 +239,10 @@ ANIMATIONS & POLISH:
                             </div>
                             <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                                 <p className="text-sm text-black">
-                                    <span className="font-medium">Total time:</span> 30-40 minutes
+                                    <span className="font-medium">Initial build:</span> 30-40 minutes
                                 </p>
                                 <p className="text-xs text-gray-600 mt-1">
-                                    (Includes initial build, API setup, and iterations)
+                                    (Iterations and tweaking can take hours of joyful exploration)
                                 </p>
                             </div>
                         </Card>
